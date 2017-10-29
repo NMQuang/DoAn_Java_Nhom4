@@ -13,6 +13,6 @@ public class HomeController {
 	public String getHomePage(Model model){
 		
 		
-		return "HomePage";
+		return "home";
 	}
 }

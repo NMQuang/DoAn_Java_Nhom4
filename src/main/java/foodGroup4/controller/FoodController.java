@@ -13,7 +13,7 @@ public class FoodController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String getListFood(Model model){
 		
-		return "Food";
+		return "food";
 	}
 	
 	@RequestMapping(value= "/search", method = RequestMethod.GET)

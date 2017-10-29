@@ -10,6 +10,6 @@ public class AboutController {
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String getAbout(){
 		
-		return "About";
+		return "about";
 	}
 }
