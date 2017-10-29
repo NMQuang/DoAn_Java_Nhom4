@@ -12,7 +12,7 @@ public class BranchController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getList(Model model){
 		
-		return "Branches";
+		return "branch";
 	}
 	
 	

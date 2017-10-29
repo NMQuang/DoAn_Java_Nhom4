@@ -12,7 +12,7 @@ public class OrderController {
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
 	public String getCart(Model model){
 		
-		return "Cart";
+		return "order";
 	}
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
