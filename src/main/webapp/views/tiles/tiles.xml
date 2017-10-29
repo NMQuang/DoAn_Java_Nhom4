@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="base-definition"
+                template="/views/tiles/layouts/defaultLayout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/views/tiles/template/header.jsp" />
+        <put-attribute name="startSearch" value="/views/tiles/template/startSearch.jsp" />
+        <put-attribute name="content" value="" />
+        <put-attribute name="footer" value="/views/tiles/template/footer.jsp" />
+    </definition>
+
+    <definition name="home" extends="base-definition">
+        <put-attribute name="title" value="Trang ch?" />
+        <put-attribute name="content" value="/views/pages/home.jsp" />
+    </definition>
+
+    <definition name="about" extends="base-definition">
+        <put-attribute name="title" value="About" />
+        <put-attribute name="content" value="/views/pages/about.jsp" />
+    </definition>
+
+    <definition name="branch" extends="base-definition">
+        <put-attribute name="title" value="Chi nhánh" />
+        <put-attribute name="content" value="/views/pages/branch.jsp" />
+    </definition>
+
+    <definition name="food" extends="base-definition">
+        <put-attribute name="title" value="Món ?n" />
+        <put-attribute name="content" value="/views/pages/food.jsp" />
+    </definition>
+
+    <definition name="order" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/order.jsp" />
+    </definition>
+</tiles-definitions>
