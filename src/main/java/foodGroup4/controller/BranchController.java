@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/branch")
 public class BranchController {
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public String getList(Model model){
+	@RequestMapping(params = "id", method = RequestMethod.GET)
+	public String getBranch(Model model){
 		
 		return "branch";
 	}
