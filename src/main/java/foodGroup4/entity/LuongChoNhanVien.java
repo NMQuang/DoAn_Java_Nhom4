@@ -2,12 +2,7 @@ package foodGroup4.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name ="luongchonhanvien")
@@ -18,13 +13,16 @@ public class LuongChoNhanVien implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "NhanVienID")
 	private NhanVien nhanVien;
 
+	@Id
 	@Column(name = "Thang", length = 2)
 	private String thang;
 
+	@Id
 	@Column(name = "Nam", length = 4)
 	private String nam;
 

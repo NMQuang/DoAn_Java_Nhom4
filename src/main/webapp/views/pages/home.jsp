@@ -1,303 +1,326 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<div class="ordering-section" id="Order">
-    <div class="container">
-        <div class="ordering-section-head text-center wow bounceInRight" data-wow-delay="0.4s">
-            <h3>Đặt món ăn thật là dễ dàng</h3>
-            <div class="dotted-line">
-                <h4>4 bước đơn giản </h4>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!-- Home -->
+<div class="container">
+    <!-- Top slide -->
+    <div class="row">
+        <div id="top-slide" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators my-carousel-indicators">
+                <li data-target="#top-slide" data-slide-to="0" class="active"></li>
+                <li data-target="#top-slide" data-slide-to="1"></li>
+                <li data-target="#top-slide" data-slide-to="2"></li>
+            </ol>
+            <div class='carousel-inner' role='listbox'>
+                <div class='item item-top-slide active'>
+                    <img class="img-responsive" src="<c:url value="/resources/images/top-mon-an.jpg"/>" alt='doan'>
+                    <div class='carousel-caption'>
+                        <h1>Bánh xèo</h1>
+                    </div>
+                </div>
+                <div class='item item-top-slide'>
+                    <img class="img-responsive" src="<c:url value="/resources/images/lau-bo.jpg"/>" alt='doan'>
+                    <div class='carousel-caption'>
+                        <h1>Lẩu bò</h1>
+                    </div>
+                </div>
+                <div class='item item-top-slide'>
+                    <img class="img-responsive" src="<c:url value="/resources/images/mon-ngon.png"/>" alt='doan'>
+                    <div class='carousel-caption'>
+                        <h1>Món ngon mỗi ngày</h1>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="ordering-section-grids">
-            <div class="col-md-3 ordering-section-grid">
-                <div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
-                <i class="one"></i><br>
-                <i class="one-icon"></i>
-                <p>Chọn <br><span>Chi nhánh</span></p>
-                <label></label>
-            </div>
-        </div>
-        <div class="col-md-3 ordering-section-grid">
-            <div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
-            <i class="two"></i><br>
-            <i class="two-icon"></i>
-            <p>Đặt <br>  <span>Món ăn</span></p>
-            <label></label>
+
+            <a class='left carousel-control' href='#top-slide' role='button' data-slide='prev'>
+                <span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>
+            </a>
+
+            <a class='right carousel-control' href='#top-slide' role='button' data-slide='next'>
+                <span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>
+            </a>
         </div>
     </div>
-    <div class="col-md-3 ordering-section-grid">
-        <div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
-        <i class="three"></i><br>
-        <i class="three-icon"></i>
-        <p>Thanh toán</span></p>
-        <label></label>
-    </div>
-</div>
-<div class="col-md-3 ordering-section-grid">
-    <div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
-    <i class="four"></i><br>
-    <i class="four-icon"></i>
-    <p>Thưởng thức</p>
-</div>
-</div>
-<div class="clearfix"></div>
-</div>
-</div>
-</div>
-<div class="special-offers-section">
-    <div class="container">
-        <div class="special-offers-section-head text-center dotted-line">
-            <h4>Giảm giá đặc biệt</h4>
-        </div>
-        <div class="special-offers-section-grids">
-            <div class="m_3"><span class="middle-dotted-line"> </span> </div>
-            <div class="container">
-                <ul id="flexiselDemo3">
-                    <li>
-                        <div class="offer">
-                            <div class="offer-image">
-                                <img src="images/p1.jpg" class="img-responsive" alt=""/>
+    <!-- End top slide -->
+
+    <!-- Món ăn giảm giá -->
+    <hr class="hr-text" data-content="Món ngon giảm giá">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="Carousel" class="carousel my-carousel slide carousel-fade">
+                <ol class="carousel-indicators my-carousel-indicators">
+                    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#Carousel" data-slide-to="1"></li>
+                    <li data-target="#Carousel" data-slide-to="2"></li>
+                </ol>
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="offer-text">
-                                <h4>Olister Combo pack lorem</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                                <input type="button" value="Grab It">
-                                <span></span>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="clearfix"></div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </li>
-                    <li>
-                        <div class="offer">
-                            <div class="offer-image">
-                                <img src="images/p2.jpg" class="img-responsive" alt=""/>
+                        <!--.row-->
+                    </div>
+                    <!--.item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="offer-text">
-                                <h4>Chicken Jumbo pack lorem</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                                <input type="button" value="Đặt ngay">
-                                <span></span>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="clearfix"></div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </li>
-                    <li>
-                        <div class="offer">
-                            <div class="offer-image">
-                                <img src="images/p1.jpg" class="img-responsive" alt=""/>
+                        <!--.row-->
+                    </div>
+                    <!--.item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="offer-text">
-                                <h4>Crab Combo pack lorem</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                                <input type="button" value="Đặt ngay">
-                                <span></span>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
                             </div>
-
-                            <div class="clearfix"></div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="thumbnail thumbnail-carousel">
+                                    <img alt="Image" src="http://placehold.it/250x200"
+                                         class="img-responsive">
+                                    <div class="caption">
+                                        <h4>Tên món ăn</h4>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </li>
-                    <li>
-                        <div class="offer">
-                            <div class="offer-image">
-                                <img src="images/p2.jpg" class="img-responsive" alt=""/>
-                            </div>
-                            <div class="offer-text">
-                                <h4>Chicken Jumbo pack lorem</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                                <input type="button" value="Đặt ngay">
-                                <span></span>
-                            </div>
+                        <!--.row-->
+                    </div>
+                    <!--.item-->
+                </div>
+                <!--.carousel-inner-->
+                <a data-slide="prev" href="#Carousel" class="left carousel-control my-carousel-control">‹</a>
+                <a data-slide="next" href="#Carousel" class="right carousel-control my-carousel-control">›</a>
+            </div>
+            <!--.Carousel-->
+        </div>
+    </div>
+    <!-- End món ăn giảm giá -->
 
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
-                </ul>
-                <!-- Script chạy slide -->
-                <script type="text/javascript">
-                    $(window).load(function() {
-
-                        $("#flexiselDemo3").flexisel({
-                            visibleItems: 3,
-                            animationSpeed: 1000,
-                            autoPlay: false,
-                            autoPlaySpeed: 3000,
-                            pauseOnHover: true,
-                            enableResponsiveBreakpoints: true,
-                            responsiveBreakpoints: {
-                                portrait: {
-                                    changePoint:480,
-                                    visibleItems: 1
-                                },
-                                landscape: {
-                                    changePoint:640,
-                                    visibleItems: 2
-                                },
-                                tablet: {
-                                    changePoint:768,
-                                    visibleItems: 3
-                                }
-                            }
-                        });
-
-                    });
-                </script>
-                <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+    <!-- Món ăn mua nhiều trong tuần -->
+    <hr class="hr-text" data-content="Đặt hàng nhiều trong tuần">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="<c:url value="/resources/images/suon-xao-chua-ngot.jpg"/>" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="thumbnail">
+                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
+                    <div class="caption">
+                        <h4>Tên món ăn</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
+    <!-- End Món ăn mua nhiều trong tuần -->
 </div>
-
-<div class="popular-restaurents" id="Popular-Restaurants">
-    <div class="container">
-
-        <div class="top-cuisines">
-            <div class="top-cuisine-head">
-                <h3>Top Cuisines</h3>
-            </div>
-            <div class="top-cuisine-grids">
-                <div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-                    <a href=""><img src="images/cuisine1.jpg" class="img-responsive" alt="" style="max-width: "/> </a>
-                    <label>Cuisine Name</label>
-                </div>
-                <div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-                    <a href=""><img src="images/cuisine2.jpg" class="img-responsive" alt="" /> </a>
-                    <label>Cuisine Name</label>
-                </div>
-                <div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-                    <a href=""><img src="images/cuisine3.jpg" class="img-responsive" alt="" /> </a>
-                    <label>Cuisine Name</label>
-                </div>
-                <div class="top-cuisine-grid nth-grid wow bounceIn" data-wow-delay="0.4s">
-                    <a href=""><img src="images/cuisine4.jpg" class="img-responsive" alt="" /> </a>
-                    <label>Cuisine Name</label>
-                </div>
-                <div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-                    <a href=""><img src="images/cuisine5.jpg" class="img-responsive" alt="" /> </a>
-                    <label>Cuisine Name</label>
-                </div>
-                <div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-                    <a href=""><img src="images/cuisine6.jpg" class="img-responsive" alt="" /> </a>
-                    <label>Cuisine Name</label>
-                </div>
-                <div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-                    <a href=""><img src="images/cuisine7.jpg" class="img-responsive" alt="" /> </a>
-                    <label>Cuisine Name</label>
-                </div>
-                <div class="top-cuisine-grid nth-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-                    <a href=""><img src="images/cuisine8.jpg" class="img-responsive" alt="" /> </a>
-                    <label>Cuisine Name</label>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
-
-<div class="service-section">
-    <div class="service-section-bottom-row">
-        <div class="container">
-            <div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
-                <div class="icon">
-                    <img src="images/icon1.jpg" class="img-responsive" alt="" />
-                </div>
-                <div class="icon-data">
-                    <h4>100% Service Guarantee</h4>
-                    <p>Lorem ipsum dolor sit amet, consect-etuer adipiscing elit. </p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
-                <div class="icon">
-                    <img src="images/icon2.jpg" class="img-responsive" alt="" />
-                </div>
-                <div class="icon-data">
-                    <h4>Fully Secure Payment</h4>
-                    <p>Lorem ipsum dolor sit amet, consect-etuer adipiscing elit. </p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
-                <div class="icon">
-                    <img src="images/icon3.jpg" class="img-responsive" alt="" />
-                </div>
-                <div class="icon-data">
-                    <h4>Track Your Order</h4>
-                    <p>Lorem ipsum dolor sit amet, consect-etuer adipiscing elit. </p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-
-<div class="contact-section" id="contact">
-    <div class="container">
-        <div class="contact-section-grids">
-            <div class="col-md-3 contact-section-grid wow fadeInLeft" data-wow-delay="0.4s">
-                <h4>Site Links</h4>
-                <ul>
-                    <li><i class="point"></i></li>
-                    <li class="data"><a href="#">About Us</a></li>
-                </ul>
-                <ul>
-                    <li><i class="point"></i></li>
-                    <li class="data"><a href="#">Contact Us</a></li>
-                </ul>
-                <ul>
-                    <li><i class="point"></i></li>
-                    <li class="data"><a href="#">Privacy Policy</a></li>
-                </ul>
-                <ul>
-                    <li><i class="point"></i></li>
-                    <li class="data"><a href="#">Terms of Use</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 contact-section-grid wow fadeInLeft" data-wow-delay="0.4s">
-                <h4>Site Links</h4>
-                <ul>
-                    <li><i class="point"></i></li>
-                    <li class="data"><a href="#">About Us</a></li>
-                </ul>
-                <ul>
-                    <li><i class="point"></i></li>
-                    <li class="data"><a href="#">Contact Us</a></li>
-                </ul>
-                <ul>
-                    <li><i class="point"></i></li>
-                    <li class="data"><a href="#">Privacy Policy</a></li>
-                </ul>
-                <ul>
-                    <li><i class="point"></i></li>
-                    <li class="data"><a href="#">Terms of Use</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 contact-section-grid wow fadeInRight" data-wow-delay="0.4s">
-                <h4>Follow Us On...</h4>
-                <ul>
-                    <li><i class="fb"></i></li>
-                    <li class="data"> <a href="#">  Facebook</a></li>
-                </ul>
-                <ul>
-                    <li><i class="tw"></i></li>
-                    <li class="data"> <a href="#">Twitter</a></li>
-                </ul>
-                <ul>
-                    <li><i class="in"></i></li>
-                    <li class="data"><a href="#"> Linkedin</a></li>
-                </ul>
-                <ul>
-                    <li><i class="gp"></i></li>
-                    <li class="data"><a href="#">Google Plus</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 contact-section-grid nth-grid wow fadeInRight" data-wow-delay="0.4s">
-                <h4>Subscribe Newsletter</h4>
-                <p>To get latest updates and food deals every week</p>
-                <input type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
-                <input type="submit" value="submit">
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
+<!-- End Home -->
