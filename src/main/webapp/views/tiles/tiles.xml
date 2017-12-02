@@ -32,8 +32,43 @@
         <put-attribute name="content" value="/views/pages/food.jsp" />
     </definition>
 
+    <definition name="cart" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/cart.jsp" />
+    </definition>
+
     <definition name="order" extends="base-definition">
         <put-attribute name="title" value="Thanh toán" />
         <put-attribute name="content" value="/views/pages/order.jsp" />
+    </definition>
+
+    <definition name="order-history" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/order-history.jsp" />
+    </definition>
+
+    <definition name="profile-customer" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/profile-customer.jsp" />
+    </definition>
+
+    <definition name="register" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/register.jsp" />
+    </definition>
+
+    <definition name="change-password" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/change-password.jsp" />
+    </definition>
+
+    <definition name="food" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/food.jsp" />
+    </definition>
+
+    <definition name="food-list" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/food-list.jsp" />
     </definition>
 </tiles-definitions>

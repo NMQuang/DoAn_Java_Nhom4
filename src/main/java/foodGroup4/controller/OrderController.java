@@ -11,13 +11,19 @@ public class OrderController {
 
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
 	public String getCart(Model model){
-		
+
+		return "cart";
+	}
+
+	@RequestMapping(value="/order", method = RequestMethod.GET)
+	public String order(Model model){
+
 		return "order";
 	}
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
-	public String getHistory(Model model){
+	public String getOrderHistory(Model model){
 		
-		return "History";
+		return "order-history";
 	}
 }
