@@ -48,6 +48,9 @@ public class Mon  implements Serializable {
 	@Column(name = "SoLuongDaBan")
 	private int soLuongDaBan;
 
+	@Column(name = "GiamGia")
+	private int giamGia;
+
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "mon")
 	private Set<HoaDon> hoaDon = new HashSet<HoaDon>(0);
 
@@ -130,5 +133,11 @@ public class Mon  implements Serializable {
 		return serialVersionUID;
 	}
 
+	public int getGiamGia() {
+		return giamGia;
+	}
 
+	public void setGiamGia(int giamGia) {
+		this.giamGia = giamGia;
+	}
 }
