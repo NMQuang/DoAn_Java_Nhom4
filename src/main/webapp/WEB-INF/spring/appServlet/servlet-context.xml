@@ -72,33 +72,35 @@
 
       <property name="annotatedClasses">
           <list>
-              <value>foodGroup4.entity.AccountChiNhanh</value>
-              <value>foodGroup4.entity.AccountQuanLy</value>
-              <value>foodGroup4.entity.AccountTongDai</value>
-              <value>foodGroup4.entity.Ban</value>
-              <value>foodGroup4.entity.ChiNhanh</value>
-              <value>foodGroup4.entity.ChiPhiNgay</value>
-              <value>foodGroup4.entity.ChucVu</value>
-              <value>foodGroup4.entity.DangKy</value>
-              <value>foodGroup4.entity.DanhMuc</value>
-              <value>foodGroup4.entity.HoaDon</value>
-              <value>foodGroup4.entity.KhachHang</value>
-              <value>foodGroup4.entity.LuongChoNhanVien</value>
-              <value>foodGroup4.entity.Mon</value>
-              <value>foodGroup4.entity.New</value>
-              <value>foodGroup4.entity.NhanVien</value>
-              <value>foodGroup4.entity.TienThueNha</value>
-              <value>foodGroup4.entity.TinhThanh</value>
-              <value>foodGroup4.entity.TrungTam</value>
 
-          </list>
+			  <value>foodGroup4.entity.AccountChinhanh</value>
+			  <value>foodGroup4.entity.AccountQuanly</value>
+			  <value>foodGroup4.entity.AccountTongdai</value>
+			  <value>foodGroup4.entity.Ban</value>
+			  <value>foodGroup4.entity.Chinhanh</value>
+			  <value>foodGroup4.entity.Chinhanhmon</value>
+			  <value>foodGroup4.entity.Chiphingay</value>
+			  <value>foodGroup4.entity.Chitiethoadon</value>
+			  <value>foodGroup4.entity.Chucvu</value>
+			  <value>foodGroup4.entity.Danhmuc</value>
+			  <value>foodGroup4.entity.Hoadon</value>
+			  <value>foodGroup4.entity.Khachhang</value>
+			  <value>foodGroup4.entity.Luongchonhanvien</value>
+			  <value>foodGroup4.entity.Mon</value>
+			  <value>foodGroup4.entity.News</value>
+			  <value>foodGroup4.entity.Nhanvien</value>
+			  <value>foodGroup4.entity.Subscriber</value>
+			  <value>foodGroup4.entity.Tienthuenha</value>
+			  <value>foodGroup4.entity.Tinhthanh</value>
+			  <value>foodGroup4.entity.Trungtam</value>
+		  </list>
       </property>
 
       <property name="hibernateProperties">
           <props>
               <prop key="hibernate.dialect">${jdbc.dialect}</prop>
               <prop key="hibernate.show_sql">true</prop>
-          </props>
+		  </props>
       </property>
 	 </bean>
   <bean id="transactionManager"
