@@ -1,143 +1,135 @@
 package foodGroup4.entity;
 
-import java.io.Serializable;
-import java.util.HashSet;
+import javax.persistence.*;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 @Entity
-@Table(name ="mon")
-public class Mon  implements Serializable {
+@Table(name = "mon", schema = "java_foodsystem", catalog = "")
+public class Mon {
+    private int monId;
+    private String ten;
+    private String donViTinh;
+    private String moTa;
+    private String hinhAnh;
+    private int soLuongDaBan;
+    private Set<Chinhanhmon> chinhanhmons;
+    private Set<Chitiethoadon> chitiethoadons;
+    private Danhmuc danhmuc;
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MonID")
+    public int getMonId() {
+        return monId;
+    }
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "MonID", unique = true)
-	private int id;
+    public void setMonId(int monId) {
+        this.monId = monId;
+    }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="DanhMucID", nullable = false)
-	private DanhMuc danhMuc;
+    @Basic
+    @Column(name = "Ten")
+    public String getTen() {
+        return ten;
+    }
 
-	@Column(name = "Ten", length = 255)
-	private String ten;
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
 
-	@Column(name = "DonViTinh", length = 10)
-	private String donViTinh;
+    @Basic
+    @Column(name = "DonViTinh")
+    public String getDonViTinh() {
+        return donViTinh;
+    }
 
-	@Column(name = "MoTa", length = 255)
-	private String moTa;
+    public void setDonViTinh(String donViTinh) {
+        this.donViTinh = donViTinh;
+    }
 
-	@Column(name = "HinhAnh", length = 255)
-	private String hinhAnh;
+    @Basic
+    @Column(name = "MoTa")
+    public String getMoTa() {
+        return moTa;
+    }
 
-	@Column(name = "SoLuongDaBan")
-	private int soLuongDaBan;
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
+    }
 
-	@Column(name = "GiamGia")
-	private int giamGia;
+    @Basic
+    @Column(name = "HinhAnh")
+    public String getHinhAnh() {
+        return hinhAnh;
+    }
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "mon")
-	private Set<HoaDon> hoaDon = new HashSet<HoaDon>(0);
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
+    }
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "mon")
-	private Set<ChiNhanh> chiNhanh = new HashSet<ChiNhanh>(0);
+    @Basic
+    @Column(name = "SoLuongDaBan")
+    public int getSoLuongDaBan() {
+        return soLuongDaBan;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setSoLuongDaBan(int soLuongDaBan) {
+        this.soLuongDaBan = soLuongDaBan;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-	public DanhMuc getDanhMuc() {
-		return danhMuc;
-	}
+        Mon mon = (Mon) o;
 
-	public void setDanhMuc(DanhMuc danhMuc) {
-		this.danhMuc = danhMuc;
-	}
+        if (monId != mon.monId) return false;
+        if (soLuongDaBan != mon.soLuongDaBan) return false;
+        if (ten != null ? !ten.equals(mon.ten) : mon.ten != null) return false;
+        if (donViTinh != null ? !donViTinh.equals(mon.donViTinh) : mon.donViTinh != null) return false;
+        if (moTa != null ? !moTa.equals(mon.moTa) : mon.moTa != null) return false;
+        if (hinhAnh != null ? !hinhAnh.equals(mon.hinhAnh) : mon.hinhAnh != null) return false;
 
-	public String getTen() {
-		return ten;
-	}
+        return true;
+    }
 
-	public void setTen(String ten) {
-		this.ten = ten;
-	}
+    @Override
+    public int hashCode() {
+        int result = monId;
+        result = 31 * result + (ten != null ? ten.hashCode() : 0);
+        result = 31 * result + (donViTinh != null ? donViTinh.hashCode() : 0);
+        result = 31 * result + (moTa != null ? moTa.hashCode() : 0);
+        result = 31 * result + (hinhAnh != null ? hinhAnh.hashCode() : 0);
+        result = 31 * result + soLuongDaBan;
+        return result;
+    }
 
-	public String getDonViTinh() {
-		return donViTinh;
-	}
+    @OneToMany(mappedBy = "pk.mon", cascade = CascadeType.ALL)
+    public Set<Chinhanhmon> getChinhanhmons() {
+        return chinhanhmons;
+    }
 
-	public void setDonViTinh(String donViTinh) {
-		this.donViTinh = donViTinh;
-	}
+    public void setChinhanhmons(Set<Chinhanhmon> chinhanhmons) {
+        this.chinhanhmons = chinhanhmons;
+    }
 
-	public String getMoTa() {
-		return moTa;
-	}
+    @OneToMany(mappedBy = "pk.mon")
+    public Set<Chitiethoadon> getChitiethoadons() {
+        return chitiethoadons;
+    }
 
-	public void setMoTa(String moTa) {
-		this.moTa = moTa;
-	}
+    public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
+        this.chitiethoadons = chitiethoadons;
+    }
 
-	public String getHinhAnh() {
-		return hinhAnh;
-	}
+    @ManyToOne
+    @JoinColumn(name = "DanhMuc", referencedColumnName = "DanhMucID", nullable = false)
+    public Danhmuc getDanhmuc() {
+        return danhmuc;
+    }
 
-	public void setHinhAnh(String hinhAnh) {
-		this.hinhAnh = hinhAnh;
-	}
-
-	public int getSoLuongDaBan() {
-		return soLuongDaBan;
-	}
-
-	public void setSoLuongDaBan(int soLuongDaBan) {
-		this.soLuongDaBan = soLuongDaBan;
-	}
-
-	public Set<HoaDon> getHoaDon() {
-		return hoaDon;
-	}
-
-	public void setHoaDon(Set<HoaDon> hoaDon) {
-		this.hoaDon = hoaDon;
-	}
-
-	public Set<ChiNhanh> getChiNhanh() {
-		return chiNhanh;
-	}
-
-	public void setChiNhanh(Set<ChiNhanh> chiNhanh) {
-		this.chiNhanh = chiNhanh;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public int getGiamGia() {
-		return giamGia;
-	}
-
-	public void setGiamGia(int giamGia) {
-		this.giamGia = giamGia;
-	}
+    public void setDanhmuc(Danhmuc danhmuc) {
+        this.danhmuc = danhmuc;
+    }
 }

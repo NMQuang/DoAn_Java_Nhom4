@@ -1,7 +1,7 @@
 package foodGroup4.dao;
 
-import foodGroup4.entity.KhachHang;
+import foodGroup4.entity.Khachhang;
 
 public interface CustomerDAO {
-    KhachHang getById(int id);
+    Khachhang getById(int id);
 }

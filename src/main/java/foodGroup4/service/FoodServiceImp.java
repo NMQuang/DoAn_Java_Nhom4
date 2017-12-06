@@ -16,7 +16,7 @@ public class FoodServiceImp implements FoodService {
     @Autowired
     private FoodDAO foodDAO;
 
-    public List<Mon> getFoodSales(int maxResult) {
-        return foodDAO.getFoodSales(maxResult);
+    public List<Mon> getList(int maxResult) {
+        return foodDAO.getList(maxResult);
     }
 }

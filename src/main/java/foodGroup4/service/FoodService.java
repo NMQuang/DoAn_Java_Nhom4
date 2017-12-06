@@ -5,5 +5,5 @@ import foodGroup4.entity.Mon;
 import java.util.List;
 
 public interface FoodService {
-    List<Mon> getFoodSales(int maxResult);
+    List<Mon> getList(int maxResult);
 }

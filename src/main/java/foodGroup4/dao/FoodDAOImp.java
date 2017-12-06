@@ -1,6 +1,6 @@
 package foodGroup4.dao;
 
-import foodGroup4.entity.HoaDon;
+import foodGroup4.entity.Hoadon;
 import foodGroup4.entity.Mon;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -24,15 +24,15 @@ public class FoodDAOImp implements FoodDAO {
     @Autowired
     SessionFactory sessionFactory;
 
-    public List<Mon> getFoodSales(int maxResult) {
+    public List<Mon> getList(int maxResult) {
         Session session = sessionFactory.getCurrentSession();
 
-        String hql = "from Mon M where M.giamGia > 0 order by M.giamGia desc";
+        String hql = "from Mon";
         Query query = session.createQuery(hql);
         query.setMaxResults(maxResult);
 
-        List<Mon> foodSales = query.list();
-        return foodSales;
+        List<Mon> mons = query.list();
+        return mons;
     }
 
     public List<Mon> getTopFoodOrderOfTheWeeks(int maxResult) {
@@ -47,7 +47,7 @@ public class FoodDAOImp implements FoodDAO {
 //
 //        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-        HoaDon hoaDon = (HoaDon) session.get(HoaDon.class, 1);
+        Hoadon hoaDon = (Hoadon) session.get(Hoadon.class, 1);
         System.out.println(hoaDon.getNgay());
         return null;
     }

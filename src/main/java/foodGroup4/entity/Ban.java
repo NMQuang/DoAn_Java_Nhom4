@@ -1,89 +1,86 @@
 package foodGroup4.entity;
 
-import java.io.Serializable;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name ="ban")
-public class Ban implements Serializable {
+@Table(name = "ban", schema = "java_foodsystem", catalog = "")
+public class Ban {
+    private int banId;
+    private String tenBan;
+    private int tinhTrang;
+    private Chinhanh chinhanh;
+    private Set<Hoadon> hoadons;
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "BanID")
+    public int getBanId() {
+        return banId;
+    }
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BanID", unique = true)
-	private int id;
+    public void setBanId(int banId) {
+        this.banId = banId;
+    }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="ChiNhanhID", nullable = false)
-	private ChiNhanh chiNhanh;
+    @Basic
+    @Column(name = "TenBan")
+    public String getTenBan() {
+        return tenBan;
+    }
 
-	@Column(name = "TenBan", length = 50)
-	private String tenBan;
+    public void setTenBan(String tenBan) {
+        this.tenBan = tenBan;
+    }
 
-	@Column(name = "TinhTrang")
-	private int tinhTrang;
+    @Basic
+    @Column(name = "TinhTrang")
+    public int getTinhTrang() {
+        return tinhTrang;
+    }
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "ban", cascade = CascadeType.ALL)
-	private HoaDon hoaDon;
+    public void setTinhTrang(int tinhTrang) {
+        this.tinhTrang = tinhTrang;
+    }
 
-	public int getId() {
-		return id;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+        Ban ban = (Ban) o;
 
-	public ChiNhanh getChiNhanh() {
-		return chiNhanh;
-	}
+        if (banId != ban.banId) return false;
+        if (tinhTrang != ban.tinhTrang) return false;
+        if (tenBan != null ? !tenBan.equals(ban.tenBan) : ban.tenBan != null) return false;
 
-	public void setChiNhanh(ChiNhanh chiNhanh) {
-		this.chiNhanh = chiNhanh;
-	}
+        return true;
+    }
 
-	public String getTenBan() {
-		return tenBan;
-	}
+    @Override
+    public int hashCode() {
+        int result = banId;
+        result = 31 * result + (tenBan != null ? tenBan.hashCode() : 0);
+        result = 31 * result + tinhTrang;
+        return result;
+    }
 
-	public void setTenBan(String tenBan) {
-		this.tenBan = tenBan;
-	}
+    @ManyToOne
+    @JoinColumn(name = "ChiNhanh", referencedColumnName = "ChiNhanhID", nullable = false)
+    public Chinhanh getChinhanh() {
+        return chinhanh;
+    }
 
-	public int getTinhTrang() {
-		return tinhTrang;
-	}
+    public void setChinhanh(Chinhanh chinhanh) {
+        this.chinhanh = chinhanh;
+    }
 
-	public void setTinhTrang(int tinhTrang) {
-		this.tinhTrang = tinhTrang;
-	}
+    @OneToMany(mappedBy = "ban")
+    public Set<Hoadon> getHoadons() {
+        return hoadons;
+    }
 
-	public HoaDon getHoaDon() {
-		return hoaDon;
-	}
-
-	public void setHoaDon(HoaDon hoaDon) {
-		this.hoaDon = hoaDon;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
+    public void setHoadons(Set<Hoadon> hoadons) {
+        this.hoadons = hoadons;
+    }
 }

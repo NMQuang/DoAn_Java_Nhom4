@@ -14,8 +14,6 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-	private static final int MAX_FOOD_SALE_INTRO = 12;
-
 	public void setFoodService(FoodService foodService) {
 		this.foodService = foodService;
 	}
@@ -25,9 +23,9 @@ public class HomeController {
 
 	 @RequestMapping(value="/", method = RequestMethod.GET)
 	public String getHomePage(Model model){
-	 	List<Mon> foodSaleIntros = foodService.getFoodSales(MAX_FOOD_SALE_INTRO);
-	 	System.out.println("Food sale count: " + foodSaleIntros.size());
-	 	model.addAttribute("foodSalesIntro", foodSaleIntros);
+	 	List<Mon> foods = foodService.getList(10);
+	 	System.out.println("Food count: " + foods.size());
+	 	model.addAttribute("foods", foods);
 
 
 		return "home";

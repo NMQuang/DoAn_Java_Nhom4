@@ -1,6 +1,6 @@
 package foodGroup4.dao;
 
-import foodGroup4.entity.KhachHang;
+import foodGroup4.entity.Khachhang;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,9 +21,9 @@ public class CustomerDAOImp implements CustomerDAO{
     @Autowired
     SessionFactory sessionFactory;
 
-    public KhachHang getById(int id) {
+    public Khachhang getById(int id) {
         Session session = sessionFactory.getCurrentSession();
-        KhachHang khachHang = (KhachHang) session.get(KhachHang.class, id);
+        Khachhang khachHang = (Khachhang) session.get(Khachhang.class, id);
         return khachHang;
     }
 }
