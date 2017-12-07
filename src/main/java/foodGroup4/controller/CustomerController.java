@@ -21,7 +21,6 @@ public class CustomerController {
 
     @RequestMapping(value="/profile", method = RequestMethod.GET)
     public String customer(Model model){
-        System.out.println(customerDAO.getById(1));
         return "profile-customer";
     }
 

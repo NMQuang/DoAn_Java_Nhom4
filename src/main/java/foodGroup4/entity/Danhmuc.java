@@ -1,5 +1,4 @@
 package foodGroup4.entity;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,6 +7,7 @@ import java.util.Set;
 public class Danhmuc {
     private int danhMucId;
     private String ten;
+    private Boolean active;
     private Set<Mon> mons;
 
     @Id
@@ -29,6 +29,16 @@ public class Danhmuc {
 
     public void setTen(String ten) {
         this.ten = ten;
+    }
+
+    @Basic
+    @Column(name = "Active")
+    public boolean getActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override
