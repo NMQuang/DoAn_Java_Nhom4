@@ -11,8 +11,10 @@ import java.util.List;
 public class FoodDAOImp extends HibernateUtil implements FoodDAO {
 
     public List<Mon> getList(int maxResult) {
-        String hql = "from Mon";
-        Query query = getSession().createQuery(hql);
+        Session session = sessionFactory.getCurrentSession();
+
+        String hql = "from Mon where active = true";
+        Query query = session.createQuery(hql);
         query.setMaxResults(maxResult);
 
         List<Mon> mons = query.list();
