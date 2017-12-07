@@ -1,8 +1,12 @@
 package foodGroup4.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +16,7 @@ import foodGroup4.service.FoodServiceImp;
 
 
 @Controller
-@RequestMapping("/foods")
+@RequestMapping("/food")
 public class FoodController {
 
 	public void setFoodService(FoodService foodService) {
@@ -21,16 +25,27 @@ public class FoodController {
 	@Autowired
 	FoodService foodService;
 	
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String getListFoods(Model model){
-		
-		model.addAttribute("foodlist", foodService.getList(12));
+	@RequestMapping(value = {"", "/{index}"}, method = RequestMethod.GET)
+	public String getListFoods(@PathVariable Optional<Integer> index, Model model){
+		int begin; 
+		int id = 1;
+		if(!index.isPresent() || index.get() < 1)
+			begin = 0;
+		else
+			id = index.get();
+		begin = 12 * (id - 1);
+		int count = foodService.getCountFoods();
+		int pages = count / 12 + (count %12 == 0 ? 0 : 1);
+		model.addAttribute("foodlist", foodService.getList(12, begin));
+		model.addAttribute("pages", pages);
+		model.addAttribute("id", id);
+		System.out.println("count" + count + "pages" + pages);
 		return "food-list";
 	}
 
-	@RequestMapping(value = "/category", method = RequestMethod.GET)
-	public String getListFoodsCategory(Model model){
-		foodService.getList(12);
+	@RequestMapping(value = {"/category/{categoryID}", "/category/{categoryID}/{id}"}, method = RequestMethod.GET)
+	public String getListFoodsCategory(Model model, @PathVariable int categoryID, @PathVariable Optional<Integer> id){
+		foodService.getList(12, 0);
 		System.out.println(foodService);
 		return "food-list";
 	}

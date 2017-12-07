@@ -2,25 +2,30 @@ package foodGroup4.dao;
 
 import foodGroup4.config.HibernateUtil;
 import foodGroup4.entity.Mon;
+
 import org.hibernate.Query;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 @Component
 public class FoodDAOImp extends HibernateUtil implements FoodDAO {
 
-    public List<Mon> getList(int maxResult) {
-        Session session = sessionFactory.getCurrentSession();
+    public List<Mon> getList(int maxResult, int begin) {
 
-        String hql = "from Mon where active = true";
-        Query query = session.createQuery(hql);
-        query.setMaxResults(maxResult);
-
+        String hql = "from Mon where active is true";
+        Query query = getSession().createQuery(hql);
+        query.setFirstResult(begin).setMaxResults(maxResult);
         List<Mon> mons = query.list();
         return mons;
     }
-
+    public int getCountFoods(){
+    	Query query = getSession().createQuery("select count(*) from Mon where active is true");
+    	int count = ((Long) query.uniqueResult()).intValue();
+    	return count;
+    }
     public List<Mon> getTopFoodOrderOfTheWeeks(int maxResult) {
         Calendar toDay = Calendar.getInstance();
         Calendar first = (Calendar) toDay.clone();

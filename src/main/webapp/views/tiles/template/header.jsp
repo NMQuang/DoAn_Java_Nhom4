@@ -7,7 +7,7 @@
         <!-- Navbar search -->
         <div class="navbar-search">
             <div class="col-lg-2">
-                <a href="/" style="text-decoration:none;">
+                <a href="<c:url value="/" />" style="text-decoration:none;">
                     <p class="header-logo"> My Food </p>
                 </a>
             </div>
