@@ -3,6 +3,7 @@ package foodGroup4.config;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 //import org.hibernate.metamodel.source.annotations.entity.EntityClass;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,9 @@ public class HibernateUtil implements Serializable {
 	@Autowired
 	private  SessionFactory sessionFactory;
 
-	/*
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
-	}*/
+	}
 
 	public <T> Serializable create(final T entity) {
 	return sessionFactory.getCurrentSession().save(entity);
@@ -49,7 +49,7 @@ public class HibernateUtil implements Serializable {
 
 	@SuppressWarnings("rawtypes")
 	public <T> List fetchAll(String query) {
-	return sessionFactory.getCurrentSession().createSQLQuery(query).list();
+	return sessionFactory.getCurrentSession().createQuery(query).list();
 	}
 
 	@SuppressWarnings("unchecked")

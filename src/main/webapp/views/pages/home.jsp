@@ -43,6 +43,7 @@
     </div>
     <!-- End top slide -->
 
+    <%--
     <!-- Món ăn giảm giá -->
     <hr class="hr-text" data-content="Món ngon giảm giá">
     <div class="row">
@@ -202,6 +203,7 @@
         </div>
     </div>
     <!-- End món ăn giảm giá -->
+    --%>
 
     <!-- Món ăn mua nhiều trong tuần -->
     <hr class="hr-text" data-content="Đặt hàng nhiều trong tuần">

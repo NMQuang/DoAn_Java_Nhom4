@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface FoodService {
     List<Mon> getList(int maxResult);
+    List<Mon> getTopFoodOrderOfTheWeeks(int maxResult);
 }

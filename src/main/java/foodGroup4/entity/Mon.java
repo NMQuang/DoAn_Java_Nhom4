@@ -12,6 +12,7 @@ public class Mon {
     private String moTa;
     private String hinhAnh;
     private int soLuongDaBan;
+    private boolean active;
     private Set<Chinhanhmon> chinhanhmons;
     private Set<Chitiethoadon> chitiethoadons;
     private Danhmuc danhmuc;
@@ -75,6 +76,16 @@ public class Mon {
 
     public void setSoLuongDaBan(int soLuongDaBan) {
         this.soLuongDaBan = soLuongDaBan;
+    }
+
+    @Basic
+    @Column(name = "Active")
+    public boolean getActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override
