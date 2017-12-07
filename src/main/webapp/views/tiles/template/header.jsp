@@ -48,10 +48,8 @@
                         &nbsp <b>DANH MỤC</b> &nbsp<b class="caret"></b>
                     </button>
                     <div class="dropdown-content">
-                        <a href="${pageContext.request.contextPath}/food/list">Tất cả</a>
-                        <a href="${pageContext.request.contextPath}/food/list">Món gà</a>
-                        <a href="${pageContext.request.contextPath}/food/list">Món cá</a>
-                        <a href="${pageContext.request.contextPath}/food/list">Đồ lẩu</a>
+                        <a href="${pageContext.request.contextPath}/food">Tất cả</a>
+                        <a href="${pageContext.request.contextPath}/food/category/1">Món gà</a>
                     </div>
                 </li>
                 <li class="dropdown">

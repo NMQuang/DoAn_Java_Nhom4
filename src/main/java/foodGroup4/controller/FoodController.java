@@ -25,8 +25,8 @@ public class FoodController {
 	@Autowired
 	FoodService foodService;
 	
-	@RequestMapping(value = {"", "/{index}"}, method = RequestMethod.GET)
-	public String getListFoods(@PathVariable Optional<Integer> index, Model model){
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String getListFoods(@RequestParam Optional<Integer> index, Model model){
 		int begin; 
 		int id = 1;
 		if(!index.isPresent() || index.get() < 1)
@@ -34,7 +34,7 @@ public class FoodController {
 		else
 			id = index.get();
 		begin = 12 * (id - 1);
-		int count = foodService.getCountFoods();
+		int count = foodService.getCountFood();
 		int pages = count / 12 + (count %12 == 0 ? 0 : 1);
 		model.addAttribute("foodlist", foodService.getList(12, begin));
 		model.addAttribute("pages", pages);
@@ -43,10 +43,21 @@ public class FoodController {
 		return "food-list";
 	}
 
-	@RequestMapping(value = {"/category/{categoryID}", "/category/{categoryID}/{id}"}, method = RequestMethod.GET)
-	public String getListFoodsCategory(Model model, @PathVariable int categoryID, @PathVariable Optional<Integer> id){
-		foodService.getList(12, 0);
-		System.out.println(foodService);
+	@RequestMapping(value = "/category/{categoryID}", method = RequestMethod.GET)
+	public String getListFoodsCategory(Model model, @PathVariable int categoryID, @RequestParam Optional<Integer> index){
+		int begin; 
+		int id = 1;
+		if(!index.isPresent() || index.get() < 1)
+			begin = 0;
+		else
+			id = index.get();
+		begin = 12 * (id - 1);
+		int count = foodService.getCountFoodinCategory(categoryID);
+		int pages = count / 12 + (count %12 == 0 ? 0 : 1);
+		model.addAttribute("foodlist", foodService.getListFoodinCategory(categoryID, 12, begin));
+		model.addAttribute("pages", pages);
+		model.addAttribute("id", id);
+		System.out.println("count" + count + "pages" + pages);
 		return "food-list";
 	}
 	@RequestMapping(params = "id", method = RequestMethod.GET)

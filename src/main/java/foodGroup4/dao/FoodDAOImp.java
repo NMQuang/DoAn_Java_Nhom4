@@ -21,11 +21,7 @@ public class FoodDAOImp extends HibernateUtil implements FoodDAO {
         List<Mon> mons = query.list();
         return mons;
     }
-    public int getCountFoods(){
-    	Query query = getSession().createQuery("select count(*) from Mon where active is true");
-    	int count = ((Long) query.uniqueResult()).intValue();
-    	return count;
-    }
+
     public List<Mon> getTopFoodOrderOfTheWeeks(int maxResult) {
         Calendar toDay = Calendar.getInstance();
         Calendar first = (Calendar) toDay.clone();
@@ -44,6 +40,27 @@ public class FoodDAOImp extends HibernateUtil implements FoodDAO {
 
         return topMonOfWeeks;
     }
+    public int getCountFood(){
+    	Query query = getSession().createQuery("select count(*) from Mon where active is true");
+    	int count = ((Long) query.uniqueResult()).intValue();
+    	return count;
+    }
+
+	@Override
+	public int getCountFoodinCategory(int idCategory) {
+		Query query = getSession().createQuery("select count(*) from Mon where active is true and danhmuc.id = :idC").setParameter("idC", idCategory);
+    	int count = ((Long) query.uniqueResult()).intValue();
+    	return count;
+	}
+
+	@Override
+	public List<Mon> getListFoodinCategory(int idCategory, int maxResult, int begin) {
+		String hql = "from Mon where active is true and danhmuc.id = :idC";
+        Query query = getSession().createQuery(hql).setParameter("idC", idCategory);
+        query.setFirstResult(begin).setMaxResults(maxResult);
+        List<Mon> mons = query.list();
+        return mons;
+	}
 }
 
 

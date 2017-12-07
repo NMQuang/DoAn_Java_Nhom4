@@ -25,7 +25,18 @@ public class FoodServiceImp implements FoodService {
     public List<Mon> getTopFoodOrderOfTheWeeks(int maxResult) {
         return foodDAO.getTopFoodOrderOfTheWeeks(maxResult);
     }
-    public int getCountFoods(){
-    	return foodDAO.getCountFoods();
+    public int getCountFood(){
+    	return foodDAO.getCountFood();
     }
+
+	@Override
+	public int getCountFoodinCategory(int idCategory) {
+		return foodDAO.getCountFoodinCategory(idCategory);
+	}
+
+	@Override
+	public List<Mon> getListFoodinCategory(int idCategory, int maxResult,
+			int begin) {
+		return foodDAO.getListFoodinCategory(idCategory, maxResult, begin);
+	}
 }
