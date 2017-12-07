@@ -61,6 +61,22 @@ public class FoodDAOImp extends HibernateUtil implements FoodDAO {
         List<Mon> mons = query.list();
         return mons;
 	}
+
+	@Override
+	public int getCountFoodNameContain(String keyword) {
+		Query query = getSession().createQuery("select count(*) from Mon where active is true and ten like :keyword").setParameter("keyword", "%"+keyword+"%");
+    	int count = ((Long) query.uniqueResult()).intValue();
+    	return count;
+	}
+
+	@Override
+	public List<Mon> getListFoodFoodNameContain(String keyword, int maxResult, int begin) {
+		String hql = "from Mon where active is true and ten like :keyword";
+        Query query = getSession().createQuery(hql).setParameter("keyword", "%"+keyword+"%");
+        query.setFirstResult(begin).setMaxResults(maxResult);
+        List<Mon> mons = query.list();
+        return mons;
+	}
 }
 
 

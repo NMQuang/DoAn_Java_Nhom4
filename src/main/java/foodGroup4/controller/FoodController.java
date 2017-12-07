@@ -66,9 +66,21 @@ public class FoodController {
 		return "food";
 	}
 	
-	@RequestMapping(value= "/search", params = "keyword", method = RequestMethod.GET)
-	public String search(Model model, @RequestParam(value = "keyword") String keyword){
-		System.out.println(keyword);
+	@RequestMapping(value= "/search", method = RequestMethod.GET)
+	public String search(Model model, @RequestParam(value = "q") String keyword, @RequestParam Optional<Integer> index){
+		int begin; 
+		int id = 1;
+		if(!index.isPresent() || index.get() < 1)
+			begin = 0;
+		else
+			id = index.get();
+		begin = 12 * (id - 1);
+		int count = foodService.getCountFoodNameContain(keyword);
+		int pages = count / 12 + (count %12 == 0 ? 0 : 1);
+		model.addAttribute("foodlist", foodService.getListFoodFoodNameContain(keyword, 12, begin));
+		model.addAttribute("pages", pages);
+		model.addAttribute("id", id);
+		System.out.println("count" + count + "pages" + pages);
 		return "food-list";
 	}
 }

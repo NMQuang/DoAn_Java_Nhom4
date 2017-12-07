@@ -39,4 +39,17 @@ public class FoodServiceImp implements FoodService {
 			int begin) {
 		return foodDAO.getListFoodinCategory(idCategory, maxResult, begin);
 	}
+
+	@Override
+	public int getCountFoodNameContain(String keyword) {
+		// TODO Auto-generated method stub
+		return foodDAO.getCountFoodNameContain(keyword);
+	}
+
+	@Override
+	public List<Mon> getListFoodFoodNameContain(String keyword, int maxResult,
+			int begin) {
+		// TODO Auto-generated method stub
+		return  foodDAO.getListFoodFoodNameContain(keyword, maxResult, begin);
+	}
 }

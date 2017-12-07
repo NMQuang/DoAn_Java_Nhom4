@@ -12,7 +12,7 @@
                 </a>
             </div>
             <div class="col-lg-8">
-                <form class="navbar-form" role="search" style="margin-left: 28px">
+                <form class="navbar-form" role="search" style="margin-left: 28px" action="<c:url value="/food/search"/>">
                     <div class="input-group col-md-12" style="">
                         <input type="text" class="form-control" placeholder="Tên món ăn" name="q">
                         <div class="input-group-btn">

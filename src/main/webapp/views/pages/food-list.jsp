@@ -4,9 +4,11 @@
 <div class="container">
 	<div class="col-lg-10 col-lg-offset-1">
 		<!-- Hiển thị thông tin tìm kiếm ở đây -->
+		<c:if test="${param.q != null}">
 		<h4 style="padding-top: 14px">
 			Kết quả tìm kiếm theo: <b>${param.q }</b>
 		</h4>
+		</c:if>
 		<hr>
 		<!-- Hiển thị kết quả tìm kiếm ở đây-->
 		<div class="row">
@@ -28,13 +30,14 @@
 		<% int id = (int)request.getAttribute("id"); 
 			int pages = (int)request.getAttribute("pages");%>
 		<c:set var ="URL" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+		<c:set var ="URL" value="${URL}?${param.q != null? 'q=' +=param.q +='&':'' }" />
 		<div style="text-align: center">
 			<nav>
 				<ul class="pagination">
 					<%
 						if (id > 1) {
 					%>
-					<li><a href="${URL }?index=1" aria-label="<<"> <span
+					<li><a href="${URL }index=1" aria-label="<<"> <span
 							aria-hidden="true">&laquo;</span>
 					</a></li>
 					<%
@@ -56,7 +59,7 @@
 					<%
 						if (i % 5 == 0) {
 					%>
-					<li><a href="${URL }?index=<%=i%>"><%=i%></a></li>
+					<li><a href="${URL }index=<%=i%>"><%=i%></a></li>
 					<%
 						}
 					%>
@@ -66,7 +69,7 @@
 					<%
 						if (i != id && i >= 1) {
 					%>
-					<li><a href="${URL }?index=<%=i%>"><%=i%></a></li>
+					<li><a href="${URL }index=<%=i%>"><%=i%></a></li>
 					<%
 						}
 							}
@@ -78,7 +81,7 @@
 					<%
 						if (id < pages) {
 					%>
-					<li><a href="${URL }?index=<%=pages%>" aria-label=">>">
+					<li><a href="${URL }index=<%=pages%>" aria-label=">>">
 							<span aria-hidden="true">&raquo;</span>
 					</a></li>
 					<%
