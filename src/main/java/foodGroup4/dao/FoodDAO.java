@@ -1,5 +1,6 @@
 package foodGroup4.dao;
 
+import foodGroup4.config.HibernateUtil;
 import foodGroup4.entity.Mon;
 
 import java.util.List;
