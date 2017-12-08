@@ -38,7 +38,7 @@
         <div class="navbar-menu">
             <ul class="nav navbar-nav">
                 <li class="menu-li">
-                    <a href="/">
+                    <a href="<c:url value="/" />">
                         <i class="fa fa-home" aria-hidden="true"></i> &nbsp <b>TRANG CHỦ</b>
                     </a>
                 </li>
@@ -49,7 +49,9 @@
                     </button>
                     <div class="dropdown-content">
                         <a href="${pageContext.request.contextPath}/food">Tất cả</a>
-                        <a href="${pageContext.request.contextPath}/food/category/1">Món gà</a>
+                        <c:forEach items="${listDanhMuc }" var="item" >
+                        	<a href="${pageContext.request.contextPath}/food/category/${item.danhMucId}">${item.ten }</a>
+                        </c:forEach>
                     </div>
                 </li>
                 <li class="dropdown">
@@ -58,9 +60,9 @@
                         &nbsp <b>CHI NHÁNH</b> &nbsp<b class="caret"></b>
                     </button>
                     <div class="dropdown-content">
-                        <a href="${pageContext.request.contextPath}/branch?id=1">Quận 1</a>
-                        <a href="${pageContext.request.contextPath}/branch?id=1">Quận 2</a>
-                        <a href="${pageContext.request.contextPath}/branch?id=1">Quận 3</a>
+                    <c:forEach items="${listChiNhanh }" var = "item">
+                    	 <a href="${pageContext.request.contextPath}/branch?id=${item.chiNhanhId}">${item.ten}</a>
+                    </c:forEach>
                     </div>
                 </li>
             </ul>

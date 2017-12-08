@@ -14,7 +14,7 @@
 		<div class="row">
 			<c:forEach items="${foodlist}" var="item">
 				<div class="col-md-3">
-					<a href="#" class="thumbnail"> <img alt="Image"
+					<a href="<c:url value="/food/${item.monId }" />" class="thumbnail"> <img alt="Image"
 						src="<c:url value="/resources/images/suon-xao-chua-ngot.jpg"/>"
 						class="img-responsive">
 						<div class="caption">

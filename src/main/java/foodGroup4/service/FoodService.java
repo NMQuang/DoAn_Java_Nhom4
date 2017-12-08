@@ -12,4 +12,5 @@ public interface FoodService {
     List<Mon> getListFoodinCategory(int idCategory, int maxResult, int begin);
     int getCountFoodNameContain(String keyword);
     List<Mon> getListFoodFoodNameContain(String keyword, int maxResult, int begin);
+    Mon getFood(int id);
 }

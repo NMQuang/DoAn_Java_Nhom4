@@ -41,8 +41,8 @@ $(function(){
 		var max = $(element).attr('price-max');
 		max = Number(parseFloat(max)).toLocaleString();
 		if(min == max)
-			return _price.text('Giá: ' + min  + ' VND');
-		_price.text('Giá: ' + min + ' - ' + max + ' VND');
+			return _price.text(min  + ' VND');
+		_price.text( min + ' - ' + max + ' VND');
 	})
 })
 </script>

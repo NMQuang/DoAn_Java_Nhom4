@@ -49,6 +49,12 @@ public class FoodController {
 		return "food-list";
 	}
 
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String getFood(Model model, @PathVariable int id){
+		foodService.getFood(id);
+		return "food";
+	}
+	
 	@RequestMapping(value = "/category/{categoryID}", method = RequestMethod.GET)
 	public String getListFoodsCategory(Model model, @PathVariable int categoryID, @RequestParam Optional<Integer> index){
 		int begin; 
@@ -68,11 +74,7 @@ public class FoodController {
 		System.out.println("count" + count + "pages" + pages);
 		return "food-list";
 	}
-	@RequestMapping(params = "id", method = RequestMethod.GET)
-	public String getFood(Model model, @RequestParam(value = "id") int id){
-
-		return "food";
-	}
+	
 	
 	@RequestMapping(value= "/search", method = RequestMethod.GET)
 	public String search(Model model, @RequestParam(value = "q") String keyword, @RequestParam Optional<Integer> index){

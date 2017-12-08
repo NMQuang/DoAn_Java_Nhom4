@@ -1,5 +1,6 @@
 package foodGroup4.service;
 
+import foodGroup4.config.HibernateUtil;
 import foodGroup4.dao.FoodDAO;
 import foodGroup4.dao.FoodDAOImp;
 import foodGroup4.entity.Mon;
@@ -51,5 +52,11 @@ public class FoodServiceImp implements FoodService {
 			int begin) {
 		// TODO Auto-generated method stub
 		return  foodDAO.getListFoodFoodNameContain(keyword, maxResult, begin);
+	}
+
+	@Override
+	public Mon getFood(int id) {
+		// TODO Auto-generated method stub
+		return ((HibernateUtil)(FoodDAOImp)foodDAO).fetchById(id, Mon.class);
 	}
 }
