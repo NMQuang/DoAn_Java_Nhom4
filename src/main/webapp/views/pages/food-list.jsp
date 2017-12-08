@@ -19,8 +19,8 @@
 						class="img-responsive">
 						<div class="caption">
 							<h4>${item.ten }</h4>
-							<p>
-								<i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: VND
+							<p price-min="${listPrices[item.monId][0]}" price-max="${listPrices[item.monId][1]}" class="_show_price">
+								<i class="fa fa-tag" aria-hidden="true" ></i> &nbsp<span class="_price" ></span> 
 							</p>
 						</div>
 					</a>

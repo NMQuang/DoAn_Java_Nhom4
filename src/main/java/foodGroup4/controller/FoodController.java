@@ -1,9 +1,9 @@
 package foodGroup4.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import foodGroup4.entity.Mon;
+import foodGroup4.service.ChiNhanhMonService;
 import foodGroup4.service.FoodService;
-import foodGroup4.service.FoodServiceImp;
 
 
 @Controller
@@ -25,6 +26,9 @@ public class FoodController {
 	@Autowired
 	FoodService foodService;
 	
+	@Autowired
+	ChiNhanhMonService chiNhanhMonService;
+	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getListFoods(@RequestParam Optional<Integer> index, Model model){
 		int begin; 
@@ -36,7 +40,9 @@ public class FoodController {
 		begin = 12 * (id - 1);
 		int count = foodService.getCountFood();
 		int pages = count / 12 + (count %12 == 0 ? 0 : 1);
-		model.addAttribute("foodlist", foodService.getList(12, begin));
+		List<Mon> dsMon = foodService.getList(12, begin);
+		model.addAttribute("foodlist", dsMon);
+		model.addAttribute("listPrices", chiNhanhMonService.getListPriceMinMax(dsMon));
 		model.addAttribute("pages", pages);
 		model.addAttribute("id", id);
 		System.out.println("count" + count + "pages" + pages);
@@ -54,7 +60,9 @@ public class FoodController {
 		begin = 12 * (id - 1);
 		int count = foodService.getCountFoodinCategory(categoryID);
 		int pages = count / 12 + (count %12 == 0 ? 0 : 1);
-		model.addAttribute("foodlist", foodService.getListFoodinCategory(categoryID, 12, begin));
+		List<Mon> dsMon = foodService.getListFoodinCategory(categoryID, 12, begin);
+		model.addAttribute("foodlist", dsMon);
+		model.addAttribute("listPrices", chiNhanhMonService.getListPriceMinMax(dsMon));
 		model.addAttribute("pages", pages);
 		model.addAttribute("id", id);
 		System.out.println("count" + count + "pages" + pages);
@@ -77,7 +85,9 @@ public class FoodController {
 		begin = 12 * (id - 1);
 		int count = foodService.getCountFoodNameContain(keyword);
 		int pages = count / 12 + (count %12 == 0 ? 0 : 1);
-		model.addAttribute("foodlist", foodService.getListFoodFoodNameContain(keyword, 12, begin));
+		List<Mon> dsMon = foodService.getListFoodFoodNameContain(keyword, 12, begin);
+		model.addAttribute("foodlist", dsMon);
+		model.addAttribute("listPrices", chiNhanhMonService.getListPriceMinMax(dsMon));
 		model.addAttribute("pages", pages);
 		model.addAttribute("id", id);
 		System.out.println("count" + count + "pages" + pages);
