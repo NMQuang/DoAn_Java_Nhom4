@@ -3,7 +3,10 @@ package foodGroup4.dao;
 import foodGroup4.config.HibernateUtil;
 import foodGroup4.entity.Mon;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.type.StringType;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -64,17 +67,20 @@ public class FoodDAOImp extends HibernateUtil implements FoodDAO {
 
 	@Override
 	public int getCountFoodNameContain(String keyword) {
-		Query query = getSession().createQuery("select count(*) from Mon where active is true and ten like :keyword").setParameter("keyword", "%"+keyword+"%");
-    	int count = ((Long) query.uniqueResult()).intValue();
-    	return count;
+		Criteria criteria = getSession().createCriteria(Mon.class, "mon"); 
+		criteria.add(Restrictions.sqlRestriction( "{alias}.ten like ? collate utf8_bin", "%"+keyword+"%", new StringType()));
+		criteria.add(Restrictions.eq("active", true));
+		return criteria.list().size();
+
 	}
 
 	@Override
 	public List<Mon> getListFoodFoodNameContain(String keyword, int maxResult, int begin) {
-		String hql = "from Mon where active is true and ten like :keyword";
-        Query query = getSession().createQuery(hql).setParameter("keyword", "%"+keyword+"%");
-        query.setFirstResult(begin).setMaxResults(maxResult);
-        List<Mon> mons = query.list();
+		Criteria criteria = getSession().createCriteria(Mon.class, "mon"); 
+		criteria.add(Restrictions.sqlRestriction( "{alias}.ten like ? collate utf8_bin", "%"+keyword+"%", new StringType()));
+		criteria.add(Restrictions.eq("active", true));
+		criteria.setFirstResult(begin).setMaxResults(maxResult);
+        List<Mon> mons = criteria.list();
         return mons;
 	}
 }
