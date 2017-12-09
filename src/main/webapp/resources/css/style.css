@@ -339,7 +339,7 @@ a.thumbnail {
     text-decoration: none;
 }
 .footer a {
-    color:#A9A9A9;
+    color:#fff;
 }
 .footer a:hover{
     color:#fff;
@@ -409,4 +409,13 @@ textarea {
 .food-info {
     margin-top: 30px;
     height: 350px;
+}
+
+.subscribe-info {
+    min-height: 560px;
+}
+
+.subscribe-info .success {
+    padding-top: 10px;
+    color: red;
 }

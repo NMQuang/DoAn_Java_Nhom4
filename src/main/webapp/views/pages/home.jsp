@@ -208,120 +208,21 @@
     <!-- Món ăn mua nhiều trong tuần -->
     <hr class="hr-text" data-content="Đặt hàng nhiều trong tuần">
     <div class="col-md-10 col-md-offset-1">
+        <c:forEach items="${topOrderChunks}" var="chunk">
         <div class="row">
+            <c:forEach items="${chunk}" var="food">
             <div class="col-md-3">
                 <a href="#" class="thumbnail">
-                    <img alt="Image" src="<c:url value="/resources/images/suon-xao-chua-ngot.jpg"/>" class="img-responsive">
+                    <img alt="Image" src="<c:url value="${food.hinhAnh}"/>" class="img-responsive"/>
                     <div class="caption">
-                        <h4>Tên món ăn</h4>
+                        <h4>${food.ten}</h4>
                         <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
+            </c:forEach>
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="images/suon-xao-chua-ngot.jpg" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+        </c:forEach>
     </div>
     <!-- End Món ăn mua nhiều trong tuần -->
 </div>
