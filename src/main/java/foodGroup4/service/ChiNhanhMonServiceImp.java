@@ -37,7 +37,10 @@ public class ChiNhanhMonServiceImp implements ChiNhanhMonService{
 		return kq;
 	}
 
-
+	/**
+	 * get list food of a branch by branchID
+	 * @param branchID int
+	 * */
 	@Override
 	public List<ChiNhanhMonDto> getListFoodByBranchID(int branchID) {
 		return chiNhanhMonDAO.getListFoodByBranchID(branchID);

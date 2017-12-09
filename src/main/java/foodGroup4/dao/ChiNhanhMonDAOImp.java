@@ -36,6 +36,10 @@ public class ChiNhanhMonDAOImp extends HibernateUtil implements ChiNhanhMonDAO {
 		return cnm.getGia();
 	}
 
+	/**
+	 * get list food of this branch by branchID
+	 * @param branchID int
+	 * */
 	@Override
 	public List<ChiNhanhMonDto> getListFoodByBranchID(int branchID) {
 //		String hql = "select (pk.mon), gia from Chinhanhmon, Mon where pk.chinhanh.chiNhanhId = :branchID and Mon.monId = pk.chinhanhmon.monId ";
