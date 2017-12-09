@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import foodGroup4.dao.ChiNhanhMonDAO;
+import foodGroup4.dto.ChiNhanhMonDto;
 import foodGroup4.entity.Mon;
 
 @Component
@@ -17,7 +18,7 @@ public class ChiNhanhMonServiceImp implements ChiNhanhMonService{
 
 	@Autowired
 	ChiNhanhMonDAO chiNhanhMonDAO;
-	
+
 	@Override
 	public HashMap<Integer, ArrayList<Integer>> getListPriceMinMax(List<Mon> dsMon) {
 		HashMap<Integer, ArrayList<Integer>> kq = new HashMap<Integer, ArrayList<Integer>>();
@@ -32,4 +33,9 @@ public class ChiNhanhMonServiceImp implements ChiNhanhMonService{
 		return kq;
 	}
 
+
+	@Override
+	public List<ChiNhanhMonDto> getListFoodByBranchID(int branchID) {
+		return chiNhanhMonDAO.getListFoodByBranchID(branchID);
+	}
 }
