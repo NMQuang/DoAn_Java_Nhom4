@@ -1,4 +1,8 @@
-target/
+bin
+target
 .classpath
 .project
-.settings/
+.settings
+src/main/webapp/META-INF
+.idea
+*.iml
