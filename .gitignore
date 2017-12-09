@@ -1,4 +1,9 @@
-.idea
-foodGroup4.iml
-classes
+bin
 target
+.classpath
+.project
+.settings
+src/main/webapp/META-INF
+.idea
+*.iml
+classes
