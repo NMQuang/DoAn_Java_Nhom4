@@ -30,13 +30,21 @@ public class BranchController {
 		return "branch";
 	}
 
+	/**
+	 * Controller get information of  a branch and list food, which this branch has
+	 * @param branchID int
+	 * */
+
 	@RequestMapping(value="/{branchID}", method = RequestMethod.GET)
 	public String getInfoBranch(Model model, @PathVariable("branchID") int branchID) {
 
+		// get branch by branchID
 		Chinhanh chiNhanh = chiNhanhService.getInfoBranch(branchID);
 
 		if (chiNhanh != null) {
 			model.addAttribute("branch", chiNhanh);
+
+			// get list food if this branch
 			List<ChiNhanhMonDto> dto = chiNhanhMonService.getListFoodByBranchID(branchID);
 			model.addAttribute("listFood", dto);
 		}

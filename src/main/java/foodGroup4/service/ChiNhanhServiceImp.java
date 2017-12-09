@@ -23,6 +23,10 @@ public class ChiNhanhServiceImp implements ChiNhanhService{
 		return chiNhanhDao.getListBranch();
 	}
 
+	/**
+	 * get info of a branch by branchID
+	 * @param branchID int
+	 * */
 	@Override
 	public Chinhanh getInfoBranch(int branchID) {
 

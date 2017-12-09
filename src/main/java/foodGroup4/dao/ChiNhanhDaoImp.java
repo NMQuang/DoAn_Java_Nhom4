@@ -11,6 +11,10 @@ import foodGroup4.entity.Chinhanh;
 @Component
 public class ChiNhanhDaoImp extends HibernateUtil implements ChiNhanhDao {
 
+	/**
+	 * get list branch
+	 * @param
+	 * */
 	@Override
 	public List<Chinhanh> getListBranch() {
 		String hql = "from Chinhanh";
@@ -19,6 +23,10 @@ public class ChiNhanhDaoImp extends HibernateUtil implements ChiNhanhDao {
 		return chiNhanhs;
 	}
 
+	/**
+	 * get info of a branch by branchID
+	 * @param branchID int
+	 * */
 	@Override
 	public Chinhanh getInfoBranch(int branchID) {
 		Chinhanh chiNhanh = new Chinhanh();
