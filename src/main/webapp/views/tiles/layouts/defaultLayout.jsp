@@ -30,21 +30,5 @@
 <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap.js"/>"></script>
 <script src="<c:url value="/resources/js/myjs.js"/>"></script>
-<script type="text/javascript">
-$(function(){
-	$('._show_price').each(function( index, element ){
-		var _price = $(element).find('._price');
-		var min = $(element).attr('price-min');
-		if(min == -1)
-			return _price.text("Chưa được bán")
-		min = Number(parseFloat(min)).toLocaleString();
-		var max = $(element).attr('price-max');
-		max = Number(parseFloat(max)).toLocaleString();
-		if(min == max)
-			return _price.text(min  + ' VND');
-		_price.text( min + ' - ' + max + ' VND');
-	})
-})
-</script>
 </body>
 </html>
