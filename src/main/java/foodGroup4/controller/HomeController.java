@@ -23,10 +23,7 @@ public class HomeController {
 
 	 @RequestMapping(value="/", method = RequestMethod.GET)
 	public String getHomePage(Model model){
-	 	List<Mon> foods = foodService.getList(10);
-	 	System.out.println("Food count: " + foods.size());
-	 	System.out.println("Top food of week count: " + foodService.getTopFoodOrderOfTheWeeks(12).size());
-	 	model.addAttribute("foods", foods);
+	 	
 
 
 		return "home";
