@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import foodGroup4.config.HibernateUtil;
 import foodGroup4.dao.ChiNhanhMonDAO;
+import foodGroup4.entity.Chinhanh;
+import foodGroup4.entity.Chinhanhmon;
 import foodGroup4.entity.Mon;
 
 @Component
@@ -30,6 +33,11 @@ public class ChiNhanhMonServiceImp implements ChiNhanhMonService{
 			kq.put(m.getMonId(), prices);
 		}
 		return kq;
+	}
+
+	@Override
+	public List<Chinhanhmon> getListChiNhanhMonByMon(int idMon) {
+		return chiNhanhMonDAO.getListChiNhanhMon(idMon);
 	}
 
 }

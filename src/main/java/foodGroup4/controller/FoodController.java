@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import foodGroup4.entity.Chinhanhmon;
 import foodGroup4.entity.Mon;
 import foodGroup4.service.ChiNhanhMonService;
 import foodGroup4.service.FoodService;
@@ -51,7 +52,8 @@ public class FoodController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String getFood(Model model, @PathVariable int id){
-		foodService.getFood(id);
+		model.addAttribute("mon", foodService.getFood(id));
+		model.addAttribute("ChiNhanhMonList", chiNhanhMonService.getListChiNhanhMonByMon(id));
 		return "food";
 	}
 	
