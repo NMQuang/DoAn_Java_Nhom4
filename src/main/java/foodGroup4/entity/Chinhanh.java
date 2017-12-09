@@ -10,6 +10,7 @@ public class Chinhanh {
     private String ten;
     private String diaChi;
     private String dienThoai;
+    private String hinhAnh;
     private Set<AccountChinhanh> accountChinhanhs;
     private Set<Ban> bans;
     private Tinhthanh tinhthanh;
@@ -60,7 +61,17 @@ public class Chinhanh {
         this.dienThoai = dienThoai;
     }
 
-    @Override
+    @Basic
+    @Column(name = "hinhAnh")
+    public String getHinhAnh() {
+	return hinhAnh;
+}
+
+    public void setHinhAnh(String hinhAnh) {
+	this.hinhAnh = hinhAnh;
+    }
+
+@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

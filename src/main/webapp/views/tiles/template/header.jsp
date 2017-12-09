@@ -61,7 +61,7 @@
                     </button>
                     <div class="dropdown-content">
                     <c:forEach items="${listChiNhanh }" var = "item">
-                    	 <a href="${pageContext.request.contextPath}/branch?id=${item.chiNhanhId}">${item.ten}</a>
+                    	 <a href="${pageContext.request.contextPath}/branch/${item.chiNhanhId}">${item.ten}</a>
                     </c:forEach>
                     </div>
                 </li>
