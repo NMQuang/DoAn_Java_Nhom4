@@ -32,8 +32,12 @@ public class ChiNhanhDaoImp extends HibernateUtil implements ChiNhanhDao {
 		Chinhanh chiNhanh = new Chinhanh();
 		String hql = "from Chinhanh where chiNhanhId = :branchID";
 		Query query = getSession().createQuery(hql).setParameter("branchID", branchID);
-		chiNhanh = (Chinhanh) query.list().get(0);
-		return chiNhanh;
+		if (query.list().isEmpty()) {
+			return null;
+		} else {
+			chiNhanh = (Chinhanh) query.list().get(0);
+			return chiNhanh;
+		}
 	}
 
 }
