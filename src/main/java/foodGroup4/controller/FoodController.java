@@ -1,5 +1,6 @@
 package foodGroup4.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +55,11 @@ public class FoodController {
 	public String getFood(Model model, @PathVariable int id){
 		model.addAttribute("mon", foodService.getFood(id));
 		model.addAttribute("ChiNhanhMonList", chiNhanhMonService.getListChiNhanhMonByMon(id));
+
+		List<Mon> topFoodOrders = foodService.getTopFoodOrderOfTheWeeks(12);
+		model.addAttribute("topFoodOrderChunks", foodService.convertListFoodToChunk(topFoodOrders, 4));
+		model.addAttribute("topFoodOrderPrices", chiNhanhMonService.getListPriceMinMax(topFoodOrders));
+
 		return "food";
 	}
 	

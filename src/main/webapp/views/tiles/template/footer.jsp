@@ -8,9 +8,9 @@
                 <div class="col-md-4">
                     <h3> Thông tin </h3>
                     <ul>
-                        <li><p><i class="fa fa-phone"></i> &nbsp &nbspHotline: 0169xxxxxx </p></li>
-                        <li><p><i class="fa fa-users"></i> &nbsp Lượng người truy cập: 1000000 </p></li>
-                        <li><a href="introduce.html"> &nbsp <i class="fa fa-info"></i> &nbsp&nbspThông tin trang web </a></li>
+                        <li><p><i class="fa fa-phone"></i> &nbsp &nbspHotline: ${trungtam.hotline} </p></li>
+                        <li><p><i class="fa fa-users"></i> &nbsp Số lượt truy cập: ${trungtam.soLuongTruyCap} </p></li>
+                        <li><a href="${pageContext.request.contextPath}/introduce"> &nbsp <i class="fa fa-info"></i> &nbsp&nbspThông tin trang web </a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -24,12 +24,12 @@
                 </div>
                 <div class="col-md-4">
                     <h3> Theo dõi qua email </h3>
-                    <form role="subscribe">
+                    <form role="subscribe" action="${pageContext.request.contextPath}/subscribe" method="post">
                         <div class="input-group col-md-12" style="">
-                            <input type="text" class="form-control" placeholder="Email của bạn" name="q">
+                            <input type="email"  required class="form-control" placeholder="Email của bạn" name="email">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
-                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    <b>Subscribe</b>
                                 </button>
                             </div>
                         </div>

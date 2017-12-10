@@ -1,8 +1,9 @@
 package foodGroup4.dao;
 
-import org.springframework.stereotype.Component;
+import foodGroup4.entity.Danhmuc;
 
-@Component
+import java.util.List;
+
 public interface DanhMucDao {
-
+    List<Danhmuc> getAllDanhmucs();
 }

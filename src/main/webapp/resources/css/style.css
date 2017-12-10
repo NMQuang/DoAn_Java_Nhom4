@@ -341,6 +341,9 @@ a.thumbnail {
 .footer a {
     color:#fff;
 }
+.footer a:hover{
+    color:#fff;
+}
 
 .supportLi h4 {
     font-size: 20px;
@@ -440,4 +443,13 @@ td.middle {
 .food-branches-location {
     padding-left: 10px;
     color: #586d77;
+}
+
+.subscribe-info {
+    min-height: 560px;
+}
+
+.subscribe-info .success {
+    padding-top: 10px;
+    color: red;
 }
