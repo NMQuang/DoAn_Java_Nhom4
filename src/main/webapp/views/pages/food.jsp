@@ -6,7 +6,7 @@
         <div class="row food-info">
             <div class="food-head">
                 <div class="col-lg-6">
-                    <img src="<c:url value="${mon.hinhAnh }"/>" class="img-responsive center-block" style="max-height: 400px"/>
+                    <img src="<c:url value="/resources/images/${mon.hinhAnh }"/>" class="img-responsive center-block" style="max-height: 400px"/>
                 </div>
                 <div class="col-lg-6">
                     <h3>${mon.ten }</h3>
@@ -49,143 +49,27 @@
                 <div id="Carousel" class="carousel my-carousel slide carousel-fade">
                     <!-- Carousel items -->
                     <div class="carousel-inner">
-                        <div class="item active">
+                        <c:forEach items="${topFoodOrderChunks}" var="chunk" varStatus="status">
+                        <div class="item ${status.first ? "active": ""} ">
                             <div class="row">
+                                <c:forEach items="${chunk}" var="food">
                                 <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
+                                    <a href="${pageContext.request.contextPath}/food/${food.monId}" class="thumbnail">
+                                        <img alt="Image" src="<c:url value="/resources/images/${food.hinhAnh}"/>"
                                              class="img-responsive">
                                         <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                                            <h4>${food.ten }</h4>
+                                            <p price-min="${topFoodOrderPrices[food.monId][0]}" price-max="${topFoodOrderPrices[food.monId][1]}" class="_show_price">
+                                                <i class="fa fa-tag" aria-hidden="true" ></i> &nbsp<span class="_price" ></span>
+                                            </p>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 - 150.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
+                                </c:forEach>
                             </div>
                             <!--.row-->
                         </div>
-                        <!--.item-->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--.row-->
-                        </div>
-                        <!--.item-->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="#" class="thumbnail">
-                                        <img alt="Image" src="http://placehold.it/250x200"
-                                             class="img-responsive">
-                                        <div class="caption">
-                                            <h4>Tên món ăn</h4>
-                                            <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--.row-->
-                        </div>
+                        </c:forEach>
                         <!--.item-->
                     </div>
                     <!--.carousel-inner-->

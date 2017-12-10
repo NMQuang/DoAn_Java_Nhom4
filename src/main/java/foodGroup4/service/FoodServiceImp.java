@@ -27,6 +27,23 @@ public class FoodServiceImp implements FoodService {
     public List<Mon> getTopFoodOrderOfTheWeeks(int maxResult) {
 		return foodDAO.getTopFoodOrderOfTheWeeks(maxResult);
     }
+
+	public List<List<Mon>> convertListFoodToChunk(List<Mon> listMons, int itemOneChunk) {
+    	List<List<Mon>> chunks = new ArrayList<List<Mon>>();
+    	int total = listMons.size();
+
+    	for(int i = 0; i < total/itemOneChunk*itemOneChunk; i+= itemOneChunk) {
+			chunks.add(listMons.subList(i, i + itemOneChunk));
+		}
+
+		int modSize = total % itemOneChunk;
+    	if(modSize > 0) {
+			chunks.add(listMons.subList(total - modSize, total - 1));
+		}
+
+    	return chunks;
+	}
+
     public int getCountFood(){
     	return foodDAO.getCountFood();
     }
