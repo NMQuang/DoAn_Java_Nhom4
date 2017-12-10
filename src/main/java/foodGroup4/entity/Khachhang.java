@@ -12,6 +12,7 @@ public class Khachhang {
     private String cmnd;
     private String password;
     private Date ngayTao;
+    private String diaChi;
     private Set<Hoadon> hoadons;
 
     @Id
@@ -62,6 +63,16 @@ public class Khachhang {
 
     public void setNgayTao(Date ngayTao) {
         this.ngayTao = ngayTao;
+    }
+
+    @Basic
+    @Column
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
     @Override

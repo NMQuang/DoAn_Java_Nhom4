@@ -11,7 +11,7 @@ public class Chinhanh {
     private String diaChi;
     private String dienThoai;
     private String hinhAnh;
-    private Set<AccountChinhanh> accountChinhanhs;
+    private Set<AccountAdmin> accountAdmins;
     private Set<Ban> bans;
     private Tinhthanh tinhthanh;
     private Set<Chinhanhmon> chinhanhmons;
@@ -96,12 +96,12 @@ public class Chinhanh {
     }
 
     @OneToMany(mappedBy = "chinhanh")
-    public Set<AccountChinhanh> getAccountChinhanhs() {
-        return accountChinhanhs;
+    public Set<AccountAdmin> getAccountAdmins() {
+        return accountAdmins;
     }
 
-    public void setAccountChinhanhs(Set<AccountChinhanh> accountChinhanhs) {
-        this.accountChinhanhs = accountChinhanhs;
+    public void setAccountAdmins(Set<AccountAdmin> accountAdmins) {
+        this.accountAdmins = accountAdmins;
     }
 
     @OneToMany(mappedBy = "chinhanh")
