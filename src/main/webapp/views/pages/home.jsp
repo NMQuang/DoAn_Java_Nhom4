@@ -211,8 +211,8 @@
         <div class="row">
             <c:forEach items="${topFoodOrders}" var="food">
             <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="<c:url value="${food.hinhAnh}"/>" class="img-responsive"/>
+                <a href="${pageContext.request.contextPath}/food/${food.monId}" class="thumbnail">
+                    <img alt="Image" src="<c:url value="/resources/images/${food.hinhAnh}"/>" class="img-responsive"/>
                     <div class="caption">
                         <h4>${food.ten }</h4>
                         <p price-min="${topFoodOrderPrices[food.monId][0]}" price-max="${topFoodOrderPrices[food.monId][1]}" class="_show_price">
