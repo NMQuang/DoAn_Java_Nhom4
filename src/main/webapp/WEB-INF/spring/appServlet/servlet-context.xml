@@ -73,9 +73,7 @@
       <property name="annotatedClasses">
           <list>
 
-			  <value>foodGroup4.entity.AccountChinhanh</value>
-			  <value>foodGroup4.entity.AccountQuanly</value>
-			  <value>foodGroup4.entity.AccountTongdai</value>
+			  <value>foodGroup4.entity.AccountAdmin</value>
 			  <value>foodGroup4.entity.Ban</value>
 			  <value>foodGroup4.entity.Chinhanh</value>
 			  <value>foodGroup4.entity.Chinhanhmon</value>

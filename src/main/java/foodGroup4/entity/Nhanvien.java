@@ -15,9 +15,7 @@ public class Nhanvien {
     private String sdt;
     private String diaChi;
     private int luong;
-    private Set<AccountChinhanh> accountChinhanhs;
-    private Set<AccountQuanly> accountQuanlys;
-    private Set<AccountTongdai> accountTongdais;
+    private Set<AccountAdmin> accountAdmins;
     private Set<Hoadon> hoadons;
     private Luongchonhanvien luongchonhanvien;
     private Chinhanh chinhanh;
@@ -137,30 +135,12 @@ public class Nhanvien {
     }
 
     @OneToMany(mappedBy = "nhanvien")
-    public Set<AccountChinhanh> getAccountChinhanhs() {
-        return accountChinhanhs;
+    public Set<AccountAdmin> getAccountAdmins() {
+        return accountAdmins;
     }
 
-    public void setAccountChinhanhs(Set<AccountChinhanh> accountChinhanhs) {
-        this.accountChinhanhs = accountChinhanhs;
-    }
-
-    @OneToMany(mappedBy = "nhanvien")
-    public Set<AccountQuanly> getAccountQuanlys() {
-        return accountQuanlys;
-    }
-
-    public void setAccountQuanlys(Set<AccountQuanly> accountQuanlys) {
-        this.accountQuanlys = accountQuanlys;
-    }
-
-    @OneToMany(mappedBy = "nhanvien")
-    public Set<AccountTongdai> getAccountTongdais() {
-        return accountTongdais;
-    }
-
-    public void setAccountTongdais(Set<AccountTongdai> accountTongdais) {
-        this.accountTongdais = accountTongdais;
+    public void setAccountAdmins(Set<AccountAdmin> accountAdmins) {
+        this.accountAdmins = accountAdmins;
     }
 
     @OneToMany(mappedBy = "nhanvien")

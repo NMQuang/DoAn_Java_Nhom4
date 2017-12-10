@@ -3,10 +3,11 @@ package foodGroup4.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "account_chinhanh", schema = "java_foodsystem", catalog = "")
-public class AccountChinhanh {
+@Table(name = "account_admin", schema = "java_foodsystem", catalog = "")
+public class AccountAdmin {
     private String username;
     private String password;
+    private String quyen;
     private Chinhanh chinhanh;
     private Nhanvien nhanvien;
 
@@ -30,12 +31,22 @@ public class AccountChinhanh {
         this.password = password;
     }
 
+    @Basic
+    @Column(name = "Quyen")
+    public String getQuyen() {
+        return quyen;
+    }
+
+    public void setQuyen(String quyen) {
+        this.quyen = quyen;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AccountChinhanh that = (AccountChinhanh) o;
+        AccountAdmin that = (AccountAdmin) o;
 
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
