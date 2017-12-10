@@ -8,9 +8,9 @@
                 <div class="col-md-4">
                     <h3> Thông tin </h3>
                     <ul>
-                        <li><p><i class="fa fa-phone"></i> &nbsp &nbspHotline: 0169xxxxxx </p></li>
-                        <li><p><i class="fa fa-users"></i> &nbsp Lượng người truy cập: 1000000 </p></li>
-                        <li><a href="introduce.html"> &nbsp <i class="fa fa-info"></i> &nbsp&nbspThông tin trang web </a></li>
+                        <li><p><i class="fa fa-phone"></i> &nbsp &nbspHotline: ${trungtam.hotline} </p></li>
+                        <li><p><i class="fa fa-users"></i> &nbsp Số lượt truy cập: ${trungtam.soLuongTruyCap} </p></li>
+                        <li><a href="${pageContext.request.contextPath}/introduce"> &nbsp <i class="fa fa-info"></i> &nbsp&nbspThông tin trang web </a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">

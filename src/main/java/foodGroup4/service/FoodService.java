@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface FoodService {
     List<Mon> getList(int maxResult, int begin);
-    List<List<Mon>> getTopFoodOrderOfTheWeeks(int maxResult, int itemInRow);
+    List<Mon> getTopFoodOrderOfTheWeeks(int maxResult);
     int getCountFood();
     int getCountFoodinCategory(int idCategory);
     List<Mon> getListFoodinCategory(int idCategory, int maxResult, int begin);

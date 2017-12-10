@@ -15,11 +15,6 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- Counting Access -->
-	<listener>
-		<listener-class>foodGroup4.listener.CountingAccessListener</listener-class>
-	</listener>
-
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>

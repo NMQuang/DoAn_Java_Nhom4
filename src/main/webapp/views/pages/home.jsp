@@ -208,21 +208,21 @@
     <!-- Món ăn mua nhiều trong tuần -->
     <hr class="hr-text" data-content="Đặt hàng nhiều trong tuần">
     <div class="col-md-10 col-md-offset-1">
-        <c:forEach items="${topOrderChunks}" var="chunk">
         <div class="row">
-            <c:forEach items="${chunk}" var="food">
+            <c:forEach items="${topFoodOrders}" var="food">
             <div class="col-md-3">
                 <a href="#" class="thumbnail">
                     <img alt="Image" src="<c:url value="${food.hinhAnh}"/>" class="img-responsive"/>
                     <div class="caption">
-                        <h4>${food.ten}</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                        <h4>${food.ten }</h4>
+                        <p price-min="${topFoodOrderPrices[food.monId][0]}" price-max="${topFoodOrderPrices[food.monId][1]}" class="_show_price">
+                            <i class="fa fa-tag" aria-hidden="true" ></i> &nbsp<span class="_price" ></span>
+                        </p>
                     </div>
                 </a>
             </div>
             </c:forEach>
         </div>
-        </c:forEach>
     </div>
     <!-- End Món ăn mua nhiều trong tuần -->
 </div>
