@@ -339,11 +339,12 @@ a.thumbnail {
     text-decoration: none;
 }
 .footer a {
-    color:#A9A9A9;
+    color:#fff;
 }
 .footer a:hover{
     color:#fff;
 }
+
 .supportLi h4 {
     font-size: 20px;
     font-weight: lighter;
@@ -406,7 +407,49 @@ textarea {
     border-top-left-radius: 0px;
 }
 
+
 .food-info {
+    background: #fff;
     margin-top: 30px;
-    height: 350px;
+    margin-bottom: 40px;
+}
+
+.food-head img {
+    margin-left: -14px;
+}
+
+.food-head h3 {
+    margin-top: 30px;
+}
+
+.food-head p {
+    margin-top: 30px;
+    font-size: 16px;
+    height: 150px;
+}
+
+.table-branches {
+    margin-bottom: 5px;
+}
+
+.table-branches thead {
+    height: 50px;
+}
+
+td.middle {
+    vertical-align: middle;
+}
+
+.food-branches-location {
+    padding-left: 10px;
+    color: #586d77;
+}
+
+.subscribe-info {
+    min-height: 560px;
+}
+
+.subscribe-info .success {
+    padding-top: 10px;
+    color: red;
 }

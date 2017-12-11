@@ -10,7 +10,8 @@ public class Chinhanh {
     private String ten;
     private String diaChi;
     private String dienThoai;
-    private Set<AccountChinhanh> accountChinhanhs;
+    private String hinhAnh;
+    private Set<AccountAdmin> accountAdmins;
     private Set<Ban> bans;
     private Tinhthanh tinhthanh;
     private Set<Chinhanhmon> chinhanhmons;
@@ -60,7 +61,17 @@ public class Chinhanh {
         this.dienThoai = dienThoai;
     }
 
-    @Override
+    @Basic
+    @Column(name = "hinhAnh")
+    public String getHinhAnh() {
+	return hinhAnh;
+}
+
+    public void setHinhAnh(String hinhAnh) {
+	this.hinhAnh = hinhAnh;
+    }
+
+@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -85,12 +96,12 @@ public class Chinhanh {
     }
 
     @OneToMany(mappedBy = "chinhanh")
-    public Set<AccountChinhanh> getAccountChinhanhs() {
-        return accountChinhanhs;
+    public Set<AccountAdmin> getAccountAdmins() {
+        return accountAdmins;
     }
 
-    public void setAccountChinhanhs(Set<AccountChinhanh> accountChinhanhs) {
-        this.accountChinhanhs = accountChinhanhs;
+    public void setAccountAdmins(Set<AccountAdmin> accountAdmins) {
+        this.accountAdmins = accountAdmins;
     }
 
     @OneToMany(mappedBy = "chinhanh")

@@ -4,14 +4,14 @@
 <div class="container">
     <div class="col-lg-10 col-lg-offset-1">
         <!-- Hiển thị thông tin tìm kiếm ở đây -->
-        <h4 style="padding-top: 14px"> <b> Chi nhánh Quận 01</b></h4>
+        <h4 style="padding-top: 14px"> <b>${branch.ten }</b></h4>
         <hr>
         <!-- Hiển thị kết quả tìm kiếm ở đây-->
         <div class="row">
             <div class="col-lg-5" style="height: 315px;">
-                <img src="<c:url value="/resources/images/quan-an/quan-1.jpg"/>" class="img-responsive img-agency" style="max-height: 315px"/>
+                <img src="<c:url value="/resources/images/quan-an/${branch.hinhAnh }"/>" class="img-responsive img-agency" style="max-height: 315px"/>
                 <div class="agency-info" style="margin-top: 10px">
-                    <p> <i class="fa fa-map-marker"></i> Địa chỉ: 10A-10B-10C Lê Thánh Tôn, P. Bến Nghé, Q. 1</p>
+                    <p> <i class="fa fa-map-marker"></i> Địa chỉ: ${branch.diaChi }</p>
                     <p>Giờ đón khách: 8h:30 - 11h, 16h:30 - 20h:30</p>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                 <form>
                     <div class="panel panel-order">
                         <div class="panel-heading text-center">
-                            <h4>Đặt bàn tại chi nhánh Quận 01</h4>
+                            <h4>Đặt bàn tại chi nhánh ${branch.ten }</h4>
                         </div>
                         <ul class="list-group text-center">
                             <li class="list-group-item">
@@ -76,7 +76,7 @@
                             <li class="list-group-item">
                                 <i class="fa fa-phone fa-lg"></i>
                                 &nbsp Hot line hỗ trợ:
-                                <em style="color: red">01666xxxxxx</em>
+                                <em style="color: red">${branch.dienThoai }</em>
                             </li>
                             <button type="submit" class="btn btn-lg btn-block btn-success" href="#">Đặt bàn</button>
                         </ul>
@@ -84,121 +84,21 @@
                 </form>
             </div>
         </div>
-        <h4 style="padding-top: 14px"> Các món ăn thuộc <b> chi nhánh Quận 01</b></h4>
+
+        <h4 style="padding-top: 14px"> Các món ăn thuộc <b> chi nhánh ${branch.ten }</b></h4>
         <hr>
         <div class="row">
+        <c:forEach items="${listFood}" var="item">
             <div class="col-md-3">
                 <a href="#" class="thumbnail">
-                    <img alt="Image" src="<c:url value="/resources/images/suon-xao-chua-ngot.jpg"/>" class="img-responsive">
+                    <img alt="Image" src="<c:url value="/resources/images/mon-an/${item.pk.mon.hinhAnh }"/>" class="img-responsive">
                     <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
+                        <h4>${item.pk.mon.ten }</h4>
+                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: ${item.gia } ${item.pk.mon.donViTinh }</p>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="<c:url value="/resources/images/suon-xao-chua-ngot.jpg"/>" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="<c:url value="/resources/images/suon-xao-chua-ngot.jpg"/>" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="<c:url value="/resources/images/suon-xao-chua-ngot.jpg"/>" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="<c:url value="/resources/images/suon-xao-chua-ngot.jpg"/>" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="<c:url value="/resources/images/suon-xao-chua-ngot.jpg"/>" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="http://placehold.it/250x200" class="img-responsive">
-                    <div class="caption">
-                        <h4>Tên món ăn</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: 100.000 VND</p>
-                    </div>
-                </a>
-            </div>
+		</c:forEach>
         </div>
     </div>
 </div>

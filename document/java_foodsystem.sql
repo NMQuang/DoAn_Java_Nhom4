@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `java_foodsystem` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `java_foodsystem`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: java_foodsystem
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.13-MariaDB
+-- Server version	5.7.18-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,17 +16,18 @@ USE `java_foodsystem`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `account_chinhanh`
+-- Table structure for table `account_admin`
 --
 
-DROP TABLE IF EXISTS `account_chinhanh`;
+DROP TABLE IF EXISTS `account_admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `account_chinhanh` (
+CREATE TABLE `account_admin` (
   `Username` varchar(20) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `ChiNhanh` int(11) NOT NULL,
   `Nhanvien` int(11) DEFAULT NULL,
+  `Quyen` varchar(45) NOT NULL,
   PRIMARY KEY (`Username`),
   KEY `FK_ac_nv_idx` (`Nhanvien`),
   KEY `Fk_acn_cn_idx` (`ChiNhanh`),
@@ -36,67 +35,6 @@ CREATE TABLE `account_chinhanh` (
   CONSTRAINT `Fk_acn_cn` FOREIGN KEY (`ChiNhanh`) REFERENCES `chinhanh` (`ChiNhanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `account_chinhanh`
---
-
-LOCK TABLES `account_chinhanh` WRITE;
-/*!40000 ALTER TABLE `account_chinhanh` DISABLE KEYS */;
-/*!40000 ALTER TABLE `account_chinhanh` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `account_quanly`
---
-
-DROP TABLE IF EXISTS `account_quanly`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `account_quanly` (
-  `Username` varchar(20) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `NhanVien` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Username`),
-  KEY `FK_ac_nv_idx` (`NhanVien`),
-  CONSTRAINT `FK_acql_nv` FOREIGN KEY (`NhanVien`) REFERENCES `nhanvien` (`NhanVienID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `account_quanly`
---
-
-LOCK TABLES `account_quanly` WRITE;
-/*!40000 ALTER TABLE `account_quanly` DISABLE KEYS */;
-/*!40000 ALTER TABLE `account_quanly` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `account_tongdai`
---
-
-DROP TABLE IF EXISTS `account_tongdai`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `account_tongdai` (
-  `Username` varchar(20) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `NhanVien` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Username`),
-  KEY `FK_actd_nv_idx` (`NhanVien`),
-  CONSTRAINT `FK_actd_nv` FOREIGN KEY (`NhanVien`) REFERENCES `nhanvien` (`NhanVienID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `account_tongdai`
---
-
-LOCK TABLES `account_tongdai` WRITE;
-/*!40000 ALTER TABLE `account_tongdai` DISABLE KEYS */;
-/*!40000 ALTER TABLE `account_tongdai` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `ban`
@@ -113,18 +51,8 @@ CREATE TABLE `ban` (
   PRIMARY KEY (`BanID`),
   KEY `fk_ban_cn_idx` (`ChiNhanh`),
   CONSTRAINT `fk_ban_cn` FOREIGN KEY (`ChiNhanh`) REFERENCES `chinhanh` (`ChiNhanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ban`
---
-
-LOCK TABLES `ban` WRITE;
-/*!40000 ALTER TABLE `ban` DISABLE KEYS */;
-INSERT INTO `ban` VALUES (1,1,'Bán hàng',0);
-/*!40000 ALTER TABLE `ban` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `chinhanh`
@@ -139,21 +67,12 @@ CREATE TABLE `chinhanh` (
   `DiaChi` varchar(50) NOT NULL,
   `DienThoai` varchar(50) NOT NULL,
   `TinhThanh` int(11) NOT NULL,
+  `hinhAnh` varchar(45) NOT NULL,
   PRIMARY KEY (`ChiNhanhID`),
   KEY `fk_cn_tt_idx` (`TinhThanh`),
   CONSTRAINT `fk_cn_tt` FOREIGN KEY (`TinhThanh`) REFERENCES `tinhthanh` (`TinhThanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `chinhanh`
---
-
-LOCK TABLES `chinhanh` WRITE;
-/*!40000 ALTER TABLE `chinhanh` DISABLE KEYS */;
-INSERT INTO `chinhanh` VALUES (1,'227 Nguyễn Văn Cừ','227 Nguyễn Văn Cừ, Hồ Chí Minh','0123456789',1);
-/*!40000 ALTER TABLE `chinhanh` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `chinhanhmon`
@@ -172,15 +91,6 @@ CREATE TABLE `chinhanhmon` (
   CONSTRAINT `fk_cnm_mon` FOREIGN KEY (`Mon`) REFERENCES `mon` (`MonID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `chinhanhmon`
---
-
-LOCK TABLES `chinhanhmon` WRITE;
-/*!40000 ALTER TABLE `chinhanhmon` DISABLE KEYS */;
-/*!40000 ALTER TABLE `chinhanhmon` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `chiphingay`
@@ -202,15 +112,6 @@ CREATE TABLE `chiphingay` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `chiphingay`
---
-
-LOCK TABLES `chiphingay` WRITE;
-/*!40000 ALTER TABLE `chiphingay` DISABLE KEYS */;
-/*!40000 ALTER TABLE `chiphingay` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `chitiethoadon`
 --
 
@@ -230,16 +131,6 @@ CREATE TABLE `chitiethoadon` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `chitiethoadon`
---
-
-LOCK TABLES `chitiethoadon` WRITE;
-/*!40000 ALTER TABLE `chitiethoadon` DISABLE KEYS */;
-INSERT INTO `chitiethoadon` VALUES (1,1,2,100000),(1,2,3,200000);
-/*!40000 ALTER TABLE `chitiethoadon` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `chucvu`
 --
 
@@ -251,18 +142,8 @@ CREATE TABLE `chucvu` (
   `Ten` varchar(255) NOT NULL,
   `MoTa` int(255) NOT NULL,
   PRIMARY KEY (`ChucVuID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `chucvu`
---
-
-LOCK TABLES `chucvu` WRITE;
-/*!40000 ALTER TABLE `chucvu` DISABLE KEYS */;
-INSERT INTO `chucvu` VALUES (1,'Giao hàng',0);
-/*!40000 ALTER TABLE `chucvu` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `danhmuc`
@@ -278,16 +159,6 @@ CREATE TABLE `danhmuc` (
   PRIMARY KEY (`DanhMucID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `danhmuc`
---
-
-LOCK TABLES `danhmuc` WRITE;
-/*!40000 ALTER TABLE `danhmuc` DISABLE KEYS */;
-INSERT INTO `danhmuc` VALUES (1,'Nướng','\0'),(2,'Xào','\0');
-/*!40000 ALTER TABLE `danhmuc` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `hoadon`
@@ -320,18 +191,8 @@ CREATE TABLE `hoadon` (
   CONSTRAINT `fk_hd_cn` FOREIGN KEY (`ChiNhanh`) REFERENCES `chinhanh` (`ChiNhanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_hd_kh` FOREIGN KEY (`KhachHang`) REFERENCES `khachhang` (`SDT`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_hd_nv` FOREIGN KEY (`NguoiGiaoHang`) REFERENCES `nhanvien` (`NhanVienID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `hoadon`
---
-
-LOCK TABLES `hoadon` WRITE;
-/*!40000 ALTER TABLE `hoadon` DISABLE KEYS */;
-INSERT INTO `hoadon` VALUES (1,'1','0000-00-00 00:00:00',1,210000,1,'Tiền mặt',0,1,'0000-00-00 00:00:00','Online',1,'123 Trần Bình Trọng','123456789');
-/*!40000 ALTER TABLE `hoadon` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `khachhang`
@@ -346,20 +207,11 @@ CREATE TABLE `khachhang` (
   `CMND` varchar(11) NOT NULL,
   `Password` varchar(45) DEFAULT NULL,
   `NgayTao` date DEFAULT NULL,
+  `DiaChi` varchar(450) DEFAULT NULL,
   PRIMARY KEY (`SDT`),
   UNIQUE KEY `SDT_UNIQUE` (`SDT`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `khachhang`
---
-
-LOCK TABLES `khachhang` WRITE;
-/*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
-INSERT INTO `khachhang` VALUES ('1','abc','123456789','123','0000-00-00');
-/*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `luongchonhanvien`
@@ -381,15 +233,6 @@ CREATE TABLE `luongchonhanvien` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `luongchonhanvien`
---
-
-LOCK TABLES `luongchonhanvien` WRITE;
-/*!40000 ALTER TABLE `luongchonhanvien` DISABLE KEYS */;
-/*!40000 ALTER TABLE `luongchonhanvien` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `mon`
 --
 
@@ -408,18 +251,8 @@ CREATE TABLE `mon` (
   PRIMARY KEY (`MonID`),
   KEY `fk_mon_dm_idx` (`DanhMuc`),
   CONSTRAINT `fk_mon_dm` FOREIGN KEY (`DanhMuc`) REFERENCES `danhmuc` (`DanhMucID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `mon`
---
-
-LOCK TABLES `mon` WRITE;
-/*!40000 ALTER TABLE `mon` DISABLE KEYS */;
-INSERT INTO `mon` VALUES (1,1,'Gà nướng','VNĐ','Gà nướng nguyên con','https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiDqa3-2PfXAhULMY8KHYcHA1UQjRwIBw&url=http%3A%2F%2Ftoinayangi.vn%2Fcach-tam-uop-ga-nuong%2F&psig=AOvVaw1L5wmoP9NCOL4qicTsaRIw&ust=1512729047901977',100,'\0'),(2,2,'Gà xào','VNĐ','Gà xào nguyên con','http://toinayangi.vn/wp-content/uploads/2016/08/thit-ga-xao-gung-1.jpg',300,'\0'),(3,1,'Heo nướng','VNĐ','Heo nướng nguyên con','https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiX5s2R2ffXAhXHsI8KHWYkAOAQjRwIBw&url=http%3A%2F%2Fwww.phunutoday.vn%2Fcach-lam-thit-heo-nuong-ca-ri-don-gian-thom-ngon-ai-cung-khen-d112762.html&psig=AOvVaw3VGMamp',200,'\0'),(4,2,'Heo xào','VNĐ','Heo xào nguyên con','https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjys4yY2ffXAhWLs48KHW34BccQjRwIBw&url=http%3A%2F%2Fmonanthuvi.blogspot.com%2F2015%2F03%2Fluoi-heo-xao-gieng-nghe-vi-la-gion-ngon.html&psig=AOvVaw3J0DVu91aY32wTe25DV',400,'\0');
-/*!40000 ALTER TABLE `mon` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `news`
@@ -436,15 +269,6 @@ CREATE TABLE `news` (
   PRIMARY KEY (`NewID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `news`
---
-
-LOCK TABLES `news` WRITE;
-/*!40000 ALTER TABLE `news` DISABLE KEYS */;
-/*!40000 ALTER TABLE `news` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `nhanvien`
@@ -469,18 +293,8 @@ CREATE TABLE `nhanvien` (
   KEY `fk_nv_cn_idx` (`ChiNhanh`),
   CONSTRAINT `fk_nv_cn` FOREIGN KEY (`ChiNhanh`) REFERENCES `chinhanh` (`ChiNhanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_nv_cv` FOREIGN KEY (`ChucVu`) REFERENCES `chucvu` (`ChucVuID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `nhanvien`
---
-
-LOCK TABLES `nhanvien` WRITE;
-/*!40000 ALTER TABLE `nhanvien` DISABLE KEYS */;
-INSERT INTO `nhanvien` VALUES (1,1,1,'Nguyễn Văn A','0000-00-00','1','123456789','123456789','Hồ Chí Minh',5000000);
-/*!40000 ALTER TABLE `nhanvien` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `subscriber`
@@ -494,15 +308,6 @@ CREATE TABLE `subscriber` (
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `subscriber`
---
-
-LOCK TABLES `subscriber` WRITE;
-/*!40000 ALTER TABLE `subscriber` DISABLE KEYS */;
-/*!40000 ALTER TABLE `subscriber` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tienthuenha`
@@ -525,15 +330,6 @@ CREATE TABLE `tienthuenha` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tienthuenha`
---
-
-LOCK TABLES `tienthuenha` WRITE;
-/*!40000 ALTER TABLE `tienthuenha` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tienthuenha` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tinhthanh`
 --
 
@@ -546,16 +342,6 @@ CREATE TABLE `tinhthanh` (
   PRIMARY KEY (`TinhThanhID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tinhthanh`
---
-
-LOCK TABLES `tinhthanh` WRITE;
-/*!40000 ALTER TABLE `tinhthanh` DISABLE KEYS */;
-INSERT INTO `tinhthanh` VALUES (1,'Hồ Chí Minh');
-/*!40000 ALTER TABLE `tinhthanh` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `trungtam`
@@ -572,15 +358,6 @@ CREATE TABLE `trungtam` (
   PRIMARY KEY (`TrungTamID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `trungtam`
---
-
-LOCK TABLES `trungtam` WRITE;
-/*!40000 ALTER TABLE `trungtam` DISABLE KEYS */;
-/*!40000 ALTER TABLE `trungtam` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -591,4 +368,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-07 18:03:17
+-- Dump completed on 2017-12-10 21:36:53

@@ -71,4 +71,9 @@
         <put-attribute name="title" value="Thanh toán" />
         <put-attribute name="content" value="/views/pages/food-list.jsp" />
     </definition>
+
+    <definition name="subscribe" extends="base-definition">
+        <put-attribute name="title" value="Theo dõi" />
+        <put-attribute name="content" value="/views/pages/subscribe.jsp" />
+    </definition>
 </tiles-definitions>
