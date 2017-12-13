@@ -1,3 +1,5 @@
+<%@ page import="foodGroup4.entity.Mon" %>
+<%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -28,7 +30,7 @@
                     <a href="${pageContext.request.contextPath}/order/cart">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         Giỏ hàng
-                        <b class="header-cart-count">0</b>
+                        <b class="header-cart-count"><c:out value="${sessionScope.cartInfo != null ? sessionScope.cartInfo.quantity : 0}"/></b>
                     </a>
                 </div>
             </div>
