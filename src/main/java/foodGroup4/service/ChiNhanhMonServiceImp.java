@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import foodGroup4.dto.CartInfoDto;
+import foodGroup4.dto.FoodInfoDto;
+import foodGroup4.entity.ChinhanhmonId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,6 +52,18 @@ public class ChiNhanhMonServiceImp implements ChiNhanhMonService{
 	@Override
 	public List<Chinhanhmon> getListChiNhanhMonByMon(int idMon) {
 		return chiNhanhMonDAO.getListChiNhanhMon(idMon);
+	}
+
+	@Override
+	public HashMap<Integer, Integer> getListPriceFromCartInfo(CartInfoDto cartInfo) {
+		HashMap<Integer, Integer> listPrice = new HashMap<>();
+		for(FoodInfoDto foodInfoDto: cartInfo.getFoodInfoDtos()) {
+			Mon mon = foodInfoDto.getMon();
+			ChinhanhmonId chinhanhmonId = new ChinhanhmonId(cartInfo.getChinhanh(), mon);
+			Chinhanhmon chinhanhmon = chiNhanhMonDAO.getById(chinhanhmonId);
+			listPrice.put(mon.getMonId(), chinhanhmon.getGia());
+		}
+		return listPrice;
 	}
 
 }

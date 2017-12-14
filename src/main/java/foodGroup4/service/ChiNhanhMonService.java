@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import foodGroup4.dto.CartInfoDto;
 import foodGroup4.dto.ChiNhanhMonDto;
 
 import foodGroup4.entity.Chinhanhmon;
@@ -16,4 +17,6 @@ public interface ChiNhanhMonService {
 	List<ChiNhanhMonDto> getListFoodByBranchID(int branchID);
 
 	List<Chinhanhmon> getListChiNhanhMonByMon(int idMon);
+
+	HashMap<Integer, Integer> getListPriceFromCartInfo(CartInfoDto cartInfo);
 }

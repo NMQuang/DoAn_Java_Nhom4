@@ -4,6 +4,7 @@ import foodGroup4.entity.Mon;
 
 public class FoodInfoDto {
     private int quantity;
+    private int price;
     private Mon mon;
 
     public FoodInfoDto(Mon mon) {
@@ -22,5 +23,13 @@ public class FoodInfoDto {
 
     public Mon getMon() {
         return mon;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
