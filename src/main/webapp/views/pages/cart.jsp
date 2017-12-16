@@ -87,9 +87,9 @@
                                                                                              id="total-price-food-${foodInfo.mon.monId}"><c:out
                                 value="${foodInfo.price > 0 ? foodInfo.quantity * foodInfo.price : 0}"/></b></p></td>
                         <td class="col-md-1 text-center">
-                            <button type="button" class="btn btn-danger">
+                            <a href="${pageContext.request.contextPath}/order/remove-food-from-cart/${foodInfo.mon.monId}" class="btn btn-danger">
                                 <span class="glyphicon glyphicon-remove"></span>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 </c:forEach>

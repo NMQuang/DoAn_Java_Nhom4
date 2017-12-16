@@ -30,6 +30,20 @@ public class CartInfoDto {
         quantity++;
     }
 
+    public void removeFoodFromCart(int idFood) {
+        for(int i = 0; i < foodInfoDtos.size(); i++) {
+            FoodInfoDto foodInfo = foodInfoDtos.get(i);
+            if(foodInfo.getMon().getMonId() == idFood) {
+                quantity--;
+                if(totalPrice < 0) {
+                    totalPrice = 0;
+                }
+                foodInfoDtos.remove(i);
+                return;
+            }
+        }
+    }
+
     public void setPriceForFoodFromMapPrice(HashMap<Integer, Integer> mapPrice) {
         this.totalPrice = 0;
         for(FoodInfoDto foodInfoDto: foodInfoDtos) {

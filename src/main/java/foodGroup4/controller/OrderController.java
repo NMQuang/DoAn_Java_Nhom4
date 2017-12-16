@@ -10,10 +10,7 @@ import foodGroup4.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -70,6 +67,14 @@ public class OrderController {
 		}
 
 		return "cart";
+	}
+
+	@RequestMapping(value = "/remove-food-from-cart/{idFood}", method = RequestMethod.GET)
+	public String getRemoveFoodFromCart(HttpServletRequest request, @PathVariable int idFood, Model model) {
+		CartInfoDto cartInfoDto = Utils.getCartInfoFromSession(request);
+		cartInfoDto.removeFoodFromCart(idFood);
+
+		return "redirect:/order/cart";
 	}
 
 	@RequestMapping(value="/order", method = RequestMethod.GET)
