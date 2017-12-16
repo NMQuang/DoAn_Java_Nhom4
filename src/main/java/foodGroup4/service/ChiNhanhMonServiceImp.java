@@ -61,7 +61,11 @@ public class ChiNhanhMonServiceImp implements ChiNhanhMonService{
 			Mon mon = foodInfoDto.getMon();
 			ChinhanhmonId chinhanhmonId = new ChinhanhmonId(cartInfo.getChinhanh(), mon);
 			Chinhanhmon chinhanhmon = chiNhanhMonDAO.getById(chinhanhmonId);
-			listPrice.put(mon.getMonId(), chinhanhmon.getGia());
+			if(chinhanhmon != null) {
+				listPrice.put(mon.getMonId(), chinhanhmon.getGia());
+			} else {
+				listPrice.put(mon.getMonId(), -1);
+			}
 		}
 		return listPrice;
 	}

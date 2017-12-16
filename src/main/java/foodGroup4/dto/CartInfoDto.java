@@ -33,8 +33,11 @@ public class CartInfoDto {
     public void setPriceForFoodFromMapPrice(HashMap<Integer, Integer> mapPrice) {
         this.totalPrice = 0;
         for(FoodInfoDto foodInfoDto: foodInfoDtos) {
-            foodInfoDto.setPrice(mapPrice.get(foodInfoDto.getMon().getMonId()));
-            totalPrice += foodInfoDto.getPrice() * foodInfoDto.getQuantity();
+            int priceFood = mapPrice.get(foodInfoDto.getMon().getMonId());
+            foodInfoDto.setPrice(priceFood);
+            if(priceFood > 0) {
+                totalPrice += foodInfoDto.getPrice() * foodInfoDto.getQuantity();
+            }
         }
     }
 

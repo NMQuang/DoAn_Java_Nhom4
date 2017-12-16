@@ -453,3 +453,7 @@ td.middle {
     padding-top: 10px;
     color: red;
 }
+
+.error-food {
+    background: #f96f57;
+}

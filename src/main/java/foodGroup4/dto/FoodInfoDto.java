@@ -8,25 +8,23 @@ public class FoodInfoDto {
     private Mon mon;
 
     public FoodInfoDto(Mon mon) {
-        this.mon = mon;
         this.quantity = 1;
-    }
-
-    public void setMon(Mon mon) {
+        this.price = -1;
         this.mon = mon;
     }
 
-    public int getQuantity() {
-
-        return quantity;
+    public int getPrice() {
+        return price;
     }
 
     public Mon getMon() {
         return mon;
     }
 
-    public int getPrice() {
-        return price;
+    public int getQuantity() {
+
+        return quantity;
+
     }
 
     public void setPrice(int price) {
