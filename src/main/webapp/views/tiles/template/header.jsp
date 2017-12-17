@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!-- Header -->
 <div class="header">
     <div class="container">
@@ -75,15 +74,15 @@
                         <i class="fa fa-sign-in"></i> &nbsp<b>ĐĂNG NHẬP</b>
                     </a>
                     <div class="dropdown-menu form-login" style="padding: 15px; padding-bottom: 10px;">
-                        <form class="form-horizontal" accept-charset="UTF-8">
-                            <input id="usernameLogin" class="form-control form-login" type="text" name="usernameLogin" placeholder="Số điện thoại..." />
-                            <input id="passwordLogin" class="form-control form-login" type="password" name="passwordLogin" placeholder="Mật khẩu..."/>
+                        <sform method="post" modelAttribute="customer" action="${pageContext.request.contextPath}/customer/login" class="form-horizontal" accept-charset="UTF-8">
+                            <input id="usernameLogin" path="sdt" class="form-control form-login" type="text" name="usernameLogin" placeholder="Số điện thoại..." />
+                            <input id="passwordLogin" path="password" class="form-control form-login" type="password" name="passwordLogin" placeholder="Mật khẩu..."/>
                             <label class="form-check-label">
-                                <input id="saveLogin" name="saveLogin" type="checkbox" class="form-check-input">
+                                <spring:input id="saveLogin" name="saveLogin" type="checkbox" class="form-check-input"/>
                                 Ghi nhớ đăng nhập
                             </label>
                             <button class="btn btn-primary pull-right" type="submit">Đăng nhập</button>
-                        </form>
+                        <form>
                     </div>
                 </li>
             </ul>

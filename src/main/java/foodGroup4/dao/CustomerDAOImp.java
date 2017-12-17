@@ -13,19 +13,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Component
-public class CustomerDAOImp extends HibernateUtil implements CustomerDAO{
+public class CustomerDAOImp extends HibernateUtil implements CustomerDAO {
 
-    public void subscribe(Subscriber subscriber) {
-        this.create(subscriber);
-    }
+	public void subscribe(Subscriber subscriber) {
+		this.create(subscriber);
+	}
+
+	@Override
+	public void save(Khachhang customer) {
+		// TODO Auto-generated method stub
+		create(customer);
+	}
 }
-
-
-
-
-
-
-
-
-
-

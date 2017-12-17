@@ -20,15 +20,15 @@
 						<div class="caption">
 							<h4>${item.ten }</h4>
 							<p price-min="${listPrices[item.monId][0]}" price-max="${listPrices[item.monId][1]}" class="_show_price">
-								<i class="fa fa-tag" aria-hidden="true" ></i> &nbsp<span class="_price" ></span> 
+								<i class="fa fa-tag" aria-hidden="true" ></i> &nbsp<span class="_price" ></span>
 							</p>
 						</div>
 					</a>
 				</div>
 			</c:forEach>
 		</div>
-		<% int id = (int)request.getAttribute("id"); 
-			int pages = (int)request.getAttribute("pages");%>
+		<% int id = (Integer)request.getAttribute("id");
+			int pages = (Integer)request.getAttribute("pages");%>
 		<c:set var ="URL" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 		<c:set var ="URL" value="${URL}?${param.q != null? 'q=' +=param.q +='&':'' }" />
 		<div style="text-align: center">
