@@ -10,8 +10,61 @@
         <put-attribute name="content" value="" />
     </definition>
 
+    <!-- QUAN LY -->
     <definition name="quanly-index" extends="base-definition">
-        <put-attribute name="title" value="Index" />
-        <put-attribute name="content" value="/views/pages/quanly/index.jsp" />
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/dashboard.jsp" />
     </definition>
+
+    <definition name="quanly-list-chi-nhanh" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/list-chi-nhanh.jsp" />
+    </definition>
+
+    <definition name="quanly-chi-tiet-chi-nhanh" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/chi-tiet-chi-nhanh.jsp" />
+    </definition>
+
+    <definition name="quanly-them-chi-nhanh" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/them-chi-nhanh.jsp" />
+    </definition>
+
+    <definition name="quanly-list-danh-muc" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/list-danh-muc.jsp" />
+    </definition>
+
+    <definition name="quanly-chi-tiet-danh-muc" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/chi-tiet-danh-muc.jsp" />
+    </definition>
+
+    <definition name="quanly-them-danh-muc" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/them-danh-muc.jsp" />
+    </definition>
+
+    <definition name="quanly-list-mon-an" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/list-mon-an.jsp" />
+    </definition>
+
+    <definition name="quanly-chi-tiet-mon-an" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/chi-tiet-mon-an.jsp" />
+    </definition>
+
+    <definition name="quanly-them-mon-an" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/them-mon-an.jsp" />
+    </definition>
+
+    <definition name="quanly-them-mon-an-vao-danh-muc" extends="base-definition">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="content" value="/views/pages/quanly/them-mon-an-vao-danh-muc.jsp" />
+    </definition>
+
+    <!-- /QUAN LY -->
 </tiles-definitions>

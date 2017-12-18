@@ -1,60 +1,48 @@
 <%@page pageEncoding="UTF-8" contentType="text/html" %>
 
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-    <div class="row">
-        <ol class="breadcrumb">
-            <li><a href="#">
-                <em class="fa fa-home"></em>
-            </a></li>
-            <li class="active">Dashboard</li>
-        </ol>
-    </div><!--/.row-->
-
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <a href="#" class="btn btn-default pull-right fix"><b>+</b> Add new categories</a>
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+    <div class="profile-sidebar">
+        <div class="profile-userpic">
+            <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
         </div>
-
-        <table class="table table-striped custab">
-            <thead>
-            <tr>
-                <th class="text-center red-text-table">ID</th>
-                <th>Danh muc</th>
-                <th>Ten</th>
-                <th>Don vi tinh</th>
-                <th>Mo ta</th>
-                <th>Hinh anh</th>
-                <th>So luong ban</th>
-            </tr>
-            </thead>
-            <tr>
-                <td class="text-center red-text-table">1</td>
-                <td>ten danh muc</td>
-                <td>ten san pham</td>
-                <td>don vi tinh</td>
-                <td>mo ta</td>
-                <td>hinh anh</td>
-                <td>so luong ban</td>
-            </tr>
-            <tr>
-                <td class="text-center red-text-table">2</td>
-                <td>ten danh muc</td>
-                <td>ten san pham</td>
-                <td>don vi tinh</td>
-                <td>mo ta</td>
-                <td>hinh anh</td>
-                <td>so luong ban</td>
-            </tr>
-            <tr>
-                <td class="text-center red-text-table">3</td>
-                <td>ten danh muc</td>
-                <td>ten san pham</td>
-                <td>don vi tinh</td>
-                <td>mo ta</td>
-                <td>hinh anh</td>
-                <td>so luong ban</td>
-                <!--      <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td> -->
-            </tr>
-        </table>
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name">Username</div>
+            <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+        </div>
+        <div class="clear"></div>
     </div>
-</div>
+    <div class="divider"></div>
+    <form role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+    </form>
+    <ul class="nav menu">
+        <li class="active"><a href="index.html"><em class="fa fa-bars">&nbsp;</em> Dashboard </a></li>
+        <li><a href="danh_sach_mon_an.html"><em class="fa fa-cutlery">&nbsp;</em> Danh sách món ăn  </a></li>
+        <li><a href="danh_sach_danh_muc.html"><em class="fa fa-list-alt">&nbsp;</em> Danh mục món ăn</a></li>
+        <li><a href="danh_sach_chi_nhanh.html"><em class="fa fa-globe">&nbsp;</em> Danh sách chi nhánh </a></li>
+        <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+            <em class="fa fa-bar-chart">&nbsp;</em> Báo cáo <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+        </a>
+            <ul class="children collapse" id="sub-item-1">
+                <li><a class="" href="#">
+                    <span class="fa fa-arrow-right">&nbsp;</span> Doanh thu
+                </a></li>
+                <li><a class="" href="#">
+                    <span class="fa fa-arrow-right">&nbsp;</span> Đơn hàng
+                </a></li>
+                <li><a class="" href="#">
+                    <span class="fa fa-arrow-right">&nbsp;</span> Chi phí
+                </a></li>
+                <li><a class="" href="#">
+                    <span class="fa fa-arrow-right">&nbsp;</span> Món ăn
+                </a></li>
+                <li><a class="" href="#">
+                    <span class="fa fa-arrow-right">&nbsp;</span> Khách hàng
+                </a></li>
+            </ul>
+        </li>
+        <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Đăng xuất </a></li>
+    </ul>
+</div><!--/.sidebar-->
