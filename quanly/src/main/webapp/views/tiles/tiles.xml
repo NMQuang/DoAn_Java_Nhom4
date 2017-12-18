@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="base-definition"
+                template="/views/tiles/layouts/defaultLayout.jsp">
+        <put-attribute name="navigation" value="/views/tiles/template/navigation.jsp" />
+        <put-attribute name="sidebar" value="/views/tiles/template/sidebar.jsp" />
+        <put-attribute name="content" value="" />
+    </definition>
+
+    <definition name="quanly-index" extends="base-definition">
+        <put-attribute name="title" value="Index" />
+        <put-attribute name="content" value="/views/pages/quanly/index.jsp" />
+    </definition>
+</tiles-definitions>

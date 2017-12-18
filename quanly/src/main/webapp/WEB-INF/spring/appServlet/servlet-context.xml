@@ -22,7 +22,7 @@
 	<!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />-->
 	<!--</context:component-scan>-->
 
-	<context:component-scan base-package="quanly.*" />
+	<context:component-scan base-package="foodGroup4Quanly" />
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	<context:annotation-config />
@@ -73,24 +73,24 @@
 		<property name="annotatedClasses">
 			<list>
 
-				<value>foodGroup4.quanly.entity.AccountAdmin</value>
-				<value>foodGroup4.quanly.entity.Ban</value>
-				<value>foodGroup4.quanly.entity.Chinhanh</value>
-				<value>foodGroup4.quanly.entity.Chinhanhmon</value>
-				<value>foodGroup4.quanly.entity.Chiphingay</value>
-				<value>foodGroup4.quanly.entity.Chitiethoadon</value>
-				<value>foodGroup4.quanly.entity.Chucvu</value>
-				<value>foodGroup4.quanly.entity.Danhmuc</value>
-				<value>foodGroup4.quanly.entity.Hoadon</value>
-				<value>foodGroup4.quanly.entity.Khachhang</value>
-				<value>foodGroup4.quanly.entity.Luongchonhanvien</value>
-				<value>foodGroup4.quanly.entity.Mon</value>
-				<value>foodGroup4.quanly.entity.News</value>
-				<value>foodGroup4.quanly.entity.Nhanvien</value>
-				<value>foodGroup4.quanly.entity.Subscriber</value>
-				<value>foodGroup4.quanly.entity.Tienthuenha</value>
-				<value>foodGroup4.quanly.entity.Tinhthanh</value>
-				<value>foodGroup4.quanly.entity.Trungtam</value>
+				<value>foodGroup4Quanly.entity.AccountAdmin</value>
+				<value>foodGroup4Quanly.entity.Ban</value>
+				<value>foodGroup4Quanly.entity.Chinhanh</value>
+				<value>foodGroup4Quanly.entity.Chinhanhmon</value>
+				<value>foodGroup4Quanly.entity.Chiphingay</value>
+				<value>foodGroup4Quanly.entity.Chitiethoadon</value>
+				<value>foodGroup4Quanly.entity.Chucvu</value>
+				<value>foodGroup4Quanly.entity.Danhmuc</value>
+				<value>foodGroup4Quanly.entity.Hoadon</value>
+				<value>foodGroup4Quanly.entity.Khachhang</value>
+				<value>foodGroup4Quanly.entity.Luongchonhanvien</value>
+				<value>foodGroup4Quanly.entity.Mon</value>
+				<value>foodGroup4Quanly.entity.News</value>
+				<value>foodGroup4Quanly.entity.Nhanvien</value>
+				<value>foodGroup4Quanly.entity.Subscriber</value>
+				<value>foodGroup4Quanly.entity.Tienthuenha</value>
+				<value>foodGroup4Quanly.entity.Tinhthanh</value>
+				<value>foodGroup4Quanly.entity.Trungtam</value>
 			</list>
 		</property>
 
