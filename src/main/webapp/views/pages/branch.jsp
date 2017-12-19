@@ -94,7 +94,8 @@
                     <img alt="Image" src="<c:url value="/resources/images/mon-an/${item.pk.mon.hinhAnh }"/>" class="img-responsive">
                     <div class="caption">
                         <h4>${item.pk.mon.ten }</h4>
-                        <p><i class="fa fa-tag" aria-hidden="true"></i> &nbsp Giá: ${item.gia } ${item.pk.mon.donViTinh }</p>
+                        <p>
+                        <i class="fa fa-tag" aria-hidden="true"></i> &nbsp<span class="_single_price" price="${item.gia }"></span> VND</p>
                     </div>
                 </a>
             </div>
