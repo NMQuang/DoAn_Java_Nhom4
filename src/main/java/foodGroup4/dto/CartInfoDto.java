@@ -8,13 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CartInfoDto {
-    private int quantity;
     private int totalPrice;
     private List<FoodInfoDto> foodInfoDtos;
     private Chinhanh chinhanh;
 
     public CartInfoDto() {
-        this.quantity = 0;
         this.totalPrice = 0;
         this.foodInfoDtos = new ArrayList<>();
     }
@@ -22,19 +20,18 @@ public class CartInfoDto {
     public void addFoodToCart(Mon mon) {
         for(FoodInfoDto foodInfoDto : this.foodInfoDtos) {
             if(mon.getMonId() == foodInfoDto.getMon().getMonId()) {
+                foodInfoDto.setQuantity(foodInfoDto.getQuantity() + 1);
                 return;
             }
         }
         FoodInfoDto foodInfoDto = new FoodInfoDto(mon);
         this.foodInfoDtos.add(foodInfoDto);
-        quantity++;
     }
 
     public void removeFoodFromCart(int idFood) {
         for(int i = 0; i < foodInfoDtos.size(); i++) {
             FoodInfoDto foodInfo = foodInfoDtos.get(i);
             if(foodInfo.getMon().getMonId() == idFood) {
-                quantity--;
                 if(totalPrice < 0) {
                     totalPrice = 0;
                 }
@@ -55,8 +52,16 @@ public class CartInfoDto {
         }
     }
 
+    public void setQuantityForFoodFromMapQuantity(MapQuantityFoodDto mapQuantity) {
+        for(FoodInfoDto foodInfoDto: foodInfoDtos) {
+            int quantity = mapQuantity.getQuantity(foodInfoDto.getMon().getMonId());
+            quantity = quantity > 0 ? quantity : 1;
+            foodInfoDto.setQuantity(quantity);
+        }
+    }
+
     public int getQuantity() {
-        return quantity;
+        return foodInfoDtos.size();
     }
 
     public List<FoodInfoDto> getFoodInfoDtos() {

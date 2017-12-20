@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script>
     function changeBranch(element) {
@@ -32,8 +33,14 @@
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
             <c:if test="${sessionScope.cartInfo.quantity > 0}">
+                <form:form action="${pageContext.request.contextPath}/order/order-info" method="post" modelAttribute="mapQuantityFood">
             <div style="margin-top: 14px;">
-                <h4 style="float: left;margin-right: 12px"><b>Chọn chi nhánh thanh toán</b></h4>
+                <c:if test="${error != null}">
+                    <div class="alert alert-danger">
+                        <strong>${error}</strong>
+                    </div>
+                </c:if>
+                <h4 style="float: left;margin-right: 12px"><b>Chọn chi nhánh thanh toán thanh toán</b></h4>
                 <select onchange="changeBranch(this)" class="list-group-item" style="width: 400px">
                     <option value="-1" ${sessionScope.cartInfo.chinhanh != null ? "" : "selected"}>Chọn chi nhánh thanh toán</option>
                     <c:forEach items="${chinhanhs}" var="chinhanh">
@@ -42,6 +49,7 @@
                 </select>
             </div>
             <h4 style="padding-top: 14px"> <b>Thông tin giỏ hàng</b> </h4>
+                    <small style="color:red">(*) Những món ăn không có trong chi nhánh sẽ bị bỏ qua</small>
             <hr>
             <table class="table table-hover table-bordered">
                 <thead>
@@ -77,8 +85,8 @@
                             </div>
                         </td>
                         <td class="col-md-1" style="text-align: center">
-                            <input onchange="changeQuantityFood(this)" type="number" min="1" class="form-control"
-                                   data-id="${foodInfo.mon.monId}" value="<c:out value="${foodInfo.quantity}"/>">
+                            <input name="map[${foodInfo.mon.monId}]" onchange="changeQuantityFood(this)" type="number" min="1" class="form-control"
+                                   data-id="${foodInfo.mon.monId}" value="${foodInfo.quantity}"/>
                         </td>
                         <td class="col-md-1 text-center"><p class="cart-text-padding-top"><b
                                 id="price-food-${foodInfo.mon.monId}"><c:out
@@ -108,14 +116,17 @@
                 </tbody>
             </table>
             <div class="pull-right" style="margin-bottom: 20px">
-                <button type="button" class="btn btn-success btn-lg">
+                <button type="submit" class="btn btn-success btn-lg">
                     Thanh toán
                 </button>
             </div>
+                </form:form>
             </c:if>
             <c:if test="${sessionScope.cartInfo.quantity == 0}">
-                <div style="min-height: 400px;color: red">
-                    <h4><b>Không có món ăn để thanh toán</b></h4>
+                <div style="margin-top: 10px;min-height: 300px" >
+                    <div class="alert alert-danger">
+                        <strong>Không có món ăn để thanh toán</strong>
+                    </div>
                 </div>
             </c:if>
         </div>

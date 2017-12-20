@@ -27,6 +27,10 @@ public class FoodInfoDto {
 
     }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public void setPrice(int price) {
         this.price = price;
     }
