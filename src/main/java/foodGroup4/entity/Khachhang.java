@@ -1,6 +1,9 @@
 package foodGroup4.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import java.sql.Date;
 import java.util.Set;
 
@@ -11,12 +14,15 @@ public class Khachhang {
     private String ten;
     private String cmnd;
     private String password;
+    private String rePassword;
     private Date ngayTao;
     private String diaChi;
     private Set<Hoadon> hoadons;
 
     @Id
     @Column(name = "SDT")
+    @NotNull
+    @Size(min = 10, max = 11)
     public String getSdt() {
         return sdt;
     }
@@ -27,6 +33,8 @@ public class Khachhang {
 
     @Basic
     @Column(name = "Ten")
+    @NotNull
+    @Size(min = 5, max = 50)
     public String getTen() {
         return ten;
     }
@@ -37,6 +45,8 @@ public class Khachhang {
 
     @Basic
     @Column(name = "CMND")
+    @NotNull
+    @Size(min = 11, max = 11)
     public String getCmnd() {
         return cmnd;
     }
@@ -47,6 +57,8 @@ public class Khachhang {
 
     @Basic
     @Column(name = "Password")
+    @NotNull
+    @Size(min = 5, max = 45)
     public String getPassword() {
         return password;
     }
@@ -56,7 +68,21 @@ public class Khachhang {
     }
 
     @Basic
+    @Column(name = "Password")
+    @NotNull
+    @Size(min = 5, max = 45)
+    @Transient
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    public void setRePassword(String repPassword) {
+        this.rePassword = repPassword;
+    }
+
+    @Basic
     @Column(name = "NgayTao")
+    @NotNull
     public Date getNgayTao() {
         return ngayTao;
     }
@@ -67,6 +93,8 @@ public class Khachhang {
 
     @Basic
     @Column
+    @NotNull
+    @Size(min = 5, max = 100)
     public String getDiaChi() {
         return diaChi;
     }
