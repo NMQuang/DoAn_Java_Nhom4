@@ -2,6 +2,8 @@ package foodGroup4.controller;
 
 import foodGroup4.common.Utils;
 import foodGroup4.dto.CartInfoDto;
+import foodGroup4.dto.FoodInfoDto;
+import foodGroup4.dto.MapQuantityFoodDto;
 import foodGroup4.entity.Chinhanh;
 import foodGroup4.entity.Mon;
 import foodGroup4.service.ChiNhanhMonService;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -66,7 +69,18 @@ public class OrderController {
 			cartInfoDto.setPriceForFoodFromMapPrice(mapPrice);
 		}
 
+		HashMap<Integer, Integer> mapQuantityFood = createMapQuantityFood(cartInfoDto);
+		model.addAttribute("mapQuantityFood", mapQuantityFood);
+
 		return "cart";
+	}
+
+	private HashMap<Integer, Integer> createMapQuantityFood(CartInfoDto cartInfo) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		for(FoodInfoDto foodInfoDto: cartInfo.getFoodInfoDtos()) {
+			map.put(foodInfoDto.getMon().getMonId(), foodInfoDto.getQuantity());
+		}
+		return map;
 	}
 
 	@RequestMapping(value = "/remove-food-from-cart/{idFood}", method = RequestMethod.GET)
@@ -77,8 +91,21 @@ public class OrderController {
 		return "redirect:/order/cart";
 	}
 
-	@RequestMapping(value="/order", method = RequestMethod.GET)
-	public String order(Model model){
+	@RequestMapping(value="/order-info", method = RequestMethod.POST)
+	public String order(HttpServletRequest request, Model model,
+						@ModelAttribute(value = "mapQuantityFood") MapQuantityFoodDto mapQuantityFoodDto,
+						RedirectAttributes redirectAttributes){
+		CartInfoDto cartInfoDto = Utils.getCartInfoFromSession(request);
+		cartInfoDto.setQuantityForFoodFromMapQuantity(mapQuantityFoodDto);
+
+		if(cartInfoDto.getChinhanh() == null) {
+			redirectAttributes.addFlashAttribute("error", "Chưa chọn chi nhánh");
+			return "redirect:/order/cart";
+		}
+
+		if(cartInfoDto.getQuantity() <= 0 || cartInfoDto.getTotalPrice() <= 0) {
+			return "redirect:/order/cart";
+		}
 
 		return "order";
 	}
