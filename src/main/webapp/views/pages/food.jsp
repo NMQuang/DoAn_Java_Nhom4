@@ -12,8 +12,8 @@
                     <h3>${mon.ten }</h3>
                     <p> ${mon.moTa }</p>
                     <div class="text-center">
-                        <button class="btn btn-success btn-lg">Đặt hàng</button>
-                        <a href="cart.html" class="btn btn-info btn-lg">Xem giỏ hàng</a>
+                        <a href="${pageContext.request.contextPath}/order/add-to-cart/${mon.monId}" class="btn btn-success btn-lg">Đặt hàng</a>
+                        <a href="${pageContext.request.contextPath}/order/cart" class="btn btn-info btn-lg">Xem giỏ hàng</a>
                     </div>
                 </div>
             </div>

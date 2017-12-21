@@ -30,8 +30,7 @@ public class CustomerServiceImp implements CustomerService {
 	}
 
 	@Override
-	public boolean login(String username, String password) {
-		// TODO Auto-generated method stub
-		return false;
+	public Khachhang findBySdt(String sdt) {
+		return customerDAO.findBySdt(sdt);
 	}
 }

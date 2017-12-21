@@ -7,5 +7,5 @@ public interface CustomerService {
 
 	void save(Khachhang customer);
 
-	boolean login(String username, String password);
+	Khachhang findBySdt(String sdt);
 }
