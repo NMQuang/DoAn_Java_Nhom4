@@ -1,55 +1,17 @@
-<%@ page contentType="text/heml" pageEncoding="UTF-8" %>
+<%@ page contentType="text/heml" pageEncoding="UTF-8"%>
 
 <div class="container">
-    <div class="col-lg-10 col-lg-offset-1">
-        <h4 style="padding-top: 14px"> Tạo tài khoản khách hàng mới </h4>
-        <hr>
-        <form class="form-horizontal">
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="phoneNumber">Số điện thoại</label>
-                <div class="col-md-6">
-                    <input id="phoneNumber" name="phoneNumber" type="text" placeholder="" class="form-control input-md" required="">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="password">Mật khẩu</label>
-                <div class="col-md-6">
-                    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="rePassword">Nhập lại mật khẩu</label>
-                <div class="col-md-6">
-                    <input id="rePassword" name="rePassword" type="password" placeholder="" class="form-control input-md" required="">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="name">Họ và tên</label>
-                <div class="col-md-6">
-                    <input id="name" name="name" type="text" class="form-control input-md" required="">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="gender">Giới tính</label>
-                <div class="col-md-2">
-                    <select id="gender" name="gender" class="form-control">
-                        <option value="1">Nam</option>
-                        <option value="2">Nữ</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="location">Địa chỉ</label>
-                <div class="col-md-6">
-                    <textarea id="location" name="location" placeholder="" class="form-control input-md" required=""></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div style="text-align: center">
-                    <button id="submit" name="submit" class="btn btn-primary btn-lg btn-register">Đăng ký</button>
-                </div>
-            </div>
-        </form>
-    </div>
+	<div class="col-lg-10 col-lg-offset-1">
+		<h4 style="padding-top: 14px">Tạo tài khoản khách hàng mới</h4>
+		<form class="navbar-form" role="search" style="margin-left: 28px">
+			<div class="input-group col-md-12" style="">
+				<input type="text" class="form-control" placeholder="Tên món ăn"
+					name="q">
+				<div class="input-group-btn">
+					<button id="btn-search" class="btn btn-default flat-butt"
+						type="submit">Tìm kiếm</button>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>

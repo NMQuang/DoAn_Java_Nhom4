@@ -43,7 +43,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postCart(@ModelAttribute(value = "customerForm") Khachhang customer, BindingResult bindingResult, Model model) throws Exception {
+	public String getCart(@ModelAttribute(value = "customerForm") Khachhang customer, BindingResult bindingResult, Model model) throws Exception {
 
 		customerValidator.validate(customer, bindingResult);
 

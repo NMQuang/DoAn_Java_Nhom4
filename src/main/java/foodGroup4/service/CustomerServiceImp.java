@@ -28,4 +28,10 @@ public class CustomerServiceImp implements CustomerService {
 	public void save(Khachhang customer) {
 		customerDAO.save(customer);
 	}
+
+	@Override
+	public boolean login(String username, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
