@@ -28,4 +28,9 @@ public class CustomerServiceImp implements CustomerService {
 	public void save(Khachhang customer) {
 		customerDAO.save(customer);
 	}
+
+	@Override
+	public Khachhang findBySdt(String sdt) {
+		return customerDAO.findBySdt(sdt);
+	}
 }

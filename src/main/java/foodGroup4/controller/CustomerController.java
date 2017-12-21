@@ -23,9 +23,6 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 
-	@Autowired
-	private CustomerValidator customerValidator;
-
 	public void setCustomerService(CustomerService customerService) {
 		this.customerService = customerService;
 	}
@@ -35,39 +32,9 @@ public class CustomerController {
 		return "profile-customer";
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String getCart(Model model) {
-
-		model.addAttribute("customerForm", new Khachhang());
-		return "register";
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postCart(@ModelAttribute(value = "customerForm") Khachhang customer, BindingResult bindingResult, Model model) throws Exception {
-
-		customerValidator.validate(customer, bindingResult);
-
-		if (bindingResult.hasErrors()) {
-			return "register";
-		}
-		customerService.save(customer);
-
-		return "redirect:/login";
-	}
-
 	@RequestMapping(value = "/change-password", method = RequestMethod.GET)
 	public String changePassword(Model model) {
 
 		return "change-password";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/x-www-form-urlencoded;charset=UTF-8")
-	public String login(ModelMap model, @ModelAttribute(value = "customer") @Valid Khachhang customer, BindingResult bindingResult) {
-
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("customer", customer);
-			return "";
-		}
-		return "home";
 	}
 }

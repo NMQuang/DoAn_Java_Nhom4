@@ -457,3 +457,7 @@ td.middle {
 .error-food {
     background: #f96f57;
 }
+
+.form-group .error {
+    color: red;
+}

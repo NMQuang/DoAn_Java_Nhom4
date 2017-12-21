@@ -24,4 +24,9 @@ public class CustomerDAOImp extends HibernateUtil implements CustomerDAO {
 		// TODO Auto-generated method stub
 		create(customer);
 	}
+
+	@Override
+	public Khachhang findBySdt(String sdt) {
+		return this.fetchById(sdt, Khachhang.class);
+	}
 }

@@ -39,32 +39,34 @@ public class CustomerValidator implements Validator {
 		try {
 			Khachhang khachHang = (Khachhang) kh;
 
-			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sdt", "NotEmpty");
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sdt", "field.empty");
 			if (khachHang.getSdt().length() < 10 || khachHang.getSdt().length() > 11) {
-				errors.rejectValue("sdt", "Size.customerForm.sdt");
+				errors.rejectValue("sdt", "khachhang.sdt.invalid");
+			} else {
+				Khachhang dumpKhachhang = customerService.findBySdt(khachHang.getSdt());
+				if(dumpKhachhang != null && dumpKhachhang.getPassword() != null) {
+					errors.rejectValue("sdt", "khachhang.sdt.dumplicate");
+				}
 			}
-//			if (userService.getUserByUsername(user.getUsername()) != null) {
-//				errors.rejectValue("username", "Duplicate.userForm.username");
-//			}
 
-			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "field.empty");
 			if (khachHang.getPassword().length() < 5 || khachHang.getPassword().length() > 45) {
-				errors.rejectValue("password", "Size.customerForm.password");
+				errors.rejectValue("password", "khachhang.password.invalid");
 			}
 			if (!khachHang.getRePassword().equals(khachHang.getPassword())) {
-				errors.rejectValue("rePassword", "Diff.customerForm.rePassword");
+				errors.rejectValue("rePassword", "khachhang.repassword.invalid");
 			}
 
-			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ten", "NotEmpty");
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ten", "field.empty");
 			if (khachHang.getTen().length() < 5 || khachHang.getTen().length() > 50) {
-				errors.rejectValue("ten", "Size.customerForm.ten");
+				errors.rejectValue("ten", "khachhang.ten.invalid");
 			}
 
 //			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "NotEmpty");
 
-			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "diaChi", "NotEmpty");
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "diaChi", "field.empty");
 			if (khachHang.getDiaChi().length() < 5 || khachHang.getDiaChi().length() > 100) {
-				errors.rejectValue("diaChi", "Size.customerForm.diaChi");
+				errors.rejectValue("diaChi", "khachhang.diachi.invalid");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
