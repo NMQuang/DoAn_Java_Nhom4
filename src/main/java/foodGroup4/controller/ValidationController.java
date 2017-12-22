@@ -4,6 +4,7 @@ import foodGroup4.common.CustomerValidator;
 import foodGroup4.entity.Khachhang;
 import foodGroup4.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,9 @@ public class ValidationController {
 
     @Autowired
     private CustomerValidator customerValidator;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String getRegister(Model model) {
@@ -49,6 +53,10 @@ public class ValidationController {
         if (bindingResult.hasErrors()) {
             return "register";
         }
+
+        // Hash password
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+
         customerService.save(customer);
 
         return "redirect:/login";
