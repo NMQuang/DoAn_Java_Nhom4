@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+ <beans xmlns="http://www.springframework.org/schema/beans"   
+    xmlns:context="http://www.springframework.org/schema/context"   
+    xmlns:mvc="http://www.springframework.org/schema/mvc"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:security="http://www.springframework.org/schema/security"   
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc   
+                              http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd  
+                                http://www.springframework.org/schema/beans  
+                                http://www.springframework.org/schema/beans/spring-beans-4.3.xsd  
+                                http://www.springframework.org/schema/context  
+                                http://www.springframework.org/schema/context/spring-context-4.3.xsd  
+                                http://www.springframework.org/schema/security   
+                                http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+      <security:http auto-config="true" use-expressions="true">  
+      	   <security:intercept-url pattern="/login" access="permitAll" />
+           <security:intercept-url pattern="/order/order-info" access="hasAnyRole('KHACH_HANG')"/>
+           <security:form-login 
+           		login-page="/login" 
+           		default-target-url="/" 
+           		authentication-failure-url="/login?error=true"
+                username-parameter="sdt"
+                password-parameter="password"
+           />
+           	<security:csrf />
+          <security:logout
+                  logout-url="/logout"
+                  logout-success-url="/login"
+          />
+
+          <security:remember-me key="uniqueAndSecret" />
+      </security:http>
+
+    <bean id="customerDAO" class="foodGroup4.dao.CustomerDAOImp">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="loginService" class="foodGroup4.service.LoginService">
+        <property name="customerDAO" ref="customerDAO"/>
+    </bean>
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="loginService">
+           <security:password-encoder hash="bcrypt"/>
+        </security:authentication-provider> 
+      </security:authentication-manager>       
+ </beans>   
