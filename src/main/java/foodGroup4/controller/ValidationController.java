@@ -34,7 +34,12 @@ public class ValidationController {
         return "register";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/x-www-form-urlencoded;charset=UTF-8")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String getLogin(Model model) {
+        return "login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(ModelMap model, @ModelAttribute(value = "customer") @Valid Khachhang customer, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {

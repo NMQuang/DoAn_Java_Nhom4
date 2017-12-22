@@ -73,20 +73,9 @@
                     <a href="${pageContext.request.contextPath}/register"><i class="fa fa-pencil-square-o"></i> &nbsp <b>ĐĂNG KÝ</b></a>
                 </li>
                 <li class="dropdown menu-li" style="padding-right: 15px">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                    <a class="dropdown-toggle" href="<c:url value="/login"/>">
                         <i class="fa fa-sign-in"></i> &nbsp<b>ĐĂNG NHẬP</b>
                     </a>
-                    <div class="dropdown-menu form-login" style="padding: 15px; padding-bottom: 10px;">
-                        <form method="post" action="${pageContext.request.contextPath}/customer/login" class="form-horizontal" accept-charset="UTF-8">
-                            <input id="usernameLogin" path="sdt" class="form-control form-login" type="text" name="usernameLogin" placeholder="Số điện thoại..." />
-                            <input id="passwordLogin" path="password" class="form-control form-login" type="password" name="passwordLogin" placeholder="Mật khẩu..."/>
-                            <label class="form-check-label">
-                                <input id="saveLogin" path="saveLogin" type="checkbox" class="form-check-input"/>
-                                Ghi nhớ đăng nhập
-                            </label>
-                            <button class="btn btn-primary pull-right" type="submit">Đăng nhập</button>
-                        </form>
-                    </div>
                 </li>
             </ul>
         </div>

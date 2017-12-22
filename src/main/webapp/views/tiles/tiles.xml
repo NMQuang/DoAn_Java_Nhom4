@@ -57,6 +57,11 @@
         <put-attribute name="content" value="/views/pages/register.jsp" />
     </definition>
 
+    <definition name="login" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/login.jsp" />
+    </definition>
+
     <definition name="change-password" extends="base-definition">
         <put-attribute name="title" value="Thanh toán" />
         <put-attribute name="content" value="/views/pages/change-password.jsp" />
