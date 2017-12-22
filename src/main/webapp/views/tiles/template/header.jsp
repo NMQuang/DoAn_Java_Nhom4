@@ -3,6 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!-- Header -->
 <div class="header">
     <div class="container">
@@ -68,16 +69,51 @@
                     </div>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="menu-li">
-                    <a href="${pageContext.request.contextPath}/register"><i class="fa fa-pencil-square-o"></i> &nbsp <b>ĐĂNG KÝ</b></a>
-                </li>
-                <li class="dropdown menu-li" style="padding-right: 15px">
-                    <a class="dropdown-toggle" href="<c:url value="/login"/>">
-                        <i class="fa fa-sign-in"></i> &nbsp<b>ĐĂNG NHẬP</b>
-                    </a>
-                </li>
-            </ul>
+            <sec:authorize access="isAnonymous()">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="menu-li">
+                        <a href="${pageContext.request.contextPath}/register"><i class="fa fa-pencil-square-o"></i> &nbsp <b>ĐĂNG KÝ</b></a>
+                    </li>
+                    <li class="dropdown menu-li" style="padding-right: 15px">
+                        <a class="dropdown-toggle" href="<c:url value="/login"/>">
+                            <i class="fa fa-sign-in"></i> &nbsp<b>ĐĂNG NHẬP</b>
+                        </a>
+                    </li>
+                </ul>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <sec:authentication var="user" property="principal" />
+                <script>
+                    function postLogout() {
+                        var formLogout = document.createElement("form");
+                        formLogout.setAttribute("method", "post");
+                        formLogout.setAttribute("action", "<c:url value="/logout"/>");
+
+                        var hiddenField = document.createElement("input");
+                        hiddenField.setAttribute("type", "hidden");
+                        hiddenField.setAttribute("name", "${_csrf.parameterName}");
+                        hiddenField.setAttribute("value", "${_csrf.token}");
+
+                        formLogout.appendChild(hiddenField);
+                        document.body.appendChild(formLogout);
+                        formLogout.submit();
+                    }
+                </script>
+                <div class="nav navbar-nav navbar-right">
+                    <li class="dropdown dropdown-right">
+                        <button class="dropbtn">
+                            <i class="fa fa fa-user" aria-hidden="true"></i>
+                            &nbsp<b>${user.username}</b>&nbsp
+                            <b class="caret"></b>
+                        </button>
+                        <div class="dropdown-content dropdown-menu-right" style="z-index: 3">
+                            <a href="<c:url value="/customer/profile"/>" class="right-align">Thông tin khách hàng</a>
+                            <a href="#" class="right-align">Thông tin đơn hàng</a>
+                            <a href="#" onclick="postLogout()" class="right-align">Đăng xuất</a>
+                        </div>
+                    </li>
+                </div>
+            </sec:authorize>
         </div>
         <!-- End navbar -->
     </div>

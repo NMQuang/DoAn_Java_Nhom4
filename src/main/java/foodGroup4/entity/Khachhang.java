@@ -7,6 +7,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -150,5 +152,13 @@ public class Khachhang {
 
     public void setHoadons(Set<Hoadon> hoadons) {
         this.hoadons = hoadons;
+    }
+
+    @Transient
+    public List<String> getRoles() {
+        List<String> roles = new ArrayList<>();
+        roles.add("KHACH_HANG");
+
+        return roles;
     }
 }
