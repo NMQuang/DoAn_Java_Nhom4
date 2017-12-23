@@ -103,7 +103,7 @@
                     <li class="dropdown dropdown-right">
                         <button class="dropbtn">
                             <i class="fa fa fa-user" aria-hidden="true"></i>
-                            &nbsp<b>${user.username}</b>&nbsp
+                            &nbsp<b>${user.ten}</b>&nbsp
                             <b class="caret"></b>
                         </button>
                         <div class="dropdown-content dropdown-menu-right" style="z-index: 3">

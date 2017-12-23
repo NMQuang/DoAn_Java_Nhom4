@@ -26,6 +26,11 @@ public class CustomerDAOImp extends HibernateUtil implements CustomerDAO {
 	}
 
 	@Override
+	public void update(Khachhang khachhang) {
+		super.update(khachhang);
+	}
+
+	@Override
 	public Khachhang findBySdt(String sdt) {
 		return this.fetchById(sdt, Khachhang.class);
 	}

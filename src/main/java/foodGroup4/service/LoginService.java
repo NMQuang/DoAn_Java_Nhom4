@@ -3,6 +3,7 @@ package foodGroup4.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import foodGroup4.common.CustomUserDetails;
 import foodGroup4.dao.CustomerDAO;
 import foodGroup4.entity.Khachhang;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class LoginService implements UserDetailsService {
 				grandList.add(authority);
 			}
 		}
-		UserDetails userDetails = new User(khachhang.getSdt(), khachhang.getPassword(), grandList);
+		UserDetails userDetails = new CustomUserDetails(khachhang, grandList);
 
 		return userDetails;
 	}

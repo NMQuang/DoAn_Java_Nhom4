@@ -8,5 +8,7 @@ public interface CustomerDAO {
 
 	void save(Khachhang customer);
 
+	void update(Khachhang khachhang);
+
 	Khachhang findBySdt(String sdt);
 }

@@ -9,6 +9,13 @@
                 <strong>Thông tin đăng nhập không chính xác</strong>
             </div>
         </c:if>
+        <c:if test="${not empty message}">
+            <div style="margin-top:10px">
+                <div class="alert alert-success">
+                    <strong>${message}</strong>
+                </div>
+            </div>
+        </c:if>
         <h4 style="padding-top: 14px"> THÔNG TIN TÀI KHOẢN </h4>
         <hr />
         <form:form action="${pageContext.request.contextPath}/login"

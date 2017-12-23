@@ -30,6 +30,11 @@ public class CustomerServiceImp implements CustomerService {
 	}
 
 	@Override
+	public void update(Khachhang khachhang) {
+		customerDAO.update(khachhang);
+	}
+
+	@Override
 	public Khachhang findBySdt(String sdt) {
 		return customerDAO.findBySdt(sdt);
 	}

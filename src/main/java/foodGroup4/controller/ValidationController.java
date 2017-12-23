@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -39,18 +40,12 @@ public class ValidationController {
         return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(ModelMap model, @ModelAttribute(value = "customer") @Valid Khachhang customer, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("customer", customer);
-            return "";
-        }
-        return "home";
-    }
-
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String postRegister(@ModelAttribute(value = "customerForm") Khachhang customer, BindingResult bindingResult, Model model) throws Exception {
+    public String postRegister(
+            @ModelAttribute(value = "customerForm") Khachhang customer,
+            BindingResult bindingResult,
+            Model model,
+            RedirectAttributes redirectAttributes) throws Exception {
 
         System.out.println(customer.getTen());
         customerValidator.validate(customer, bindingResult);
@@ -64,6 +59,7 @@ public class ValidationController {
 
         customerService.save(customer);
 
+        redirectAttributes.addFlashAttribute("message", "Tạo tài khoản thành công, mời bạn đăng nhập");
         return "redirect:/login";
     }
 }
