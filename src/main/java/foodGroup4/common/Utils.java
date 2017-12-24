@@ -15,4 +15,9 @@ public class Utils {
         }
         return cartInfo;
     }
+
+    public static void removeCartInfoSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("cartInfo");
+    }
 }

@@ -1,5 +1,8 @@
 package foodGroup4.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
@@ -37,6 +40,7 @@ public class Hoadon {
 
     @Basic
     @Column(name = "Ngay")
+    @CreationTimestamp
     public Timestamp getNgay() {
         return ngay;
     }
@@ -172,7 +176,7 @@ public class Hoadon {
         return result;
     }
 
-    @OneToMany(mappedBy = "pk.hoadon")
+    @OneToMany(mappedBy = "pk.hoadon", cascade = CascadeType.ALL)
     public Set<Chitiethoadon> getChitiethoadons() {
         return chitiethoadons;
     }
@@ -202,7 +206,7 @@ public class Hoadon {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Ban", referencedColumnName = "BanID", nullable = false)
+    @JoinColumn(name = "Ban", referencedColumnName = "BanID", nullable = true)
     public Ban getBan() {
         return ban;
     }
@@ -212,7 +216,7 @@ public class Hoadon {
     }
 
     @ManyToOne
-    @JoinColumn(name = "NguoiGiaoHang", referencedColumnName = "NhanVienID", nullable = false)
+    @JoinColumn(name = "NguoiGiaoHang", referencedColumnName = "NhanVienID", nullable = true)
     public Nhanvien getNhanvien() {
         return nhanvien;
     }

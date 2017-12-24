@@ -1,4 +1,4 @@
-package foodGroup4.common;
+package foodGroup4.common.validation;
 
 import foodGroup4.dto.ChangePasswordDto;
 import org.springframework.stereotype.Component;

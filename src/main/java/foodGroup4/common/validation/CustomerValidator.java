@@ -1,4 +1,4 @@
-package foodGroup4.common;
+package foodGroup4.common.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,15 +1,12 @@
 package foodGroup4.controller;
 
-import foodGroup4.common.InfoOrderValidator;
+import foodGroup4.common.validation.InfoOrderValidator;
 import foodGroup4.common.Utils;
 import foodGroup4.dto.*;
 import foodGroup4.entity.Chinhanh;
 import foodGroup4.entity.Khachhang;
 import foodGroup4.entity.Mon;
-import foodGroup4.service.ChiNhanhMonService;
-import foodGroup4.service.ChiNhanhService;
-import foodGroup4.service.CustomerService;
-import foodGroup4.service.FoodService;
+import foodGroup4.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,6 +45,9 @@ public class OrderController {
 
 	@Autowired
 	CustomerService customerService;
+
+	@Autowired
+	HoadonService hoadonService;
 
 	@Autowired
 	InfoOrderValidator infoOrderValidator;
@@ -130,18 +130,24 @@ public class OrderController {
 								 @ModelAttribute(value = "infoOrderDto") InfoOrderDto infoOrderDto,
 								 BindingResult result,
 								 Principal principal,
-								 Model model) {
-		System.out.println("Use new info: " + infoOrderDto.getUseNewInfo());
+								 Model model,
+								 RedirectAttributes redirectAttributes) {
+		Khachhang khachhang = customerService.findBySdt(principal.getName());
+		KhachhangDto khachhangDto = new KhachhangDto(khachhang);
 		if(infoOrderDto.getUseNewInfo()) {
 			infoOrderValidator.validate(infoOrderDto, result);
 			if(result.hasErrors()) {
-				Khachhang khachhang = customerService.findBySdt(principal.getName());
-				KhachhangDto khachhangDto = new KhachhangDto(khachhang);
 				model.addAttribute("khachhang", khachhangDto);
 				return "order";
 			}
 		}
+
 		CartInfoDto cartInfoDto = Utils.getCartInfoFromSession(request);
+		hoadonService.create(khachhang, cartInfoDto, infoOrderDto);
+
+		Utils.removeCartInfoSession(request);
+
+		redirectAttributes.addFlashAttribute("message", "Đặt hàng thành công");
 
 		return "redirect:/order/history";
 	}

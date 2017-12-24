@@ -34,4 +34,8 @@ public class FoodInfoDto {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public int getTotalPrice() {
+        return this.price * this.quantity;
+    }
 }

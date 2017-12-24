@@ -1,7 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="container">
     <div class="col-lg-10 col-lg-offset-1">
+        <c:if test="${not empty message}">
+            <div style="margin-top: 10px">
+                <div class="alert alert-success">
+                    <strong>${message}</strong>
+                </div>
+            </div>
+        </c:if>
         <h4 style="padding-top: 14px"> <b>Lịch sử đơn hàng </b></h4>
         <hr>
         <table class="table table-hover table-bordered">
