@@ -10,4 +10,6 @@ import java.util.List;
 public interface HoadonService {
     void create(Khachhang khachhang, CartInfoDto cartInfoDto, InfoOrderDto infoOrderDto);
     List<Hoadon> getHoaDonBySdtKhachHang(String sdt);
+
+    Hoadon findById(int id);
 }

@@ -72,6 +72,12 @@ public class HoadonServiceImp implements HoadonService {
     public List<Hoadon> getHoaDonBySdtKhachHang(String sdt) {
         return hoadonDAO.getHoaDonBySdtKhachHang(sdt);
     }
+
+    @Override
+    @Transactional
+    public Hoadon findById(int id) {
+        return hoadonDAO.findByid(id);
+    }
 }
 
 

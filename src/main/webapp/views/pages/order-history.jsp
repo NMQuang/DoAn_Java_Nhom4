@@ -35,7 +35,7 @@
                     <h4 class="text-success">${hoadon.tinhTrangGiaoHang}</h4>
                 </td>
                 <td class="text-center">
-                    <a href="<c:url value="/order/history/${hoadon.maHd}"/>" class="btn btn-info"> Chi tiết </a>
+                    <a href="<c:url value="/order/history/${hoadon.maHd}"/>" class="btn btn-info" style="float:left;margin-left:24px"> Chi tiết </a>
                     <form action="<c:url value="/order/delete/${hoadon.maHd}"/>">
                         <input type="hidden" name="id"/>
                         <button type="submit" class="btn btn-warning">Hủy</button>

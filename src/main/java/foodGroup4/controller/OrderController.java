@@ -4,6 +4,7 @@ import foodGroup4.common.validation.InfoOrderValidator;
 import foodGroup4.common.Utils;
 import foodGroup4.dto.*;
 import foodGroup4.entity.Chinhanh;
+import foodGroup4.entity.Hoadon;
 import foodGroup4.entity.Khachhang;
 import foodGroup4.entity.Mon;
 import foodGroup4.service.*;
@@ -163,8 +164,11 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/history/{id}", method = RequestMethod.GET)
-	public String getDetailOrderHisoty(Model model) {
-		return "";
+	public String getDetailOrderHisoty(Model model, @PathVariable("id") int id) {
+		Hoadon hoadon = hoadonService.findById(id);
+		model.addAttribute("hoadon", hoadon);
+
+		return "order-history-detail";
 	}
 }
 
