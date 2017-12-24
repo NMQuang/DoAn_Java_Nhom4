@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="container">
     <div class="col-lg-10 col-lg-offset-1">
@@ -22,48 +23,26 @@
             </tr>
             </thead>
             <tbody>
+            <c:forEach items="${listHoadons}" var="hoadon">
             <tr>
                 <td class="text-center">
-                    <h4>003</h4>
+                    <h4>#<fmt:formatNumber value="${hoadon.maHd}" minIntegerDigits="5" groupingUsed="false"/></h4>
                 </td>
                 <td class="text-center">
-                    <h4>29/11/2017</h4>
+                    <h4><fmt:formatDate value="${hoadon.ngayTao}" pattern="dd/MM/yyyy HH:mm:ss"/></h4>
                 </td>
                 <td class="text-center">
-                    <h4 class="text-success">Đã giao hàng</h4>
+                    <h4 class="text-success">${hoadon.tinhTrangGiaoHang}</h4>
                 </td>
                 <td class="text-center">
-                    <a href="cart.html" class="btn btn-info"> Chi tiết </a>
+                    <a href="<c:url value="/order/history/${hoadon.maHd}"/>" class="btn btn-info"> Chi tiết </a>
+                    <form action="<c:url value="/order/delete/${hoadon.maHd}"/>">
+                        <input type="hidden" name="id"/>
+                        <button type="submit" class="btn btn-warning">Hủy</button>
+                    </form>
                 </td>
             </tr>
-            <tr>
-                <td class="text-center">
-                    <h4>002</h4>
-                </td>
-                <td class="text-center">
-                    <h4>28/11/2017</h4>
-                </td>
-                <td class="text-center">
-                    <h4 class="text-info">Đang giao hàng</h4>
-                </td>
-                <td class="text-center">
-                    <a href="cart.html" class="btn btn-info"> Chi tiết </a>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center">
-                    <h4>001</h4>
-                </td>
-                <td class="text-center">
-                    <h4>27/11/2017</h4>
-                </td>
-                <td class="text-center">
-                    <h4 class="text-danger">Đã hủy đơn hàng</h4>
-                </td>
-                <td class="text-center">
-                    <a href="cart.html" class="btn btn-info"> Chi tiết </a>
-                </td>
-            </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>

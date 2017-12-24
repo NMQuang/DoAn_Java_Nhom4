@@ -153,8 +153,28 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
-	public String getOrderHistory(Model model){
-		
+	public String getOrderHistory(Model model, Principal principal){
+		List<HoadonDto> listHoadons =
+				HoadonDto.convertListHoaDonToHoaDonDto(hoadonService.getHoaDonBySdtKhachHang(principal.getName()));
+
+		model.addAttribute("listHoadons", listHoadons);
+
 		return "order-history";
 	}
+
+	@RequestMapping(value = "/history/{id}", method = RequestMethod.GET)
+	public String getDetailOrderHisoty(Model model) {
+		return "";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+

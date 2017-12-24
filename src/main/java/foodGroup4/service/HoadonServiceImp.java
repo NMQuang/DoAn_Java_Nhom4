@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -65,6 +66,11 @@ public class HoadonServiceImp implements HoadonService {
         hoadon.setChitiethoadons(chitiethoadons);
 
         hoadonDAO.create(hoadon);
+    }
+
+    @Override
+    public List<Hoadon> getHoaDonBySdtKhachHang(String sdt) {
+        return hoadonDAO.getHoaDonBySdtKhachHang(sdt);
     }
 }
 

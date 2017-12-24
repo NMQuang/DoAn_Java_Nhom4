@@ -108,7 +108,7 @@
                         </button>
                         <div class="dropdown-content dropdown-menu-right" style="z-index: 3">
                             <a href="<c:url value="/customer/profile"/>" class="right-align">Thông tin khách hàng</a>
-                            <a href="#" class="right-align">Thông tin đơn hàng</a>
+                            <a href="<c:url value="/order/history"/>" class="right-align">Đơn hàng của bạn</a>
                             <a href="#" onclick="postLogout()" class="right-align">Đăng xuất</a>
                         </div>
                     </li>
