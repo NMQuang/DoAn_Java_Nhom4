@@ -17,6 +17,7 @@ public class Hoadon {
     private String hinhThucThanhToan;
     private String diaChiGiao;
     private String sdtNguoiNhan;
+    private String hoTenNguoiNhan;
     private Set<Chitiethoadon> chitiethoadons;
     private Khachhang khachhang;
     private Chinhanh chinhanh;
@@ -122,6 +123,14 @@ public class Hoadon {
 
     public void setSdtNguoiNhan(String sdtNguoiNhan) {
         this.sdtNguoiNhan = sdtNguoiNhan;
+    }
+
+    @Basic
+    @Column(name = "hotennguoinhan")
+    public String getHoTenNguoiNhan() { return hoTenNguoiNhan; }
+
+    public void setHoTenNguoiNhan(String hoTenNguoiNhan) {
+        this.hoTenNguoiNhan = hoTenNguoiNhan;
     }
 
     @Override

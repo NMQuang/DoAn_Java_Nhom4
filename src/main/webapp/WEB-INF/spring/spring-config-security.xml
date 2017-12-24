@@ -23,13 +23,20 @@
                 username-parameter="sdt"
                 password-parameter="password"
            />
+
            	<security:csrf />
           <security:logout
+                  invalidate-session="false"
                   logout-url="/logout"
                   logout-success-url="/login"
           />
 
-          <security:remember-me key="uniqueAndSecret" />
+          <security:remember-me
+                  key="rememberme-foodgroup"
+                  remember-me-parameter="remember-me"
+                  remember-me-cookie="rememberme-foodgroup"
+                  token-validity-seconds="86400"
+          />
       </security:http>
 
     <bean id="customerDAO" class="foodGroup4.dao.CustomerDAOImp">

@@ -1,21 +1,24 @@
 package foodGroup4.controller;
 
+import foodGroup4.common.InfoOrderValidator;
 import foodGroup4.common.Utils;
-import foodGroup4.dto.CartInfoDto;
-import foodGroup4.dto.FoodInfoDto;
-import foodGroup4.dto.MapQuantityFoodDto;
+import foodGroup4.dto.*;
 import foodGroup4.entity.Chinhanh;
+import foodGroup4.entity.Khachhang;
 import foodGroup4.entity.Mon;
 import foodGroup4.service.ChiNhanhMonService;
 import foodGroup4.service.ChiNhanhService;
+import foodGroup4.service.CustomerService;
 import foodGroup4.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,12 +46,17 @@ public class OrderController {
 	@Autowired
 	ChiNhanhMonService chiNhanhMonService;
 
+	@Autowired
+	CustomerService customerService;
+
+	@Autowired
+	InfoOrderValidator infoOrderValidator;
+
 	@RequestMapping(value = "/add-to-cart/{idFood}")
 	public String getAddToCart(HttpServletRequest request, Model model, @PathVariable int idFood) {
 		Mon mon = foodService.getFood(idFood);
 		CartInfoDto cartInfoDto = Utils.getCartInfoFromSession(request);
 		cartInfoDto.addFoodToCart(mon);
-
 		return "redirect:/food";
 	}
 
@@ -94,20 +102,48 @@ public class OrderController {
 	@RequestMapping(value="/order-info", method = RequestMethod.POST)
 	public String order(HttpServletRequest request, Model model,
 						@ModelAttribute(value = "mapQuantityFood") MapQuantityFoodDto mapQuantityFoodDto,
+						Principal principal,
 						RedirectAttributes redirectAttributes){
 		CartInfoDto cartInfoDto = Utils.getCartInfoFromSession(request);
 		cartInfoDto.setQuantityForFoodFromMapQuantity(mapQuantityFoodDto);
-
 		if(cartInfoDto.getChinhanh() == null) {
 			redirectAttributes.addFlashAttribute("error", "Chưa chọn chi nhánh");
 			return "redirect:/order/cart";
 		}
 
-		if(cartInfoDto.getQuantity() <= 0 || cartInfoDto.getTotalPrice() <= 0) {
+		if(cartInfoDto.getQuantity() <= 0) {
 			return "redirect:/order/cart";
 		}
 
+		Khachhang khachhang = customerService.findBySdt(principal.getName());
+		KhachhangDto khachhangDto = new KhachhangDto(khachhang);
+		model.addAttribute("khachhang", khachhangDto);
+
+		InfoOrderDto infoOrderDto = new InfoOrderDto();
+		model.addAttribute("infoOrderDto", infoOrderDto);
+
 		return "order";
+	}
+
+	@RequestMapping(value = "/final-order", method = RequestMethod.POST)
+	public String postFinalOrder(HttpServletRequest request,
+								 @ModelAttribute(value = "infoOrderDto") InfoOrderDto infoOrderDto,
+								 BindingResult result,
+								 Principal principal,
+								 Model model) {
+		System.out.println("Use new info: " + infoOrderDto.getUseNewInfo());
+		if(infoOrderDto.getUseNewInfo()) {
+			infoOrderValidator.validate(infoOrderDto, result);
+			if(result.hasErrors()) {
+				Khachhang khachhang = customerService.findBySdt(principal.getName());
+				KhachhangDto khachhangDto = new KhachhangDto(khachhang);
+				model.addAttribute("khachhang", khachhangDto);
+				return "order";
+			}
+		}
+		CartInfoDto cartInfoDto = Utils.getCartInfoFromSession(request);
+
+		return "redirect:/order/history";
 	}
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
