@@ -1,10 +1,14 @@
 package foodGroup4.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,6 +21,7 @@ public class Khachhang {
     private String rePassword;
     private Date ngayTao;
     private String diaChi;
+    private Boolean gioiTinh;
     private Set<Hoadon> hoadons;
 
     @Id
@@ -83,12 +88,23 @@ public class Khachhang {
     @Basic
     @Column(name = "NgayTao")
     @NotNull
+    @CreationTimestamp
     public Date getNgayTao() {
         return ngayTao;
     }
 
     public void setNgayTao(Date ngayTao) {
         this.ngayTao = ngayTao;
+    }
+
+    @Basic
+    @Column(name = "GioiTinh")
+    public Boolean getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(Boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
     @Basic
@@ -136,5 +152,13 @@ public class Khachhang {
 
     public void setHoadons(Set<Hoadon> hoadons) {
         this.hoadons = hoadons;
+    }
+
+    @Transient
+    public List<String> getRoles() {
+        List<String> roles = new ArrayList<>();
+        roles.add("KHACH_HANG");
+
+        return roles;
     }
 }

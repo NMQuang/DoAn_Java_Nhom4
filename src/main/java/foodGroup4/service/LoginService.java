@@ -3,6 +3,9 @@ package foodGroup4.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import foodGroup4.common.CustomUserDetails;
+import foodGroup4.dao.CustomerDAO;
+import foodGroup4.entity.Khachhang;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,27 +19,31 @@ import org.springframework.transaction.annotation.Transactional;
 import foodGroup4.dao.AccountAdminDao;
 import foodGroup4.entity.AccountAdmin;
 
-@Component
 @Transactional
 public class LoginService implements UserDetailsService {
-
-	AccountAdminDao aAdminDao;
-
-	@Autowired
-	public void setaAdminDao(AccountAdminDao aAdminDao) {
-		this.aAdminDao = aAdminDao;
+	public CustomerDAO getCustomerDAO() {
+		return customerDAO;
 	}
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		AccountAdmin aAdmin = aAdminDao.findUserByUsername(username);
+	public void setCustomerDAO(CustomerDAO customerDAO) {
+		this.customerDAO = customerDAO;
+	}
 
-		if (aAdmin == null) {
+	@Autowired
+	CustomerDAO customerDAO;
+
+	@Override
+	public UserDetails loadUserByUsername(String sdt) throws UsernameNotFoundException {
+		Khachhang khachhang = customerDAO.findBySdt(sdt);
+
+		if (khachhang == null) {
 			throw new UsernameNotFoundException("not found");
 		}
 
-		List<String> roles = aAdminDao.getUserRole(username);
-		List<GrantedAuthority> grandList = new ArrayList<GrantedAuthority>();
+		System.out.println(khachhang.getPassword());
+
+		List<String> roles = khachhang.getRoles();
+		List<GrantedAuthority> grandList = new ArrayList<>();
 
 		if (roles != null) {
 			for (String role : roles) {
@@ -44,7 +51,7 @@ public class LoginService implements UserDetailsService {
 				grandList.add(authority);
 			}
 		}
-		UserDetails userDetails = new User(aAdmin.getUsername(), aAdmin.getPassword(), grandList);
+		UserDetails userDetails = new CustomUserDetails(khachhang, grandList);
 
 		return userDetails;
 	}

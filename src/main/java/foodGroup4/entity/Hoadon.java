@@ -1,5 +1,9 @@
 package foodGroup4.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
@@ -17,6 +21,7 @@ public class Hoadon {
     private String hinhThucThanhToan;
     private String diaChiGiao;
     private String sdtNguoiNhan;
+    private String hoTenNguoiNhan;
     private Set<Chitiethoadon> chitiethoadons;
     private Khachhang khachhang;
     private Chinhanh chinhanh;
@@ -36,6 +41,7 @@ public class Hoadon {
 
     @Basic
     @Column(name = "Ngay")
+    @CreationTimestamp
     public Timestamp getNgay() {
         return ngay;
     }
@@ -124,6 +130,14 @@ public class Hoadon {
         this.sdtNguoiNhan = sdtNguoiNhan;
     }
 
+    @Basic
+    @Column(name = "hotennguoinhan")
+    public String getHoTenNguoiNhan() { return hoTenNguoiNhan; }
+
+    public void setHoTenNguoiNhan(String hoTenNguoiNhan) {
+        this.hoTenNguoiNhan = hoTenNguoiNhan;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -163,7 +177,7 @@ public class Hoadon {
         return result;
     }
 
-    @OneToMany(mappedBy = "pk.hoadon")
+    @OneToMany(mappedBy = "pk.hoadon", cascade = CascadeType.ALL)
     public Set<Chitiethoadon> getChitiethoadons() {
         return chitiethoadons;
     }
@@ -193,7 +207,7 @@ public class Hoadon {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Ban", referencedColumnName = "BanID", nullable = false)
+    @JoinColumn(name = "Ban", referencedColumnName = "BanID", nullable = true)
     public Ban getBan() {
         return ban;
     }
@@ -203,7 +217,7 @@ public class Hoadon {
     }
 
     @ManyToOne
-    @JoinColumn(name = "NguoiGiaoHang", referencedColumnName = "NhanVienID", nullable = false)
+    @JoinColumn(name = "NguoiGiaoHang", referencedColumnName = "NhanVienID", nullable = true)
     public Nhanvien getNhanvien() {
         return nhanvien;
     }

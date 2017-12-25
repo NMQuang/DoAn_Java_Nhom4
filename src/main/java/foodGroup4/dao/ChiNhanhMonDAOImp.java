@@ -2,6 +2,7 @@ package foodGroup4.dao;
 
 import java.util.List;
 
+import foodGroup4.entity.ChinhanhmonId;
 import org.hibernate.Query;
 import org.springframework.stereotype.Component;
 
@@ -54,6 +55,11 @@ public class ChiNhanhMonDAOImp extends HibernateUtil implements ChiNhanhMonDAO {
 		String hql = "from Chinhanhmon where pk.mon.monId = :idMon";
 		Query q = getSession().createQuery(hql).setParameter("idMon", idMon);
 		return q.list();
+	}
+
+	@Override
+	public Chinhanhmon getById(ChinhanhmonId chinhanhmonId) {
+		return this.fetchById(chinhanhmonId, Chinhanhmon.class);
 	}
 
 

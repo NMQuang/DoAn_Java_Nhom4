@@ -32,5 +32,6 @@
 <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap.js"/>"></script>
 <script src="<c:url value="/resources/js/myjs.js"/>"></script>
+<script src="<c:url value="/resources/js/bootbox.min.js"/>"></script>
 </body>
 </html>

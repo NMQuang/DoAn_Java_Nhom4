@@ -7,4 +7,8 @@ public interface CustomerDAO {
     void subscribe(Subscriber subscriber);
 
 	void save(Khachhang customer);
+
+	void update(Khachhang khachhang);
+
+	Khachhang findBySdt(String sdt);
 }

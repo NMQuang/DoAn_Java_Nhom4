@@ -47,6 +47,11 @@
         <put-attribute name="content" value="/views/pages/order-history.jsp" />
     </definition>
 
+    <definition name="order-history-detail" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/order-history-detail.jsp" />
+    </definition>
+
     <definition name="profile-customer" extends="base-definition">
         <put-attribute name="title" value="Thanh toán" />
         <put-attribute name="content" value="/views/pages/profile-customer.jsp" />
@@ -55,6 +60,11 @@
     <definition name="register" extends="base-definition">
         <put-attribute name="title" value="Thanh toán" />
         <put-attribute name="content" value="/views/pages/register.jsp" />
+    </definition>
+
+    <definition name="login" extends="base-definition">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content" value="/views/pages/login.jsp" />
     </definition>
 
     <definition name="change-password" extends="base-definition">

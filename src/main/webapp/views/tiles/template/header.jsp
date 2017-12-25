@@ -1,5 +1,9 @@
+<%@ page import="foodGroup4.entity.Mon" %>
+<%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!-- Header -->
 <div class="header">
     <div class="container">
@@ -27,7 +31,7 @@
                     <a href="${pageContext.request.contextPath}/order/cart">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         Giỏ hàng
-                        <b class="header-cart-count">0</b>
+                        <b class="header-cart-count"><c:out value="${sessionScope.cartInfo != null ? sessionScope.cartInfo.quantity : 0}"/></b>
                     </a>
                 </div>
             </div>
@@ -65,27 +69,51 @@
                     </div>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="menu-li">
-                    <a href="${pageContext.request.contextPath}/customer/register"><i class="fa fa-pencil-square-o"></i> &nbsp <b>ĐĂNG KÝ</b></a>
-                </li>
-                <li class="dropdown menu-li" style="padding-right: 15px">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                        <i class="fa fa-sign-in"></i> &nbsp<b>ĐĂNG NHẬP</b>
-                    </a>
-                    <div class="dropdown-menu form-login" style="padding: 15px; padding-bottom: 10px;">
-                        <sform method="post" modelAttribute="customer" action="${pageContext.request.contextPath}/customer/login" class="form-horizontal" accept-charset="UTF-8">
-                            <input id="usernameLogin" path="sdt" class="form-control form-login" type="text" name="usernameLogin" placeholder="Số điện thoại..." />
-                            <input id="passwordLogin" path="password" class="form-control form-login" type="password" name="passwordLogin" placeholder="Mật khẩu..."/>
-                            <label class="form-check-label">
-                                <spring:input id="saveLogin" name="saveLogin" type="checkbox" class="form-check-input"/>
-                                Ghi nhớ đăng nhập
-                            </label>
-                            <button class="btn btn-primary pull-right" type="submit">Đăng nhập</button>
-                        <form>
-                    </div>
-                </li>
-            </ul>
+            <sec:authorize access="isAnonymous()">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="menu-li">
+                        <a href="${pageContext.request.contextPath}/register"><i class="fa fa-pencil-square-o"></i> &nbsp <b>ĐĂNG KÝ</b></a>
+                    </li>
+                    <li class="dropdown menu-li" style="padding-right: 15px">
+                        <a class="dropdown-toggle" href="<c:url value="/login"/>">
+                            <i class="fa fa-sign-in"></i> &nbsp<b>ĐĂNG NHẬP</b>
+                        </a>
+                    </li>
+                </ul>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <sec:authentication var="user" property="principal" />
+                <script>
+                    function postLogout() {
+                        var formLogout = document.createElement("form");
+                        formLogout.setAttribute("method", "post");
+                        formLogout.setAttribute("action", "<c:url value="/logout"/>");
+
+                        var hiddenField = document.createElement("input");
+                        hiddenField.setAttribute("type", "hidden");
+                        hiddenField.setAttribute("name", "${_csrf.parameterName}");
+                        hiddenField.setAttribute("value", "${_csrf.token}");
+
+                        formLogout.appendChild(hiddenField);
+                        document.body.appendChild(formLogout);
+                        formLogout.submit();
+                    }
+                </script>
+                <div class="nav navbar-nav navbar-right">
+                    <li class="dropdown dropdown-right">
+                        <button class="dropbtn">
+                            <i class="fa fa fa-user" aria-hidden="true"></i>
+                            &nbsp<b>${user.ten}</b>&nbsp
+                            <b class="caret"></b>
+                        </button>
+                        <div class="dropdown-content dropdown-menu-right" style="z-index: 3">
+                            <a href="<c:url value="/customer/profile"/>" class="right-align">Thông tin khách hàng</a>
+                            <a href="<c:url value="/order/history"/>" class="right-align">Đơn hàng của bạn</a>
+                            <a href="#" onclick="postLogout()" class="right-align">Đăng xuất</a>
+                        </div>
+                    </li>
+                </div>
+            </sec:authorize>
         </div>
         <!-- End navbar -->
     </div>

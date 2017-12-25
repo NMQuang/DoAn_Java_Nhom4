@@ -10,6 +10,14 @@ public class ChinhanhmonId implements Serializable {
     private Chinhanh chinhanh;
     private Mon mon;
 
+    public ChinhanhmonId(Chinhanh chinhanh, Mon mon) {
+        this.chinhanh = chinhanh;
+        this.mon = mon;
+    }
+
+    public ChinhanhmonId() {
+    }
+
     @ManyToOne(cascade = CascadeType.ALL)
     public Mon getMon() {
 
