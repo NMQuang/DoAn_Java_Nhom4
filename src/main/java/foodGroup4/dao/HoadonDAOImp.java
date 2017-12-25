@@ -3,6 +3,7 @@ package foodGroup4.dao;
 import foodGroup4.config.HibernateUtil;
 import foodGroup4.entity.Hoadon;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,13 @@ public class HoadonDAOImp extends HibernateUtil implements HoadonDAO {
 
     @Override
     public Hoadon findByid(int id) {
-        return this.fetchById(id, Hoadon.class);
+        Hoadon hoadon = this.fetchById(id, Hoadon.class);
+
+        if(hoadon != null) {
+            // fix org.hibernate.LazyInitializationException => I'm stupid
+            hoadon.getChitiethoadons().size();
+        }
+
+        return hoadon;
     }
 }

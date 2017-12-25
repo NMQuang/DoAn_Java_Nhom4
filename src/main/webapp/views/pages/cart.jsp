@@ -56,7 +56,7 @@
                 <tr>
                     <th>Món ăn</th>
                     <th>Số lượng</th>
-                    <th width="16%" class="text-center">Đơn giá ( VNĐ)</th>
+                    <th width="16%" class="text-center">Đơn giá (VNĐ)</th>
                     <th class="text-center">Tổng giá (VNĐ)</th>
                     <th width="20%"> </th>
                 </tr>
