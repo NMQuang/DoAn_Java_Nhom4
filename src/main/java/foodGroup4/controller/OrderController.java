@@ -112,7 +112,8 @@ public class OrderController {
 			return "redirect:/order/cart";
 		}
 
-		if(cartInfoDto.getQuantity() <= 0) {
+		if(cartInfoDto.getQuantity() <= 0 || cartInfoDto.getTotalPrice() <= 0) {
+			redirectAttributes.addFlashAttribute("error", "Đơn hàng rỗng");
 			return "redirect:/order/cart";
 		}
 
