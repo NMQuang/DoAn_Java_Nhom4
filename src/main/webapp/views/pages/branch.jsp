@@ -90,14 +90,21 @@
         <div class="row">
         <c:forEach items="${listFood}" var="item">
             <div class="col-md-3">
-                <a href="#" class="thumbnail">
-                    <img alt="Image" src="<c:url value="/resources/images/mon-an/${item.pk.mon.hinhAnh }"/>" class="img-responsive">
-                    <div class="caption">
-                        <h4>${item.pk.mon.ten }</h4>
-                        <p>
-                        <i class="fa fa-tag" aria-hidden="true"></i> &nbsp<span class="_single_price" price="${item.gia }"></span> VND</p>
+                <div class="thumbnail">
+                    <div class="box img-responsive">
+                        <img alt="image" src="<c:url value="/resources/images/mon-an/${item.mon.hinhAnh}"/>" class="img-responsive">
+                        <div class="img-responsive overlay"></div>
+                        <a href="<c:url value="/order/add-to-cart/${item.mon.monId}" />" class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> &nbsp; Thêm vào giỏ</a>
                     </div>
-                </a>
+                    <div class="caption">
+                        <a href="<c:url value="/food/${item.mon.monId}"/>" style="text-decoration: none">
+                            <h4>${item.mon.ten}</h4>
+                            <p>
+                                <i class="fa fa-tag" aria-hidden="true"></i> &nbsp<span class="_single_price" price="${item.gia }"></span> VND
+                            </p>
+                        </a>
+                    </div>
+                </div>
             </div>
 		</c:forEach>
         </div>

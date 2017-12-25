@@ -14,16 +14,21 @@
 		<div class="row">
 			<c:forEach items="${foodlist}" var="item">
 				<div class="col-md-3">
-					<a href="<c:url value="/food/${item.monId }" />" class="thumbnail"> <img alt="Image"
-						src="<c:url value="/resources/images/mon-an/${item.hinhAnh }"/>"
-						class="img-responsive">
-						<div class="caption">
-							<h4>${item.ten }</h4>
-							<p price-min="${listPrices[item.monId][0]}" price-max="${listPrices[item.monId][1]}" class="_show_price">
-								<i class="fa fa-tag" aria-hidden="true" ></i> &nbsp<span class="_price" ></span>
-							</p>
+					<div class="thumbnail">
+						<div class="box img-responsive">
+							<img alt="image" src="<c:url value="/resources/images/mon-an/${item.hinhAnh}"/>" class="img-responsive">
+							<div class="img-responsive overlay"></div>
+							<a href="<c:url value="/order/add-to-cart/${item.monId}" />" class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> &nbsp; Thêm vào giỏ</a>
 						</div>
-					</a>
+						<div class="caption">
+							<a href="<c:url value="/food/${item.monId}"/>" style="text-decoration: none">
+								<h4>${item.ten}</h4>
+								<p price-min="${listPrices[item.monId][0]}" price-max="${listPrices[item.monId][1]}" class="_show_price">
+									<i class="fa fa-tag" aria-hidden="true" ></i> &nbsp<span class="_price" ></span>
+								</p>
+							</a>
+						</div>
+					</div>
 				</div>
 			</c:forEach>
 		</div>

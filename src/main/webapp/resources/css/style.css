@@ -282,15 +282,60 @@ inspired from https://codepen.io/Rowno/pen/Afykb
     }
 }
 
-a.thumbnail {
+.thumbnail {
     padding: 2px;
     text-decoration: none;
 }
 
-.thumbnail img {
+.box {
+    position: relative;
+}
+
+.box img {
     width: 250px;
     height: 150px;
 
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+}
+
+.box:hover .overlay {
+    display: block;
+    background: rgba(0, 0, 0, .2);
+}
+
+a.thumbnail {
+    text-decoration: none;
+}
+
+.box a {
+    position: absolute;
+    top: 65%;
+    left: 17%;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+.box:hover a {
+    opacity: 1;
+}
+
+.caption a {
+    text-decoration: none;
+    color: #333333;
+}
+
+.caption a:active {
+    text-decoration: none;
+    color: #333333;
 }
 
 .thumbnail-carousel img {
