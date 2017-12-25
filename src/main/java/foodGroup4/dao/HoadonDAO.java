@@ -10,4 +10,6 @@ public interface HoadonDAO {
     List<Hoadon> getHoaDonBySdtKhachHang(String sdt);
 
     Hoadon findByid(int id);
+
+    void deleteHoadonById(int id);
 }

@@ -36,10 +36,7 @@
                 </td>
                 <td class="text-center">
                     <a href="<c:url value="/order/history/${hoadon.maHd}"/>" class="btn btn-info" style="float:left;margin-left:24px"> Chi tiết </a>
-                    <form action="<c:url value="/order/delete/${hoadon.maHd}"/>">
-                        <input type="hidden" name="id"/>
-                        <button type="submit" class="btn btn-warning">Hủy</button>
-                    </form>
+                    <button data-id="${hoadon.maHd}" type="button" onclick="confirmDelOrder(this)" class="btn btn-warning">Hủy</button>
                 </td>
             </tr>
             </c:forEach>
@@ -47,3 +44,45 @@
         </table>
     </div>
 </div>
+
+<script>
+    function confirmDelOrder(e) {
+        bootbox.confirm({
+            title: "Xác nhận hủy đơn hàng",
+            message: "Bạn có muốn hủy đơn hàng này. Lưu ý: đơn hàng sau khi hủy sẽ không thể hồi phục lại",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Cancel'
+                },
+                confirm: {
+                    label: '<i class="fa fa-check"></i> OK',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if(result) {
+                    var idOrder = e.getAttribute('data-id');
+                    var form = document.createElement('form');
+                    form.setAttribute('method', 'post');
+                    form.setAttribute('action', '<c:url value="/order/remove-order"/>')
+
+                    var inputId = document.createElement('input');
+                    inputId.setAttribute('type', 'hidden');
+                    inputId.setAttribute('name', 'idOrder');
+                    inputId.setAttribute('value', idOrder);
+                    form.appendChild(inputId);
+
+                    var inputCsrf = document.createElement('input');
+                    inputCsrf.setAttribute('type', 'hidden');
+                    inputCsrf.setAttribute('name', '${_csrf.parameterName}');
+                    inputCsrf.setAttribute('value', '${_csrf.token}');
+                    form.appendChild(inputCsrf);
+
+                    document.body.appendChild(form);
+
+                    form.submit();
+                }
+            }
+        });
+    }
+</script>

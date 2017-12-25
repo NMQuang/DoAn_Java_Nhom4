@@ -170,6 +170,17 @@ public class OrderController {
 
 		return "order-history-detail";
 	}
+
+	@RequestMapping(value = "/remove-order", method = RequestMethod.POST)
+	public String postRemoveOrder(Model model,
+								  @RequestParam(value = "idOrder", required = true) int id,
+								  RedirectAttributes redirectAttributes) {
+		hoadonService.deleteHoadonById(id);
+
+		redirectAttributes.addFlashAttribute("message", "Hủy đơn hàng thành công");
+
+		return "redirect:/order/history";
+	}
 }
 
 

@@ -74,9 +74,16 @@ public class HoadonServiceImp implements HoadonService {
     }
 
     @Override
-    @Transactional
     public Hoadon findById(int id) {
         return hoadonDAO.findByid(id);
+    }
+
+    @Override
+    public void deleteHoadonById(int id) {
+        Hoadon hoadon = hoadonDAO.findByid(id);
+        if(hoadon.getTinhTrangGiaoHang() == TinhTrangGiaoHang.DANG_XU_LY) {
+            hoadonDAO.deleteHoadonById(id);
+        }
     }
 }
 

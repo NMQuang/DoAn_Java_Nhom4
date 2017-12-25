@@ -35,4 +35,9 @@ public class HoadonDAOImp extends HibernateUtil implements HoadonDAO {
 
         return hoadon;
     }
+
+    @Override
+    public void deleteHoadonById(int id) {
+        this.delete(id, Hoadon.class);
+    }
 }

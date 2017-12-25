@@ -12,4 +12,6 @@ public interface HoadonService {
     List<Hoadon> getHoaDonBySdtKhachHang(String sdt);
 
     Hoadon findById(int id);
+
+    void deleteHoadonById(int id);
 }
