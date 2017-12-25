@@ -8,4 +8,6 @@ public interface HoadonDAO {
     void create(Hoadon hoadon);
 
     List<Hoadon> getHoaDonBySdtKhachHang(String sdt);
+
+    Hoadon findByid(int id);
 }
