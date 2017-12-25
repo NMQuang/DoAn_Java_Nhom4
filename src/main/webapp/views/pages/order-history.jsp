@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="foodGroup4.common.state.TinhTrangGiaoHang" %>
 
 <div class="container">
     <div class="col-lg-10 col-lg-offset-1">
@@ -32,11 +33,26 @@
                     <h4><fmt:formatDate value="${hoadon.ngayTao}" pattern="dd/MM/yyyy HH:mm:ss"/></h4>
                 </td>
                 <td class="text-center">
-                    <h4 class="text-success">${hoadon.tinhTrangGiaoHang}</h4>
+                    <c:choose>
+                        <c:when test="${hoadon.tinhTrangGiaoHang == TinhTrangGiaoHang.DANG_XU_LY}">
+                            <h4 class="text-warning">${TinhTrangGiaoHang.codeToString(hoadon.tinhTrangGiaoHang)}</h4>
+                        </c:when>
+                        <c:when test="${hoadon.tinhTrangGiaoHang == TinhTrangGiaoHang.DANG_CHE_BIEN}">
+                            <h4 class="text-info">${TinhTrangGiaoHang.codeToString(hoadon.tinhTrangGiaoHang)}</h4>
+                        </c:when>
+                        <c:when test="${hoadon.tinhTrangGiaoHang == TinhTrangGiaoHang.DANG_GIAO_HANG}">
+                            <h4 class="text-primary">${TinhTrangGiaoHang.codeToString(hoadon.tinhTrangGiaoHang)}</h4>
+                        </c:when>
+                        <c:when test="${hoadon.tinhTrangGiaoHang == TinhTrangGiaoHang.DA_GIAO_HANG}">
+                            <h4 class="text-success">${TinhTrangGiaoHang.codeToString(hoadon.tinhTrangGiaoHang)}</h4>
+                        </c:when>
+                    </c:choose>
                 </td>
                 <td class="text-center">
                     <a href="<c:url value="/order/history/${hoadon.maHd}"/>" class="btn btn-info" style="float:left;margin-left:24px"> Chi tiết </a>
+                    <c:if test="${hoadon.tinhTrangGiaoHang == TinhTrangGiaoHang.DANG_XU_LY}">
                     <button data-id="${hoadon.maHd}" type="button" onclick="confirmDelOrder(this)" class="btn btn-warning">Hủy</button>
+                    </c:if>
                 </td>
             </tr>
             </c:forEach>

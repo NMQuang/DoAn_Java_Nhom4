@@ -10,7 +10,7 @@ import java.util.List;
 public class HoadonDto {
     private int maHd;
     private Timestamp ngayTao;
-    private String tinhTrangGiaoHang;
+    private int tinhTrangGiaoHang;
 
     public static List<HoadonDto> convertListHoaDonToHoaDonDto(List<Hoadon> hoadonList) {
         List<HoadonDto> hoadonDtos = new ArrayList<>();
@@ -18,7 +18,7 @@ public class HoadonDto {
             HoadonDto hoadonDto = new HoadonDto();
             hoadonDto.setMaHd(hoadon.getHoaDonId());
             hoadonDto.setNgayTao(hoadon.getNgay());
-            hoadonDto.setTinhTrangGiaoHang(TinhTrangGiaoHang.codeToString(hoadon.getTinhTrangGiaoHang()));
+            hoadonDto.setTinhTrangGiaoHang(hoadon.getTinhTrangGiaoHang());
 
             hoadonDtos.add(hoadonDto);
         }
@@ -41,11 +41,11 @@ public class HoadonDto {
         this.ngayTao = ngayTao;
     }
 
-    public String getTinhTrangGiaoHang() {
+    public int getTinhTrangGiaoHang() {
         return tinhTrangGiaoHang;
     }
 
-    public void setTinhTrangGiaoHang(String tinhTrang) {
+    public void setTinhTrangGiaoHang(int tinhTrang) {
         this.tinhTrangGiaoHang = tinhTrang;
     }
 }
