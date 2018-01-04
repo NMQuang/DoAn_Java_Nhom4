@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS `account_admin`;
 CREATE TABLE `account_admin` (
   `Username` varchar(20) NOT NULL,
   `Password` varchar(255) NOT NULL,
-  `ChiNhanh` int(11) NOT NULL,
-  `Nhanvien` int(11) DEFAULT NULL,
+  `ChiNhanh` int(11) DEFAULT NULL,
+  `Nhanvien` int(11) NOT NULL,
   `Quyen` varchar(45) NOT NULL,
   PRIMARY KEY (`Username`),
   KEY `FK_ac_nv_idx` (`Nhanvien`),
@@ -48,10 +48,11 @@ CREATE TABLE `ban` (
   `ChiNhanh` int(11) NOT NULL,
   `TenBan` varchar(50) NOT NULL,
   `TinhTrang` int(11) NOT NULL,
+  `Active` bit(1) DEFAULT NULL,
   PRIMARY KEY (`BanID`),
   KEY `fk_ban_cn_idx` (`ChiNhanh`),
   CONSTRAINT `fk_ban_cn` FOREIGN KEY (`ChiNhanh`) REFERENCES `chinhanh` (`ChiNhanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +69,7 @@ CREATE TABLE `chinhanh` (
   `DienThoai` varchar(50) NOT NULL,
   `TinhThanh` int(11) NOT NULL,
   `hinhAnh` varchar(45) NOT NULL,
+  `Active` bit(1) DEFAULT NULL,
   PRIMARY KEY (`ChiNhanhID`),
   KEY `fk_cn_tt_idx` (`TinhThanh`),
   CONSTRAINT `fk_cn_tt` FOREIGN KEY (`TinhThanh`) REFERENCES `tinhthanh` (`TinhThanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -103,12 +105,13 @@ CREATE TABLE `chiphingay` (
   `ChiPhiNgayID` int(11) NOT NULL AUTO_INCREMENT,
   `Ten` varchar(255) NOT NULL,
   `MoTa` varchar(255) NOT NULL,
-  `Ngay` date NOT NULL,
+  `Ngay` datetime NOT NULL,
   `ChiNhanh` int(11) NOT NULL,
+  `Tien` decimal(10,0) NOT NULL,
   PRIMARY KEY (`ChiPhiNgayID`),
   KEY `fk_cpn_cn_idx` (`ChiNhanh`),
   CONSTRAINT `fk_cpn_cn` FOREIGN KEY (`ChiNhanh`) REFERENCES `chinhanh` (`ChiNhanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +143,7 @@ DROP TABLE IF EXISTS `chucvu`;
 CREATE TABLE `chucvu` (
   `ChucVuID` int(11) NOT NULL AUTO_INCREMENT,
   `Ten` varchar(255) NOT NULL,
-  `MoTa` int(255) NOT NULL,
+  `MoTa` varchar(255) NOT NULL,
   PRIMARY KEY (`ChucVuID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -157,7 +160,7 @@ CREATE TABLE `danhmuc` (
   `Ten` varchar(50) NOT NULL,
   `Active` bit(1) NOT NULL,
   PRIMARY KEY (`DanhMucID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,13 +172,13 @@ DROP TABLE IF EXISTS `hoadon`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hoadon` (
   `HoaDonID` int(11) NOT NULL AUTO_INCREMENT,
-  `KhachHang` varchar(20) NOT NULL,
+  `KhachHang` varchar(20) DEFAULT NULL,
   `Ngay` datetime NOT NULL,
   `ChiNhanh` int(11) NOT NULL,
   `TongTien` decimal(10,0) NOT NULL,
   `TinhTrangThanhToan` int(11) NOT NULL,
   `HinhThucMua` varchar(50) NOT NULL,
-  `TinhTrangGiaoHang` int(11) NOT NULL,
+  `TinhTrangGiaoHang` int(11) DEFAULT NULL,
   `Ban` int(11) DEFAULT NULL,
   `ThoiGianGiaoDuKien` datetime DEFAULT NULL,
   `HinhThucThanhToan` varchar(50) NOT NULL,
@@ -183,6 +186,7 @@ CREATE TABLE `hoadon` (
   `DiaChiGiao` varchar(450) DEFAULT NULL,
   `SDTNguoiNhan` varchar(45) DEFAULT NULL,
   `HoTenNguoiNhan` varchar(50) DEFAULT NULL,
+  `NgayTraTien` datetime DEFAULT NULL,
   PRIMARY KEY (`HoaDonID`),
   KEY `fk_hd_cn_idx` (`ChiNhanh`),
   KEY `fk_hd_ban_idx` (`Ban`),
@@ -192,7 +196,7 @@ CREATE TABLE `hoadon` (
   CONSTRAINT `fk_hd_cn` FOREIGN KEY (`ChiNhanh`) REFERENCES `chinhanh` (`ChiNhanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_hd_kh` FOREIGN KEY (`KhachHang`) REFERENCES `khachhang` (`SDT`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_hd_nv` FOREIGN KEY (`NguoiGiaoHang`) REFERENCES `nhanvien` (`NhanVienID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,9 +230,9 @@ CREATE TABLE `luongchonhanvien` (
   `NhanVien` int(11) NOT NULL,
   `Thang` varchar(2) NOT NULL,
   `Nam` varchar(4) NOT NULL,
-  `DiaChi` varchar(255) NOT NULL,
-  `Ten` varchar(255) NOT NULL,
   `MoTa` varchar(255) NOT NULL,
+  `Ngay` datetime DEFAULT NULL,
+  `Tien` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`NhanVien`,`Thang`,`Nam`),
   CONSTRAINT `fk_lcnv_nv` FOREIGN KEY (`NhanVien`) REFERENCES `nhanvien` (`NhanVienID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -253,7 +257,7 @@ CREATE TABLE `mon` (
   PRIMARY KEY (`MonID`),
   KEY `fk_mon_dm_idx` (`DanhMuc`),
   CONSTRAINT `fk_mon_dm` FOREIGN KEY (`DanhMuc`) REFERENCES `danhmuc` (`DanhMucID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +285,7 @@ DROP TABLE IF EXISTS `nhanvien`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `nhanvien` (
   `NhanVienID` int(11) NOT NULL AUTO_INCREMENT,
-  `ChiNhanh` int(11) NOT NULL,
+  `ChiNhanh` int(11) DEFAULT NULL,
   `ChucVu` int(11) NOT NULL,
   `Ten` varchar(255) NOT NULL,
   `NgaySinh` date NOT NULL,
@@ -295,7 +299,7 @@ CREATE TABLE `nhanvien` (
   KEY `fk_nv_cn_idx` (`ChiNhanh`),
   CONSTRAINT `fk_nv_cn` FOREIGN KEY (`ChiNhanh`) REFERENCES `chinhanh` (`ChiNhanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_nv_cv` FOREIGN KEY (`ChucVu`) REFERENCES `chucvu` (`ChucVuID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,8 +327,9 @@ CREATE TABLE `tienthuenha` (
   `Nam` varchar(4) NOT NULL,
   `Ten` varchar(255) NOT NULL,
   `MoTa` varchar(255) NOT NULL,
-  `NgayChi` date NOT NULL,
+  `NgayChi` datetime NOT NULL,
   `ChiNhanh` int(11) NOT NULL,
+  `Tien` decimal(10,0) NOT NULL,
   PRIMARY KEY (`Thang`,`Nam`),
   KEY `fk_ttn_cn_idx` (`ChiNhanh`),
   CONSTRAINT `fk_ttn_cn` FOREIGN KEY (`ChiNhanh`) REFERENCES `chinhanh` (`ChiNhanhID`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -370,4 +375,4 @@ CREATE TABLE `trungtam` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-25 20:56:59
+-- Dump completed on 2018-01-04 17:18:59

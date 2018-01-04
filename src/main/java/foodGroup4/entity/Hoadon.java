@@ -1,5 +1,7 @@
 package foodGroup4.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.springframework.context.annotation.Lazy;
@@ -13,6 +15,7 @@ import java.util.Set;
 public class Hoadon {
     private int hoaDonId;
     private Timestamp ngay;
+    private Timestamp ngayTraTien;
     private int tongTien;
     private int tinhTrangThanhToan;
     private String hinhThucMua;
@@ -49,6 +52,12 @@ public class Hoadon {
     public void setNgay(Timestamp ngay) {
         this.ngay = ngay;
     }
+
+    @Basic
+    @Column(name = "NgayTraTien")
+    public Timestamp getNgayTraTien() { return this.ngayTraTien; }
+
+    public void setNgayTraTien(Timestamp ngayTraTien) { this.ngayTraTien = ngayTraTien; }
 
     @Basic
     @Column(name = "TongTien")
@@ -131,12 +140,10 @@ public class Hoadon {
     }
 
     @Basic
-    @Column(name = "hotennguoinhan")
-    public String getHoTenNguoiNhan() { return hoTenNguoiNhan; }
+    @Column(name = "HoTenNguoiNhan")
+    public String getHoTenNguoiNhan() { return this.hoTenNguoiNhan; }
 
-    public void setHoTenNguoiNhan(String hoTenNguoiNhan) {
-        this.hoTenNguoiNhan = hoTenNguoiNhan;
-    }
+    public void setHoTenNguoiNhan(String hoTenNguoiNhan) { this.hoTenNguoiNhan = hoTenNguoiNhan; }
 
     @Override
     public boolean equals(Object o) {
@@ -158,6 +165,8 @@ public class Hoadon {
         if (diaChiGiao != null ? !diaChiGiao.equals(hoadon.diaChiGiao) : hoadon.diaChiGiao != null) return false;
         if (sdtNguoiNhan != null ? !sdtNguoiNhan.equals(hoadon.sdtNguoiNhan) : hoadon.sdtNguoiNhan != null)
             return false;
+        if (hoTenNguoiNhan != null ? !hoTenNguoiNhan.equals(hoadon.hoTenNguoiNhan) : hoadon.hoTenNguoiNhan != null)
+            return false;
 
         return true;
     }
@@ -174,10 +183,13 @@ public class Hoadon {
         result = 31 * result + (hinhThucThanhToan != null ? hinhThucThanhToan.hashCode() : 0);
         result = 31 * result + (diaChiGiao != null ? diaChiGiao.hashCode() : 0);
         result = 31 * result + (sdtNguoiNhan != null ? sdtNguoiNhan.hashCode() : 0);
+        result = 31 * result + (hoTenNguoiNhan != null ? hoTenNguoiNhan.hashCode() : 0);
+
         return result;
     }
 
-    @OneToMany(mappedBy = "pk.hoadon", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pk.hoadon", orphanRemoval=true)
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
     public Set<Chitiethoadon> getChitiethoadons() {
         return chitiethoadons;
     }
@@ -186,8 +198,9 @@ public class Hoadon {
         this.chitiethoadons = chitiethoadons;
     }
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "KhachHang", referencedColumnName = "SDT", nullable = false)
+    @JoinColumn(name = "KhachHang", referencedColumnName = "SDT", nullable = true)
     public Khachhang getKhachhang() {
         return khachhang;
     }
@@ -196,6 +209,7 @@ public class Hoadon {
         this.khachhang = khachhang;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ChiNhanh", referencedColumnName = "ChiNhanhID", nullable = false)
     public Chinhanh getChinhanh() {
@@ -206,6 +220,7 @@ public class Hoadon {
         this.chinhanh = chinhanh;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Ban", referencedColumnName = "BanID", nullable = true)
     public Ban getBan() {
@@ -216,6 +231,7 @@ public class Hoadon {
         this.ban = ban;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "NguoiGiaoHang", referencedColumnName = "NhanVienID", nullable = true)
     public Nhanvien getNhanvien() {

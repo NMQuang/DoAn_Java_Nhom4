@@ -1,5 +1,7 @@
 package foodGroup4.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -9,6 +11,7 @@ public class Ban {
     private int banId;
     private String tenBan;
     private int tinhTrang;
+    private Boolean active;
     private Chinhanh chinhanh;
     private Set<Hoadon> hoadons;
 
@@ -43,6 +46,12 @@ public class Ban {
         this.tinhTrang = tinhTrang;
     }
 
+    @Basic
+    @Column(name = "Active")
+    public boolean getActive() { return this.active; }
+
+    public void setActive(boolean active) { this.active = active; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,7 +74,8 @@ public class Ban {
         return result;
     }
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "ChiNhanh", referencedColumnName = "ChiNhanhID", nullable = false)
     public Chinhanh getChinhanh() {
         return chinhanh;
@@ -75,6 +85,7 @@ public class Ban {
         this.chinhanh = chinhanh;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "ban")
     public Set<Hoadon> getHoadons() {
         return hoadons;
