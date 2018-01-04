@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -54,11 +56,12 @@ public class OrderController {
 	InfoOrderValidator infoOrderValidator;
 
 	@RequestMapping(value = "/add-to-cart/{idFood}")
-	public String getAddToCart(HttpServletRequest request, Model model, @PathVariable int idFood) {
+	public void getAddToCart(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable int idFood) throws IOException {
 		Mon mon = foodService.getFood(idFood);
 		CartInfoDto cartInfoDto = Utils.getCartInfoFromSession(request);
 		cartInfoDto.addFoodToCart(mon);
-		return "redirect:/food";
+		String referer = request.getHeader("Referer");
+		response.sendRedirect(referer);
 	}
 
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
@@ -112,7 +115,8 @@ public class OrderController {
 			return "redirect:/order/cart";
 		}
 
-		if(cartInfoDto.getQuantity() <= 0) {
+		if(cartInfoDto.getQuantity() <= 0 || cartInfoDto.getTotalPrice() <= 0) {
+			redirectAttributes.addFlashAttribute("error", "Đơn hàng rỗng");
 			return "redirect:/order/cart";
 		}
 

@@ -119,6 +119,9 @@
                 <button type="submit" class="btn btn-success btn-lg">
                     Thanh toán
                 </button>
+                <a href="<c:url value="/food/"/>" class="btn btn-warning btn-lg">
+                    Tiếp tục mua hàng
+                </a>
             </div>
                 </form:form>
             </c:if>

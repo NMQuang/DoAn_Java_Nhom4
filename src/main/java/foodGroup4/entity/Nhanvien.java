@@ -17,7 +17,7 @@ public class Nhanvien {
     private int luong;
     private Set<AccountAdmin> accountAdmins;
     private Set<Hoadon> hoadons;
-    private Luongchonhanvien luongchonhanvien;
+    private Set<Luongchonhanvien> luongchonhanviens;
     private Chinhanh chinhanh;
     private Chucvu chucvu;
 
@@ -152,17 +152,17 @@ public class Nhanvien {
         this.hoadons = hoadons;
     }
 
-    @OneToOne(mappedBy = "nhanvien")
-    public Luongchonhanvien getLuongchonhanvien() {
-        return luongchonhanvien;
+    @OneToMany(mappedBy = "nhanvien")
+    public Set<Luongchonhanvien> getLuongchonhanvien() {
+        return luongchonhanviens;
     }
 
-    public void setLuongchonhanvien(Luongchonhanvien luongchonhanvien) {
-        this.luongchonhanvien = luongchonhanvien;
+    public void setLuongchonhanvien(Set<Luongchonhanvien> luongchonhanviens) {
+        this.luongchonhanviens = luongchonhanviens;
     }
 
     @ManyToOne
-    @JoinColumn(name = "ChiNhanh", referencedColumnName = "ChiNhanhID", nullable = false)
+    @JoinColumn(name = "ChiNhanh", referencedColumnName = "ChiNhanhID", nullable = true)
     public Chinhanh getChinhanh() {
         return chinhanh;
     }

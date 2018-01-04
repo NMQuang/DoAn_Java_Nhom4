@@ -1,5 +1,7 @@
 package foodGroup4.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -116,6 +118,7 @@ public class Mon {
         return result;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "pk.mon", cascade = CascadeType.ALL)
     public Set<Chinhanhmon> getChinhanhmons() {
         return chinhanhmons;
@@ -124,7 +127,7 @@ public class Mon {
     public void setChinhanhmons(Set<Chinhanhmon> chinhanhmons) {
         this.chinhanhmons = chinhanhmons;
     }
-
+    @JsonIgnore
     @OneToMany(mappedBy = "pk.mon")
     public Set<Chitiethoadon> getChitiethoadons() {
         return chitiethoadons;
@@ -133,7 +136,7 @@ public class Mon {
     public void setChitiethoadons(Set<Chitiethoadon> chitiethoadons) {
         this.chitiethoadons = chitiethoadons;
     }
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "DanhMuc", referencedColumnName = "DanhMucID", nullable = false)
     public Danhmuc getDanhmuc() {

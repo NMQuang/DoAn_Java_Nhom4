@@ -7,7 +7,7 @@ import java.util.Set;
 public class Danhmuc {
     private int danhMucId;
     private String ten;
-    private Boolean active;
+    private boolean active;
     private Set<Mon> mons;
 
     @Id
@@ -61,7 +61,7 @@ public class Danhmuc {
         return result;
     }
 
-    @OneToMany(mappedBy = "danhmuc")
+    @OneToMany(mappedBy = "danhmuc", fetch = FetchType.EAGER)
     public Set<Mon> getMons() {
         return mons;
     }

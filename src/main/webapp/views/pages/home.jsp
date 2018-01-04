@@ -210,17 +210,23 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="row">
             <c:forEach items="${topFoodOrders}" var="food">
-            <div class="col-md-3">
-                <a href="${pageContext.request.contextPath}/food/${food.monId}" class="thumbnail">
-                    <img alt="Image" src="<c:url value="/resources/images/mon-an/${food.hinhAnh}"/>" class="img-responsive"/>
-                    <div class="caption">
-                        <h4>${food.ten }</h4>
-                        <p price-min="${topFoodOrderPrices[food.monId][0]}" price-max="${topFoodOrderPrices[food.monId][1]}" class="_show_price">
-                            <i class="fa fa-tag" aria-hidden="true" ></i> &nbsp<span class="_price" ></span>
-                        </p>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <div class="box img-responsive">
+                            <img alt="image" src="<c:url value="/resources/images/mon-an/${food.hinhAnh}"/>" class="img-responsive">
+                            <div class="img-responsive overlay"></div>
+                            <a href="<c:url value="/order/add-to-cart/${food.monId}" />" class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> &nbsp; Thêm vào giỏ</a>
+                        </div>
+                        <div class="caption">
+                            <a href="<c:url value="/food/${food.monId}"/>" style="text-decoration: none">
+                                <h4>${food.ten}</h4>
+                                <p price-min="${topFoodOrderPrices[food.monId][0]}" price-max="${topFoodOrderPrices[food.monId][1]}" class="_show_price">
+                                    <i class="fa fa-tag" aria-hidden="true" ></i> &nbsp<span class="_price" ></span>
+                                </p>
+                            </a>
+                        </div>
                     </div>
-                </a>
-            </div>
+                </div>
             </c:forEach>
         </div>
     </div>

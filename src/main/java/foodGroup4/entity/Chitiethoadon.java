@@ -1,5 +1,7 @@
 package foodGroup4.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,6 +25,7 @@ public class Chitiethoadon {
         this.pk = pk;
     }
 
+    @JsonIgnore
     @Transient
     public Hoadon getHoadon() {
         return getPk().getHoadon();
@@ -31,7 +34,7 @@ public class Chitiethoadon {
     public void setHoadon(Hoadon hoadon) {
         getPk().setHoadon(hoadon);
     }
-
+    @JsonIgnore
     @Transient
     public Mon getMon() {
         return getPk().getMon();
