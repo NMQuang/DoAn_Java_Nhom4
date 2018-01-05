@@ -1,11 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="container">
     <div class="col-lg-10 col-lg-offset-1">
         <h4 style="padding-top: 14px"> <b>Thông tin đơn đặt hàng</b></h4>
         <hr>
-        <form:form action="/order/final-order" method="post" modelAttribute="infoOrderDto" class="form-horizontal">
+        <c:url var = "url_post" value="/order/final-order" />
+        <form:form action="${url_post }" method="post" modelAttribute="infoOrderDto" class="form-horizontal">
             <!-- Text input-->
             <input type="radio" name="useNewInfo" value="true" ${infoOrderDto.useNewInfo == true ? "checked":""}> Sử dụng số điện thoại và địa chỉ khác
             <br><br>
