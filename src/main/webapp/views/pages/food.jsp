@@ -6,7 +6,7 @@
         <div class="row food-info">
             <div class="food-head">
                 <div class="col-lg-6">
-                    <img src="<c:url value="/resources/images/${mon.hinhAnh }"/>" class="img-responsive center-block" style="max-height: 400px"/>
+                    <img src="<c:url value="/global_resources/images/mon-an/${mon.hinhAnh }"/>" class="img-responsive center-block" style="max-height: 400px"/>
                 </div>
                 <div class="col-lg-6">
                     <h3>${mon.ten }</h3>
@@ -56,7 +56,7 @@
                                     <div class="col-md-3">
                                         <div class="thumbnail">
                                             <div class="box img-responsive">
-                                                <img alt="image" src="<c:url value="/resources/images/mon-an/${food.hinhAnh}"/>" class="img-responsive">
+                                                <img alt="image" src="<c:url value="/global_resources/images/mon-an/${food.hinhAnh}"/>" class="img-responsive">
                                                 <div class="img-responsive overlay"></div>
                                                 <a href="<c:url value="/order/add-to-cart/${food.monId}" />" class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> &nbsp; Thêm vào giỏ</a>
                                             </div>
