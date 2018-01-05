@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Food - Trang chủ</title>
+    <title>My Food - <tiles:insertAttribute name="title"/> </title>
     <!-- CSS -->
     <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet" />
     <link rel="stylesheet" href="<c:url value="/resources/css/font-awesome.css"/>" />

@@ -63,6 +63,11 @@ public class HomeController {
 			return "subscribe";
 		}
 	}
+
+	@RequestMapping(value = "/introduce", method = RequestMethod.GET)
+	public String getIntroduce() {
+		return "introduce";
+	}
 }
 
 
