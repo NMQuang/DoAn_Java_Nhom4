@@ -67,7 +67,7 @@
                         <td class="col-md-5">
                             <div class="media">
                                 <a class="pull-left" href="${pageContext.request.contextPath}/food/${foodInfo.mon.monId}"> <img class="media-object"
-                                                                    src="<c:out value="${foodInfo.mon.hinhAnh}"/>"
+                                                                    src="<c:url value="/global_resources/images/mon-an/${foodInfo.mon.hinhAnh}"/>"
                                                                     style="width: 100px; height: 80px;"> </a>
                                 <div class="media-body">
                                     <h4 class="media-heading cart-text-padding-top">

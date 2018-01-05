@@ -40,7 +40,7 @@
                     <td class="col-md-5">
                         <div class="media">
                             <a class="pull-left" href="<c:url value="/food/${chitiethoadon.mon.monId}"/>">
-                                <img class="media-object" src="<c:out value="${chitiethoadon.mon.hinhAnh}"/>" style="width: 100px; height: 80px;"> </a>
+                                <img class="media-object" src="<c:out value="/global_resources/images/mon-an${chitiethoadon.mon.hinhAnh}"/>" style="width: 100px; height: 80px;"> </a>
                             <div class="media-body">
                                 <h4 class="media-heading cart-text-padding-top">${chitiethoadon.mon.ten}</h4>
                             </div>

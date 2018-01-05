@@ -9,7 +9,7 @@
         <!-- Hiển thị kết quả tìm kiếm ở đây-->
         <div class="row">
             <div class="col-lg-5" style="height: 315px;">
-                <img src="<c:url value="/resources/images/quan-an/${branch.hinhAnh }"/>" class="img-responsive img-agency" style="max-height: 315px"/>
+                <img src="<c:url value="/global_resources/images/chi-nhanh/${branch.hinhAnh }"/>" class="img-responsive img-agency" style="max-height: 315px"/>
                 <div class="agency-info" style="margin-top: 10px">
                     <p> <i class="fa fa-map-marker"></i> Địa chỉ: ${branch.diaChi }</p>
                     <p>Giờ đón khách: 8h:30 - 11h, 16h:30 - 20h:30</p>
