@@ -27,6 +27,7 @@
                     <form role="subscribe" action="${pageContext.request.contextPath}/subscribe" method="post">
                         <div class="input-group col-md-12" style="">
                             <input type="email"  required class="form-control" placeholder="Email của bạn" name="email">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
                                     <b>Subscribe</b>
