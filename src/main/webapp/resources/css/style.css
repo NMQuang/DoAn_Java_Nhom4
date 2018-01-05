@@ -506,3 +506,24 @@ td.middle {
 .form-group .error {
     color: red;
 }
+
+.main-img-text {
+    font-family: Lobster;
+    position: absolute;
+    z-index: 3;
+    color: white;
+    font-size: 48px;
+    margin-left: 380px;
+    margin-top: 600px;
+    text-shadow: 1px 1px 2px black, 0 0 1em black;
+}
+
+.intro-text {
+    font-family: Lobster;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 3px black;
+}
+
+#grad {
+    background: linear-gradient(#d5f4e6, white);
+}

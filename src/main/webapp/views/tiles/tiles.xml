@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
@@ -13,7 +13,7 @@
     </definition>
 
     <definition name="home" extends="base-definition">
-        <put-attribute name="title" value="Trang ch?" />
+        <put-attribute name="title" value="Trang chủ" />
         <put-attribute name="content" value="/views/pages/home.jsp" />
     </definition>
 
@@ -23,67 +23,73 @@
     </definition>
 
     <definition name="branch" extends="base-definition">
-        <put-attribute name="title" value="Chi nh�nh" />
+        <put-attribute name="title" value="Chi nhánh" />
         <put-attribute name="content" value="/views/pages/branch.jsp" />
     </definition>
 
     <definition name="food" extends="base-definition">
-        <put-attribute name="title" value="M�n ?n" />
+        <put-attribute name="title" value="Món ăn" />
         <put-attribute name="content" value="/views/pages/food.jsp" />
     </definition>
 
     <definition name="cart" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Giỏ hàng" />
         <put-attribute name="content" value="/views/pages/cart.jsp" />
     </definition>
 
     <definition name="order" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Thông tin đặt hàng" />
         <put-attribute name="content" value="/views/pages/order.jsp" />
     </definition>
 
     <definition name="order-history" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Lịch sử đơn hàng" />
         <put-attribute name="content" value="/views/pages/order-history.jsp" />
     </definition>
 
     <definition name="order-history-detail" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Chi tiết hóa đơn" />
         <put-attribute name="content" value="/views/pages/order-history-detail.jsp" />
     </definition>
 
     <definition name="profile-customer" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Thông tin người dùng" />
         <put-attribute name="content" value="/views/pages/profile-customer.jsp" />
     </definition>
 
     <definition name="register" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Đăng ký" />
         <put-attribute name="content" value="/views/pages/register.jsp" />
     </definition>
 
     <definition name="login" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Đăng nhập" />
         <put-attribute name="content" value="/views/pages/login.jsp" />
     </definition>
 
     <definition name="change-password" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Đổi mật khẩu" />
         <put-attribute name="content" value="/views/pages/change-password.jsp" />
     </definition>
 
     <definition name="food" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Món" />
         <put-attribute name="content" value="/views/pages/food.jsp" />
     </definition>
 
     <definition name="food-list" extends="base-definition">
-        <put-attribute name="title" value="Thanh to�n" />
+        <put-attribute name="title" value="Danh sách món ăn" />
         <put-attribute name="content" value="/views/pages/food-list.jsp" />
     </definition>
 
     <definition name="subscribe" extends="base-definition">
-        <put-attribute name="title" value="Theo d�i" />
+        <put-attribute name="title" value="Theo dõi" />
         <put-attribute name="content" value="/views/pages/subscribe.jsp" />
     </definition>
+
+    <definition name="introduce" extends="base-definition">
+        <put-attribute name="title" value="Giới thiệu về dịch vụ" />
+        <put-attribute name="content" value="/views/pages/introduce.jsp" />
+    </definition>
+
 </tiles-definitions>
