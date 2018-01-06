@@ -92,7 +92,7 @@
             <div class="col-md-3">
                 <div class="thumbnail">
                     <div class="box img-responsive">
-                        <img alt="image" src="<c:url value="/resources/images/mon-an/${item.mon.hinhAnh}"/>" class="img-responsive">
+                        <img alt="image" src="<c:url value="/global_resources/images/mon-an/${item.mon.hinhAnh}"/>" class="img-responsive">
                         <div class="img-responsive overlay"></div>
                         <a href="<c:url value="/order/add-to-cart/${item.mon.monId}" />" class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> &nbsp; Thêm vào giỏ</a>
                     </div>
